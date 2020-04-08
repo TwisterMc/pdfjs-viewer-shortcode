@@ -95,3 +95,35 @@ add_action( 'wp_enqueue_media', 'include_pdfjs_media_button_js_file' );
 function include_pdfjs_media_button_js_file() {
 	wp_enqueue_script( 'media_button', plugins_url() . '/pdfjs-viewer-shortcode/pdfjs-media-button.js', array( 'jquery' ), '1.0', true );
 }
+
+/**
+ * Gutenberg
+ */
+function cargill_block_editor_script() {
+
+	// We need to tell WordPress where exactly the JavaScript for our blocks is
+	wp_register_script (
+		'pdfjsblock/editor-scripts',
+		plugins_url( '/block.js', __FILE__ )
+	);
+
+	// We also need to tell it where the styles for our blocks are
+	wp_register_style (
+		'pdfjsblock/stylesheets', plugins_url( '/block.css', __FILE__ )
+	);
+
+	// Finally we need to tell WordPress to register our blocks and styles.
+	// Because we are loading our editor styles in-memory we only have our view
+	// styles bundled into our stylesheet. Otherwise we would make the destinction
+	// here.
+	register_block_type(
+		'pdfjsblock/block-library',
+		array(
+			'editor_script' => 'pdfjsblock/editor-scripts',
+			'style'         => 'pdfjsblock/stylesheets',
+		)
+	);
+}
+
+// Initialize the editor script function
+add_action( 'init', 'cargill_block_editor_script' );
