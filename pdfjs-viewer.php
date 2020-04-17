@@ -43,7 +43,7 @@ function pdfjs_handler( $incoming_from_post ) {
  */
 function pdfjs_generator( $incoming_from_handler ) {
 
-	$viewer_base_url = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.html';
+	$viewer_base_url = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
 	$file_name       = $incoming_from_handler['url'];
 	$viewer_height   = $incoming_from_handler['viewer_height'];
 	$viewer_width    = $incoming_from_handler['viewer_width'];
