@@ -43,6 +43,9 @@ function pdfjs_handler( $incoming_from_post ) {
  */
 function pdfjs_generator( $incoming_from_handler ) {
 
+	$plugin_data    = get_plugin_data( __FILE__ );
+	$plugin_version = $plugin_data['Version'];
+
 	$viewer_base_url = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
 	$file_name       = $incoming_from_handler['url'];
 	$viewer_height   = $incoming_from_handler['viewer_height'];
@@ -64,7 +67,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&download=' . $download . '&print=' . $print . '&openfile=' . $openfile;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&download=' . $download . '&print=' . $print . '&openfile=' . $openfile . '&v=' . $plugin_version;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {

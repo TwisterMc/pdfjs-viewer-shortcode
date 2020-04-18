@@ -29,28 +29,19 @@ See https://github.com/adobe-type-tools/cmap-resources
 	<title>PDF.js viewer</title>
 
 
-	<link rel="stylesheet" href="viewer.css">
+	<link rel="stylesheet" href="viewer.css?v=<?php echo $_GET["v"]; ?>">
 
 
 	<!-- This snippet is used in production (included from viewer.html) -->
 	<link rel="resource" type="application/l10n" href="locale/locale.properties">
-	<script src="l10n.js"></script>
+	<script src="l10n.js?v=<?php echo $_GET["v"]; ?>"></script>
 
-	<script src="../build/pdf.js"></script>
+	<script src="../build/pdf.js?v=<?php echo $_GET["v"]; ?>"></script>
 
 
-	<script src="viewer.js"></script>
+	<script src="viewer.js?v=<?php echo $_GET["v"]; ?>"></script>
 
 </head>
-
-<?php
-$message = 'hi';
-if ( is_array( $message ) || is_object( $message ) ) {
-	error_log( print_r( $message, true ) );
-} else {
-	error_log( $message );
-}
-?>
 
 <body tabindex="1" class="loadingInProgress">
 <div id="outerContainer">
