@@ -21,7 +21,7 @@ function pdfjs_handler( $incoming_from_post ) {
 	// set defaults.
 	$incoming_from_post = shortcode_atts(
 		array(
-			'url'           => 'bad-url.pdf',
+			'url'           => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
 			'viewer_height' => '1360px',
 			'viewer_width'  => '100%',
 			'fullscreen'    => 'true',
