@@ -3,7 +3,7 @@
 Plugin Name: PDFjs Viewer
 Plugin URI: http://byterevel.com/
 Description: Embed PDFs with the gorgeous PDF.js viewer
-Version: 1.4.3
+Version: 1.4.4
 Author: <a href="http://byterevel.com/">Ben Lawson</a>, <a href="https://www.twistermc.com/">Thomas McMahon</a>
 Contributors: FalconerWeb, twistermc
 License: GPLv2
@@ -21,7 +21,7 @@ function pdfjs_handler( $incoming_from_post ) {
 	// set defaults.
 	$incoming_from_post = shortcode_atts(
 		array(
-			'url'           => 'bad-url.pdf',
+			'url'           => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
 			'viewer_height' => '1360px',
 			'viewer_width'  => '100%',
 			'fullscreen'    => 'true',
@@ -43,7 +43,10 @@ function pdfjs_handler( $incoming_from_post ) {
  */
 function pdfjs_generator( $incoming_from_handler ) {
 
-	$viewer_base_url = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.html';
+	$plugin_data    = get_plugin_data( __FILE__ );
+	$plugin_version = $plugin_data['Version'];
+
+	$viewer_base_url = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
 	$file_name       = $incoming_from_handler['url'];
 	$viewer_height   = $incoming_from_handler['viewer_height'];
 	$viewer_width    = $incoming_from_handler['viewer_width'];
@@ -64,7 +67,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&download=' . $download . '&print=' . $print . '&openfile=' . $openfile;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&download=' . $download . '&print=' . $print . '&openfile=' . $openfile . '&v=' . $plugin_version;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {

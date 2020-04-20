@@ -4,7 +4,7 @@
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.0
 * Tested up to: 5.4
-* Stable tag: 1.4.3
+* Stable tag: 1.4.4
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Requires PHP: 7.2
@@ -49,6 +49,11 @@ Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github
 This plugin can be installed either directly from your WordPress admin panel, by searching for **PDF.js Viewer Shortcode**, or downloading from the Wordpress Plugin Repository, uploading and expanding the archive into your sites `wp-content/plugins` directory.
 
 ## Changelog
+
+### v1.4.4
+
+ * Brings back the ability to hide print and download.
+ * Adds version numbers to URLs to hopefully break caches and prevent weirdness.
 
 ### v1.4.3
 
