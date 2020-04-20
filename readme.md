@@ -50,6 +50,11 @@ This plugin can be installed either directly from your WordPress admin panel, by
 
 ## Changelog
 
+### v1.4.4
+
+ * Brings back the ability to hide print and download.
+ * Adds version numbers to URLs to hopefully break caches and prevent weirdness.
+
 ### v1.4.3
 
 * Fixes an issue where PDFs wouldn't load on production sites due to a `setLanguage` error.
