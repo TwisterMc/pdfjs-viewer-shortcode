@@ -3,7 +3,7 @@ Contributors: FalconerWeb, twistermc
 Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.2
