@@ -102,31 +102,37 @@ function include_pdfjs_media_button_js_file() {
 /**
  * Gutenberg
  */
-function cargill_block_editor_script() {
+function my_register_gutenberg_card_block() {
 
-	// We need to tell WordPress where exactly the JavaScript for our blocks is
-	wp_register_script (
-		'pdfjsblock/editor-scripts',
-		plugins_url( '/block.js', __FILE__ )
+	// Register our block script with WordPress
+	wp_register_script(
+		'gutenberg-pdfjs',
+		plugins_url('/blocks/dist/blocks.build.js', __FILE__),
+		array('wp-blocks', 'wp-element', 'wp-editor')
 	);
 
-	// We also need to tell it where the styles for our blocks are
-	wp_register_style (
-		'pdfjsblock/stylesheets', plugins_url( '/block.css', __FILE__ )
+	// Register our block's base CSS
+	wp_register_style(
+		'gutenberg-pdfjs',
+		plugins_url( '/blocks/dist/blocks.style.build.css', __FILE__ ),
+		array( 'wp-blocks' )
 	);
 
-	// Finally we need to tell WordPress to register our blocks and styles.
-	// Because we are loading our editor styles in-memory we only have our view
-	// styles bundled into our stylesheet. Otherwise we would make the destinction
-	// here.
-	register_block_type(
-		'pdfjsblock/block-library',
-		array(
-			'editor_script' => 'pdfjsblock/editor-scripts',
-			'style'         => 'pdfjsblock/stylesheets',
-		)
-	);
+	// Register our block's editor-specific CSS
+	if( is_admin() ) :
+		wp_register_style(
+			'gutenberg-pdfjs-edit-style',
+			plugins_url('/blocks/dist/blocks.editor.build.css', __FILE__),
+			array( 'wp-edit-blocks' )
+		);
+	endif;
+
+	// Enqueue the script in the editor
+	register_block_type('blocks/pdfjs-block', array(
+		'editor_script' => 'gutenberg-pdfjs',
+		'editor_style' => 'gutenberg-pdfjs-edit-style',
+		'style' => 'gutenberg-pdfjs-edit-style'
+	));
 }
 
-// Initialize the editor script function
-add_action( 'init', 'cargill_block_editor_script' );
+add_action('init', 'my_register_gutenberg_card_block');
