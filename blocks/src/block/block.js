@@ -2,18 +2,9 @@ import edit from './edit';
 
 const { __ } = wp.i18n;
 
-const { InspectorControls, InnerBlocks } = wp.editor;
-
-const ALLOWED_MEDIA_TYPES = [ 'text' ];
-
-const { PanelBody, PanelRow, TextControl, RangeControl } = wp.components;
+const { InnerBlocks } = wp.editor;
 
 const { registerBlockType } = wp.blocks;
-
-const {
-	RichText,
-} = wp.editor;
-
 
 registerBlockType(
 	"pdfjsblock/pdfjs-embed",
@@ -22,7 +13,7 @@ registerBlockType(
 		icon: 'format-image',
 		category: 'common',
 		keywords: [
-			__( 'Image Selector', 'image-selector-example' ),
+			__( 'PDF Selector', 'image-selector-example' ),
 		],
 
 		supports: {
@@ -37,9 +28,9 @@ registerBlockType(
 
 		edit,
 
-		save() {
+		save( props ) {
 			return (
-				<InnerBlocks.Content />
+				<div>{ props.attributes.bgImageURL }</div>
 			);
 		},
 	} );
