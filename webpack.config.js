@@ -1,30 +1,5 @@
-var ExtractText = require('extract-text-webpack-plugin');
-var debug = process.env.NODE_ENV !== 'production';
-var webpack = require('webpack');
-
-var extractEditorSCSS = new ExtractText({
-	filename: './blocks.editor.build.css'
-});
-
-var extractBlockSCSS = new ExtractText({
-	filename: './blocks.style.build.css'
-});
-
-var plugins = [ extractEditorSCSS, extractBlockSCSS ];
-
-var scssConfig = {
-	use: [
-		{
-			loader: 'css-loader'
-		},
-		{
-			loader: 'sass-loader',
-			options: {
-				outputStyle: 'compressed'
-			}
-		}
-	]
-};
+const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
+var debug       = process.env.NODE_ENV !== 'production';
 
 module.exports = {
 	context: __dirname,
@@ -35,6 +10,11 @@ module.exports = {
 		path: __dirname + '/blocks/dist/',
 		filename: 'blocks.build.js'
 	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "style.css"
+		})
+	],
 	module: {
 		rules: [
 			{
@@ -49,14 +29,21 @@ module.exports = {
 			{
 				test: /editor\.scss$/,
 				exclude: /node_modules/,
-				use: extractEditorSCSS.extract(scssConfig)
+				use: [
+					MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
+					"css-loader", // 2) Truncates CSS into JS files
+					"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
+				]
 			},
 			{
 				test: /style\.scss$/,
 				exclude: /node_modules/,
-				use: extractBlockSCSS.extract(scssConfig)
+				use: [
+					MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
+					"css-loader", // 2) Truncates CSS into JS files
+					"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
+				]
 			}
 		]
 	},
-	plugins: plugins
 };

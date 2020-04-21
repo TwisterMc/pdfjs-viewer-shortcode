@@ -113,7 +113,7 @@ function my_register_gutenberg_card_block() {
 	// Register our block's base CSS
 	wp_register_style(
 		'gutenberg-pdfjs',
-		plugins_url( '/blocks/dist/blocks.style.build.css', __FILE__ ),
+		plugins_url( '/blocks/dist/style.css', __FILE__ ),
 		array( 'wp-blocks' )
 	);
 
@@ -121,7 +121,7 @@ function my_register_gutenberg_card_block() {
 	if( is_admin() ) :
 		wp_register_style(
 			'gutenberg-pdfjs-edit-style',
-			plugins_url('/blocks/dist/blocks.editor.build.css', __FILE__),
+			plugins_url('/blocks/dist/style.css', __FILE__),
 			array( 'wp-edit-blocks' )
 		);
 	endif;

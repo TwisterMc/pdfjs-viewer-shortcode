@@ -1,5 +1,7 @@
 const { __ } = wp.i18n;
 
+import "./style.scss";
+
 const { registerBlockType } = wp.blocks;
 const { MediaUpload }       = wp.editor;
 const { Button }            = wp.components;
@@ -44,14 +46,14 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 			}
 
 			return (
-				<div className="media-wrapper">
+				<div className="pdfjs-wrapper components-placeholder">
 					<label><strong>PDF.js Embed</strong></label>
 					{
 						(props.attributes.imageURL) ? (
-							<div className="img-upload-wrapper">
+							<div className="pdfjs-upload-wrapper">
 								<div>
 									<span className="dashicons dashicons-media-document"></span>
-									{ props.attributes.imgTitle ? props.attributes.imgTitle : props.attributes.imageURL }
+									<span className="pdfjs-title">{ props.attributes.imgTitle ? props.attributes.imgTitle : props.attributes.imageURL }</span>
 								</div>
 								{(props.isSelected) ? (
 									<Button
@@ -83,7 +85,7 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 
 		save: function ( props ) {
 			return (
-			<div className="img-wrapper">
+			<div className="pdfjs-wrapper">
 				[pdfjs-viewer url={props.attributes.imageURL} download=false print=false]
 			</div>
 			)
