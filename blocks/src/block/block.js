@@ -1,18 +1,12 @@
+import edit from './edit';
+
 const { __ } = wp.i18n;
 
-import { addFilter } from '@wordpress/hooks';
-import { Button } from '@wordpress/components';
-const { InspectorControls, InnerBlocks, MediaUpload, MediaUploadCheck } = wp.editor;
-
-const replaceMediaUpload = () => MediaUpload;
+const { InspectorControls, InnerBlocks } = wp.editor;
 
 const ALLOWED_MEDIA_TYPES = [ 'text' ];
 
-addFilter(
-	'editor.MediaUpload',
-	'core/edit-post/components/media-upload/replace-media-upload',
-	replaceMediaUpload
-);
+const { PanelBody, PanelRow, TextControl, RangeControl } = wp.components;
 
 const { registerBlockType } = wp.blocks;
 
@@ -20,70 +14,32 @@ const {
 	RichText,
 } = wp.editor;
 
-function MyMediaUploader() {
-	return (
-		<MediaUploadCheck>
-			<MediaUpload
-				onSelect={ ( media ) => console.log( 'selected ' + media.length ) }
-				allowedTypes={ ALLOWED_MEDIA_TYPES }
-				value={ mediaId }
-				render={ ( { open } ) => (
-					<Button onClick={ open }>
-						Open Media Library
-					</Button>
-				) }
-			/>
-		</MediaUploadCheck>
-	);
-}
-
 
 registerBlockType(
 	"pdfjsblock/pdfjs-embed",
 	{
-		title: "Embed PDF",
-		icon: "editor-paragraph",
-		category: "layout",
+		title: __( 'Embed PDF.js Viewer', 'image-selector-example' ),
+		icon: 'format-image',
+		category: 'common',
+		keywords: [
+			__( 'Image Selector', 'image-selector-example' ),
+		],
+
+		supports: {
+			align: [ 'full' ],
+		},
+
 		attributes: {
-			content: {
-				type: "string"
+			bgImageId: {
+				type: 'number',
 			},
 		},
-		edit: function(props) {
-			const { setAttributes } = props;
 
-			const {
-				content,
-			} = props.attributes;
+		edit,
 
+		save() {
 			return (
-				<div>
-					<RichText
-						tagName="div"
-						value={content}
-						placeholder="Your content here..."
-						keepPlaceholderOnFocus={true}
-						onChange={content => setAttributes({ content })}
-						className={"pdfjs-text-area"}
-					/>
-				</div>
+				<InnerBlocks.Content />
 			);
 		},
-
-		save: function(props) {
-			const {
-				content,
-			} = props.attributes;
-
-			return (
-				<div>
-					<RichText.Content
-						className={"pdfjs-text-area"}
-						tagName="div"
-						value={content}
-					/>
-				</div>
-			);
-		}
-	}
-);
+	} );
