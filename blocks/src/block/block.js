@@ -3,8 +3,9 @@ const { __ } = wp.i18n;
 import "./style.scss";
 
 const { registerBlockType } = wp.blocks;
-const { MediaUpload }       = wp.editor;
-const { Button }            = wp.components;
+const { MediaUpload, InspectorControls }       = wp.editor;
+const { Button, PanelRow, PanelBody, ToggleControl }            = wp.components;
+
 const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];
 
 registerBlockType("pdfjsblock/pdfjs-embed", {
@@ -21,6 +22,18 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 			imgTitle: {
 				type: 'string',
 				default: 'PDF File'
+			},
+			hideDownload: {
+				type: 'boolean',
+				default: false
+			},
+			hidePrint: {
+				type: 'boolean',
+				default: false
+			},
+			hideFullscreen: {
+				type: 'boolean',
+				default: false
 			}
 		},
 		keywords: [
@@ -45,8 +58,54 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 				});
 			}
 
-			return (
-				<div className="pdfjs-wrapper components-placeholder">
+			const onToggleDownload = ( item ) => {
+				props.setAttributes({
+					hideDownload: item,
+				});
+			}
+
+			const onTogglePrint = ( item ) => {
+				props.setAttributes({
+					hidePrint: item,
+				});
+			}
+
+			const onToggleFullscreen = ( item ) => {
+				props.setAttributes({
+					hideFullscreen: item,
+				});
+			}
+
+			return [
+				<InspectorControls key="i1">
+					<PanelBody title={ __( 'PDF.js Options', 'pdf-js-block' ) } >
+						<PanelRow>
+							<ToggleControl
+								label="Hide Download Option"
+								help={props.attributes.hideDownload ? "Yes" : "No"}
+								checked={props.attributes.hideDownload}
+								onChange={onToggleDownload}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<ToggleControl
+								label="Hide Print Option"
+								help={props.attributes.hidePrint ? "Yes" : "No"}
+								checked={props.attributes.hidePrint}
+								onChange={onTogglePrint}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<ToggleControl
+								label="Hide Fullscreen Option"
+								help={props.attributes.hideFullscreen ? "Yes" : "No"}
+								checked={props.attributes.hideFullscreen}
+								onChange={onToggleFullscreen}
+							/>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>,
+				<div className="pdfjs-wrapper components-placeholder" key="i2">
 					<label><strong>PDF.js Embed</strong></label>
 					{
 						(props.attributes.imageURL) ? (
@@ -80,13 +139,13 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 					}
 
 				</div>
-			)
+			];
 		},
 
 		save: function ( props ) {
 			return (
 			<div className="pdfjs-wrapper">
-				[pdfjs-viewer url={props.attributes.imageURL} download=false print=false]
+				[pdfjs-viewer url={props.attributes.imageURL} download={props.attributes.hideDownload} print={props.attributes.hidePrint} fullscreen={props.attributes.hideFullscreen}]
 			</div>
 			)
 		}
