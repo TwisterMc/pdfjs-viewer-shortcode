@@ -2,11 +2,9 @@ import edit from './edit';
 
 const { __ } = wp.i18n;
 
-const { InnerBlocks } = wp.editor;
-
 const { registerBlockType } = wp.blocks;
 
-registerBlockType(
+const Block = registerBlockType(
 	"pdfjsblock/pdfjs-embed",
 	{
 		title: __( 'Embed PDF.js Viewer', 'image-selector-example' ),
@@ -34,3 +32,15 @@ registerBlockType(
 			);
 		},
 	} );
+
+export default compose(
+	withSelect( ( select, props ) => {
+		const { getMedia } = select( 'core' );
+		const { bgImageId } = props.attributes;
+
+		return {
+			bgImage: bgImageId ? getMedia( bgImageId ) : null,
+		};
+	} ),
+)( Block );
+
