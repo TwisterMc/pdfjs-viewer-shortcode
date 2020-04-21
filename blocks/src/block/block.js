@@ -3,32 +3,26 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { MediaUpload }       = wp.editor;
 const { Button }            = wp.components;
+const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];
 
-registerBlockType(
-	"pdfjsblock/pdfjs-embed",
-	{
-		title: __( 'Embed PDF.js Viewer', 'image-selector-example' ),
-		icon: 'format-image',
+registerBlockType("pdfjsblock/pdfjs-embed", {
+		title: __( 'Embed PDF.js Viewer', 'pdf-js-block' ),
+		icon: 'media-document',
 		category: 'common',
 		attributes: {
 			imageURL: {
 				type: 'string',
-				source: 'attribute',
-				attribute: 'src',
-				selector: 'img',
 			},
 			imgID: {
 				type: 'number'
 			},
-			imgAlt: {
+			imgTitle: {
 				type: 'string',
-				source: 'attribute',
-				attribute: 'alt',
-				selector: 'img'
+				default: 'PDF File'
 			}
 		},
 		keywords: [
-			__( 'PDF Selector', 'image-selector-example' ),
+			__( 'PDF Selector', 'pdf-js-block' ),
 		],
 
 		edit: function ( props ) {
@@ -37,7 +31,7 @@ registerBlockType(
 				props.setAttributes({
 					imageURL: img.url,
 					imgID: img.id,
-					imgAlt: img.alt,
+					imgTitle: img.title,
 				});
 			}
 
@@ -45,37 +39,41 @@ registerBlockType(
 				props.setAttributes({
 					imageURL: null,
 					imgID: null,
-					imgAlt: null,
+					imgTitle: null,
 				});
 			}
 
 			return (
 				<div className="media-wrapper">
+					<label><strong>PDF.js Embed</strong></label>
 					{
 						(props.attributes.imageURL) ? (
 							<div className="img-upload-wrapper">
-								<img
-									src={props.attributes.imageURL}
-									alt={props.attributes.imgAlt}
-								/>
+								<div>
+									<span className="dashicons dashicons-media-document"></span>
+									{ props.attributes.imgTitle ? props.attributes.imgTitle : props.attributes.imageURL }
+								</div>
 								{(props.isSelected) ? (
 									<Button
 										className="button"
 										onClick={onRemoveImg}
-									>Remove</Button>
+									>Remove PDF</Button>
 								) : null }
 							</div>
 						) : (
-							<MediaUpload
+							<div>
+								<MediaUpload
 								onSelect={onFileSelect}
+								allowedTypes={ ALLOWED_MEDIA_TYPES }
 								value={props.attributes.imgID}
 								render={({open}) =>
 								<Button
 									className="button"
 									onClick={open}
-									>Open Library</Button>
+									>Choose PDF</Button>
 								}
-							/>
+								/>
+							</div>
 						)
 					}
 
@@ -85,12 +83,9 @@ registerBlockType(
 
 		save: function ( props ) {
 			return (
-				<div classNme="img-wrapper">
-					<img
-						src={props.attributes.imageURL}
-						alt={props.attributes.imgAlt}
-					/>
-				</div>
+			<div className="img-wrapper">
+				[pdfjs-viewer url={props.attributes.imageURL} download=false print=false]
+			</div>
 			)
 		}
 	} );
