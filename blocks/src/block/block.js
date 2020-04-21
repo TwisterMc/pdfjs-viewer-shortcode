@@ -4,7 +4,7 @@ import "./style.scss";
 
 const { registerBlockType } = wp.blocks;
 const { MediaUpload, InspectorControls }       = wp.editor;
-const { Button, PanelRow, PanelBody, ToggleControl }            = wp.components;
+const { Button, PanelRow, PanelBody, ToggleControl, TextControl }            = wp.components;
 
 const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];
 
@@ -23,17 +23,25 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 				type: 'string',
 				default: 'PDF File'
 			},
-			hideDownload: {
+			showDownload: {
 				type: 'boolean',
-				default: false
+				default: true
 			},
-			hidePrint: {
+			showPrint: {
 				type: 'boolean',
-				default: false
+				default: true
 			},
-			hideFullscreen: {
+			showFullscreen: {
 				type: 'boolean',
-				default: false
+				default: true
+			},
+			viewerHeight: {
+				type: 'number',
+				default: 1360
+			},
+			viewerWidth: {
+				type: 'number',
+				default: 0
 			}
 		},
 		keywords: [
@@ -58,21 +66,33 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 				});
 			}
 
-			const onToggleDownload = ( item ) => {
+			const onToggleDownload = ( value ) => {
 				props.setAttributes({
-					hideDownload: item,
+					showDownload: value,
 				});
 			}
 
-			const onTogglePrint = ( item ) => {
+			const onTogglePrint = ( value ) => {
 				props.setAttributes({
-					hidePrint: item,
+					showPrint: value,
 				});
 			}
 
-			const onToggleFullscreen = ( item ) => {
+			const onToggleFullscreen = ( value ) => {
 				props.setAttributes({
-					hideFullscreen: item,
+					showFullscreen: value,
+				});
+			}
+
+			const onHeightChange = ( value ) => {
+				props.setAttributes({
+					viewerHeight: value,
+				});
+			}
+
+			const onWidthChange = ( value ) => {
+				props.setAttributes({
+					viewerWidth: value,
 				});
 			}
 
@@ -81,26 +101,41 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 					<PanelBody title={ __( 'PDF.js Options', 'pdf-js-block' ) } >
 						<PanelRow>
 							<ToggleControl
-								label="Hide Download Option"
-								help={props.attributes.hideDownload ? "Yes" : "No"}
-								checked={props.attributes.hideDownload}
+								label="Show Download Option"
+								help={props.attributes.showDownload ? "Yes" : "No"}
+								checked={props.attributes.showDownload}
 								onChange={onToggleDownload}
 							/>
 						</PanelRow>
 						<PanelRow>
 							<ToggleControl
-								label="Hide Print Option"
-								help={props.attributes.hidePrint ? "Yes" : "No"}
-								checked={props.attributes.hidePrint}
+								label="Show Print Option"
+								help={props.attributes.showPrint ? "Yes" : "No"}
+								checked={props.attributes.showPrint}
 								onChange={onTogglePrint}
 							/>
 						</PanelRow>
 						<PanelRow>
 							<ToggleControl
-								label="Hide Fullscreen Option"
-								help={props.attributes.hideFullscreen ? "Yes" : "No"}
-								checked={props.attributes.hideFullscreen}
+								label="Show Fullscreen Option"
+								help={props.attributes.showFullscreen ? "Yes" : "No"}
+								checked={props.attributes.showFullscreen}
 								onChange={onToggleFullscreen}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="Viewer Height"
+								value={props.attributes.viewerHeight}
+								onChange={onHeightChange}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="Viewer Width"
+								help="By default 0 will be 100%."
+								value={props.attributes.viewerWidth}
+								onChange={onWidthChange}
 							/>
 						</PanelRow>
 					</PanelBody>
@@ -145,7 +180,7 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 		save: function ( props ) {
 			return (
 			<div className="pdfjs-wrapper">
-				[pdfjs-viewer url={props.attributes.imageURL} download={props.attributes.hideDownload} print={props.attributes.hidePrint} fullscreen={props.attributes.hideFullscreen}]
+				[pdfjs-viewer viewer_width={ (props.attributes.viewerWidth != 0) ? props.attributes.viewerWidth : '100%' } viewer_height={props.attributes.viewerHeight} url={props.attributes.imageURL} download={props.attributes.showDownload.toString()} print={props.attributes.showPrint.toString()} fullscreen={props.attributes.showFullscreen.toString()}]
 			</div>
 			)
 		}
