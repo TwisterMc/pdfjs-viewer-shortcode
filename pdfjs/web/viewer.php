@@ -119,11 +119,11 @@ See https://github.com/adobe-type-tools/cmap-resources
 					<span data-l10n-id="open_file_label">Open</span>
 				</button>
 
-				<button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" <?php if ($_GET["print"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="53" data-l10n-id="print">
+				<button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" <?php if ($_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="53" data-l10n-id="print">
 					<span data-l10n-id="print_label">Print</span>
 				</button>
 
-				<button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" <?php if ($_GET["download"]!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="54" data-l10n-id="download">
+				<button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" <?php if ($_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="54" data-l10n-id="download">
 					<span data-l10n-id="download_label">Download</span>
 				</button>
 
@@ -222,11 +222,11 @@ See https://github.com/adobe-type-tools/cmap-resources
 							<span data-l10n-id="open_file_label">Open</span>
 						</button>
 
-						<button id="print" class="toolbarButton print hiddenMediumView" <?php if ($_GET["print"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="33" data-l10n-id="print">
+						<button id="print" class="toolbarButton print hiddenMediumView" <?php if ($_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="33" data-l10n-id="print">
 							<span data-l10n-id="print_label">Print</span>
 						</button>
 
-						<button id="download" class="toolbarButton download hiddenMediumView" <?php if ($_GET["download"]!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="34" data-l10n-id="download">
+						<button id="download" class="toolbarButton download hiddenMediumView" <?php if ($_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="34" data-l10n-id="download">
 							<span data-l10n-id="download_label">Download</span>
 						</button>
 						<a href="#" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
