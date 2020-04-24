@@ -37,11 +37,11 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 		},
 		viewerHeight: {
 			type: 'number',
-			default: 1360
+			default: 1360,
 		},
 		viewerWidth: {
 			type: 'number',
-			default: 0
+			default: 0,
 		}
 	},
 	keywords: [
@@ -125,14 +125,14 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label="Viewer Height"
+							label="Viewer Height (pixels)"
 							value={props.attributes.viewerHeight}
 							onChange={onHeightChange}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label="Viewer Width"
+							label="Viewer Width (pixels)"
 							help="By default 0 will be 100%."
 							value={props.attributes.viewerWidth}
 							onChange={onWidthChange}
