@@ -66,7 +66,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&download=' . $download . '&print=' . $print . '&openfile=' . $openfile . '&v=' . $plugin_version;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&downloadButton=' . $download . '&printButton=' . $print . '&openfileButton=' . $openfile . '&v=' . $plugin_version;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
