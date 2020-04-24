@@ -1,3 +1,9 @@
+<?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
+?>
 <!DOCTYPE html>
 <!--
 Copyright 2012 Mozilla Foundation
