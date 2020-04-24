@@ -101,38 +101,38 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 				<PanelBody title={ __( 'PDF.js Options', 'pdf-js-block' ) } >
 					<PanelRow>
 						<ToggleControl
-							label="Show Download Option"
-							help={props.attributes.showDownload ? "Yes" : "No"}
+							label={ __( "Show Download Option", 'pdf-js-block' ) }
+							help={props.attributes.showDownload ? __( "Yes", 'pdf-js-block' ) : __( "No", 'pdf-js-block' )}
 							checked={props.attributes.showDownload}
 							onChange={onToggleDownload}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label="Show Print Option"
-							help={props.attributes.showPrint ? "Yes" : "No"}
+							label={ __( "Show Print Option", 'pdf-js-block' ) }
+							help={props.attributes.showPrint ? __( "Yes", 'pdf-js-block' ) : __( "No", 'pdf-js-block' )}
 							checked={props.attributes.showPrint}
 							onChange={onTogglePrint}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label="Show Fullscreen Option"
-							help={props.attributes.showFullscreen ? "Yes" : "No"}
+							label={ __( "Show Fullscreen Option", 'pdf-js-block' ) }
+							help={props.attributes.showFullscreen ? __( "Yes", 'pdf-js-block' ) : __( "No", 'pdf-js-block' )}
 							checked={props.attributes.showFullscreen}
 							onChange={onToggleFullscreen}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label="Viewer Height (pixels)"
+							label={ __( "Viewer Height (pixels)", 'pdf-js-block' ) }
 							value={props.attributes.viewerHeight}
 							onChange={onHeightChange}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label="Viewer Width (pixels)"
+							label={ __( "Viewer Width (pixels)", 'pdf-js-block' ) }
 							help="By default 0 will be 100%."
 							value={props.attributes.viewerWidth}
 							onChange={onWidthChange}
@@ -141,7 +141,7 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 				</PanelBody>
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2">
-				<label><strong>PDF.js Embed</strong></label>
+				<label><strong>{ __( "PDF.js Embed", 'pdf-js-block' ) }</strong></label>
 				{
 					(props.attributes.imageURL) ? (
 						<div className="pdfjs-upload-wrapper">
@@ -153,7 +153,7 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 								<Button
 									className="button"
 									onClick={onRemoveImg}
-								>Remove PDF</Button>
+								>{ __( "Remove PDF", 'pdf-js-block' ) }</Button>
 							) : null }
 						</div>
 					) : (
@@ -166,7 +166,7 @@ registerBlockType("pdfjsblock/pdfjs-embed", {
 							<Button
 								className="button"
 								onClick={open}
-								>Choose PDF</Button>
+								>{ __( "Choose PDF", 'pdf-js-block' ) }</Button>
 							}
 							/>
 						</div>

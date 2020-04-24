@@ -75,7 +75,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
-		$fullscreen_link = '<a href="' . $final_url . '">View Fullscreen</a><br>';
+		$fullscreen_link = '<a href="' . $final_url . '">' . __( 'View Fullscreen' ) . '</a><br>';
 	}
 	$iframe_code = '<iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . $final_url . '" title="Embedded PDF"></iframe> ';
 
@@ -91,7 +91,7 @@ add_action( 'media_buttons', 'pdfjs_media_button', 12 );
  * Include the media button
  */
 function pdfjs_media_button() {
-	echo '<a href="#" id="insert-pdfjs" class="button">Add PDF</a>';
+	echo '<a href="#" id="insert-pdfjs" class="button">' . __( 'Add PDF', 'pdf-js-block' ) . '</a>';
 }
 
 add_action( 'wp_enqueue_media', 'include_pdfjs_media_button_js_file' );
