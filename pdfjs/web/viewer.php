@@ -1,6 +1,6 @@
 <?php
 // If this file is called directly, abort.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( $_GET["v"] ) ) {
 	die;
 }
 ?>
