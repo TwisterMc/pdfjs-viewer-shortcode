@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
-var debug       = process.env.NODE_ENV !== 'production';
+let debug                  = process.env.NODE_ENV !== 'production';
 
 module.exports = {
 	context: __dirname,
@@ -11,39 +11,41 @@ module.exports = {
 		filename: 'blocks.build.js'
 	},
 	plugins: [
-		new MiniCssExtractPlugin({
-			filename: "style.css"
-		})
-	],
-	module: {
-		rules: [
+		new MiniCssExtractPlugin(
 			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'babel-loader'
-					}
-				]
-			},
-			{
-				test: /editor\.scss$/,
-				exclude: /node_modules/,
-				use: [
-					MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
-					"css-loader", // 2) Truncates CSS into JS files
-					"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
-				]
-			},
-			{
-				test: /style\.scss$/,
-				exclude: /node_modules/,
-				use: [
-					MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
-					"css-loader", // 2) Truncates CSS into JS files
-					"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
-				]
+				filename: "style.css"
 			}
+		)
+	],
+module: {
+	rules: [
+		{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			use: [
+				{
+					loader: 'babel-loader'
+			}
+			]
+	},
+		{
+			test: /editor\.scss$/,
+			exclude: /node_modules/,
+			use: [
+				MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
+				"css-loader", // 2) Truncates CSS into JS files
+				"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
+			]
+	},
+		{
+			test: /style\.scss$/,
+			exclude: /node_modules/,
+			use: [
+				MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
+				"css-loader", // 2) Truncates CSS into JS files
+				"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
+			]
+	}
 		]
 	},
 };
