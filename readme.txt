@@ -47,6 +47,10 @@ This plugin can be installed either directly from your WordPress admin panel, by
 
 ## Changelog
 
+### v1.4.6
+
+ * Renaming URL variables to prevent a possible Edge security message.
+
 ### v1.4.5
 
  * Fixes a version number issue that was introduced in the last version.
