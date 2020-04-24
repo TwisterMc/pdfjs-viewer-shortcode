@@ -54,6 +54,11 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$print           = $incoming_from_handler['print'];
 	$openfile        = $incoming_from_handler['openfile'];
 
+	// if the PDF URL is missing the file extension, load error PDF.
+	if ( ! strpos( $file_name, '.pdf' ) ) {
+		$file_name = plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf';
+	}
+
 	if ( 'true' !== $download ) {
 		$download = 'false';
 	}
