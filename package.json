@@ -4,7 +4,9 @@
   "description": "* Contributors: FalconerWeb, twistermc * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode * Requires at least: 4.0 * Tested up to: 5.4 * Stable tag: 1.4.4 * License: GPLv2 or later * License URI: http://www.gnu.org/licenses/gpl-2.0.html * Requires PHP: 7.2",
   "main": "blocks/src/block/block.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
