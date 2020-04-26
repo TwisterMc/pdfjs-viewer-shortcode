@@ -9,7 +9,7 @@ const {
 	PanelRow,
 	PanelBody,
 	ToggleControl,
-	TextControl
+	TextControl,
 } = wp.components;
 
 const ALLOWED_MEDIA_TYPES = ['application/pdf'];
@@ -20,44 +20,44 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 	category: 'common',
 	attributes: {
 		imageURL: {
-			type: 'string'
+			type: 'string',
 		},
 		imgID: {
-			type: 'number'
+			type: 'number',
 		},
 		imgTitle: {
 			type: 'string',
-			default: 'PDF File'
+			default: 'PDF File',
 		},
 		showDownload: {
 			type: 'boolean',
-			default: true
+			default: true,
 		},
 		showPrint: {
 			type: 'boolean',
-			default: true
+			default: true,
 		},
 		showFullscreen: {
 			type: 'boolean',
-			default: true
+			default: true,
 		},
 		viewerHeight: {
 			type: 'number',
-			default: 1360
+			default: 1360,
 		},
 		viewerWidth: {
 			type: 'number',
-			default: 0
-		}
+			default: 0,
+		},
 	},
 	keywords: [__('PDF Selector', 'pdf-js-block')],
 
 	edit(props) {
-		const onFileSelect = img => {
+		const onFileSelect = (img) => {
 			props.setAttributes({
 				imageURL: img.url,
 				imgID: img.id,
-				imgTitle: img.title
+				imgTitle: img.title,
 			});
 		};
 
@@ -65,37 +65,37 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 			props.setAttributes({
 				imageURL: null,
 				imgID: null,
-				imgTitle: null
+				imgTitle: null,
 			});
 		};
 
-		const onToggleDownload = value => {
+		const onToggleDownload = (value) => {
 			props.setAttributes({
-				showDownload: value
+				showDownload: value,
 			});
 		};
 
-		const onTogglePrint = value => {
+		const onTogglePrint = (value) => {
 			props.setAttributes({
-				showPrint: value
+				showPrint: value,
 			});
 		};
 
-		const onToggleFullscreen = value => {
+		const onToggleFullscreen = (value) => {
 			props.setAttributes({
-				showFullscreen: value
+				showFullscreen: value,
 			});
 		};
 
-		const onHeightChange = value => {
+		const onHeightChange = (value) => {
 			props.setAttributes({
-				viewerHeight: value
+				viewerHeight: value,
 			});
 		};
 
-		const onWidthChange = value => {
+		const onWidthChange = (value) => {
 			props.setAttributes({
-				viewerWidth: value
+				viewerWidth: value,
 			});
 		};
 
@@ -156,9 +156,9 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 				</PanelBody>
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2">
-				<label for="">
+				<div>
 					<strong>{__('PDF.js Embed', 'pdf-js-block')}</strong>
-				</label>
+				</div>
 				{props.attributes.imageURL ? (
 					<div className="pdfjs-upload-wrapper">
 						<div>
@@ -189,7 +189,7 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 						/>
 					</div>
 				)}
-			</div>
+			</div>,
 		];
 	},
 
@@ -207,5 +207,5 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 				{props.attributes.showFullscreen.toString()}]
 			</div>
 		);
-	}
+	},
 });
