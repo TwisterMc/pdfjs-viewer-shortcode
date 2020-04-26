@@ -3,7 +3,7 @@ const { __ } = wp.i18n;
 import './style.scss';
 
 const { registerBlockType } = wp.blocks;
-const { MediaUpload, InspectorControls } = wp.editor;
+const { MediaUpload, InspectorControls } = wp.blockEditor;
 const {
 	Button,
 	PanelRow,
