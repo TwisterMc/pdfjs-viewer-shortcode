@@ -14,4 +14,12 @@ module.exports = {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
+	"rules": {
+		"@wordpress/i18n-text-domain": [
+			'error',
+			{
+				allowedTextDomain: 'pdf-js-block'
+			}
+		]
+	}
 };
