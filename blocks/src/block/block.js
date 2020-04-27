@@ -197,15 +197,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	save( props ) {
 		return (
 			<div className="pdfjs-wrapper">
-				[pdfjs-viewer viewer_width=
-				{props.attributes.viewerWidth !== 0
-					? props.attributes.viewerWidth
-					: '100%'}{' '}
-				viewer_height={props.attributes.viewerHeight}
-				url={props.attributes.imageURL}
-				download={props.attributes.showDownload.toString()}
-				print={props.attributes.showPrint.toString()}
-				fullscreen={props.attributes.showFullscreen.toString()}]
+				[pdfjs-viewer viewer_width={props.attributes.viewerWidth !== 0 ? props.attributes.viewerWidth : '100%'}{' '} viewer_height={props.attributes.viewerHeight} url={props.attributes.imageURL} download={props.attributes.showDownload.toString()} print={props.attributes.showPrint.toString()} fullscreen={props.attributes.showFullscreen.toString()}]
 			</div>
 		);
 	},
