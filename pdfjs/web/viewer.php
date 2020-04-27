@@ -1,6 +1,7 @@
 <?php
 // If this file is called directly, abort.
-if ( ! defined( $_GET["v"] ) ) {
+if ( ! isset( $_GET["v"] ) ) {
+	echo ( 'This file was called improperly. Do not call directly.' );
 	die;
 }
 ?>
