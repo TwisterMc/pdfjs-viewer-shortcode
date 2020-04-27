@@ -2,8 +2,9 @@ const { __ } = wp.i18n;
 
 import './style.scss';
 
-const { registerBlockType } = wp.blocks;
+const { registerBlockType }              = wp.blocks;
 const { MediaUpload, InspectorControls } = wp.blockEditor;
+
 const {
 	Button,
 	PanelRow,
@@ -14,8 +15,8 @@ const {
 
 const ALLOWED_MEDIA_TYPES = ['application/pdf'];
 
-registerBlockType('pdfjsblock/pdfjs-embed', {
-	title: __('Embed PDF.js Viewer', 'pdf-js-block'),
+registerBlockType( 'pdfjsblock/pdfjs-embed', {
+	title: __( 'Embed PDF.js Viewer', 'pdf-js-block' ),
 	icon: 'media-document',
 	category: 'common',
 	attributes: {
@@ -50,10 +51,10 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 			default: 0,
 		},
 	},
-	keywords: [__('PDF Selector', 'pdf-js-block')],
+	keywords: [__( 'PDF Selector', 'pdf-js-block' ) ],
 
-	edit(props) {
-		const onFileSelect = (img) => {
+	edit( props ) {
+		const onFileSelect = ( img ) => {
 			props.setAttributes({
 				imageURL: img.url,
 				imgID: img.id,
@@ -69,31 +70,31 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 			});
 		};
 
-		const onToggleDownload = (value) => {
+		const onToggleDownload = ( value ) => {
 			props.setAttributes({
 				showDownload: value,
 			});
 		};
 
-		const onTogglePrint = (value) => {
+		const onTogglePrint = ( value ) => {
 			props.setAttributes({
 				showPrint: value,
 			});
 		};
 
-		const onToggleFullscreen = (value) => {
+		const onToggleFullscreen = ( value ) => {
 			props.setAttributes({
 				showFullscreen: value,
 			});
 		};
 
-		const onHeightChange = (value) => {
+		const onHeightChange = ( value ) => {
 			props.setAttributes({
 				viewerHeight: value,
 			});
 		};
 
-		const onWidthChange = (value) => {
+		const onWidthChange = ( value ) => {
 			props.setAttributes({
 				viewerWidth: value,
 			});
@@ -101,14 +102,14 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 
 		return [
 			<InspectorControls key="i1">
-				<PanelBody title={__('PDF.js Options', 'pdf-js-block')}>
+				<PanelBody title={__( 'PDF.js Options', 'pdf-js-block' )}>
 					<PanelRow>
 						<ToggleControl
-							label={__('Show Download Option', 'pdf-js-block')}
+							label={__( 'Show Download Option', 'pdf-js-block' )}
 							help={
 								props.attributes.showDownload
-									? __('Yes', 'pdf-js-block')
-									: __('No', 'pdf-js-block')
+									? __( 'Yes', 'pdf-js-block' )
+									: __( 'No', 'pdf-js-block' )
 							}
 							checked={props.attributes.showDownload}
 							onChange={onToggleDownload}
@@ -116,11 +117,11 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={__('Show Print Option', 'pdf-js-block')}
+							label={__( 'Show Print Option', 'pdf-js-block' )}
 							help={
 								props.attributes.showPrint
-									? __('Yes', 'pdf-js-block')
-									: __('No', 'pdf-js-block')
+									? __( 'Yes', 'pdf-js-block' )
+									: __( 'No', 'pdf-js-block' )
 							}
 							checked={props.attributes.showPrint}
 							onChange={onTogglePrint}
@@ -128,11 +129,11 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={__('Show Fullscreen Option', 'pdf-js-block')}
+							label={__( 'Show Fullscreen Option', 'pdf-js-block' )}
 							help={
 								props.attributes.showFullscreen
-									? __('Yes', 'pdf-js-block')
-									: __('No', 'pdf-js-block')
+									? __( 'Yes', 'pdf-js-block' )
+									: __( 'No', 'pdf-js-block' )
 							}
 							checked={props.attributes.showFullscreen}
 							onChange={onToggleFullscreen}
@@ -140,14 +141,14 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label={__('Viewer Height (pixels)', 'pdf-js-block')}
+							label={__( 'Viewer Height (pixels)', 'pdf-js-block' )}
 							value={props.attributes.viewerHeight}
 							onChange={onHeightChange}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label={__('Viewer Width (pixels)', 'pdf-js-block')}
+							label={__( 'Viewer Width (pixels)', 'pdf-js-block' )}
 							help="By default 0 will be 100%."
 							value={props.attributes.viewerWidth}
 							onChange={onWidthChange}
@@ -157,7 +158,7 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2">
 				<div>
-					<strong>{__('PDF.js Embed', 'pdf-js-block')}</strong>
+					<strong>{__( 'PDF.js Embed', 'pdf-js-block' )}</strong>
 				</div>
 				{props.attributes.imageURL ? (
 					<div className="pdfjs-upload-wrapper">
@@ -171,7 +172,7 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 						</div>
 						{props.isSelected ? (
 							<Button className="button" onClick={onRemoveImg}>
-								{__('Remove PDF', 'pdf-js-block')}
+								{__( 'Remove PDF', 'pdf-js-block' )}
 							</Button>
 						) : null}
 					</div>
@@ -183,7 +184,7 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 							value={props.attributes.imgID}
 							render={({ open }) => (
 								<Button className="button" onClick={open}>
-									{__('Choose PDF', 'pdf-js-block')}
+									{__( 'Choose PDF', 'pdf-js-block' )}
 								</Button>
 							)}
 						/>
@@ -193,18 +194,18 @@ registerBlockType('pdfjsblock/pdfjs-embed', {
 		];
 	},
 
-	save(props) {
+	save( props ) {
 		return (
 			<div className="pdfjs-wrapper">
 				[pdfjs-viewer viewer_width=
 				{props.attributes.viewerWidth !== 0
 					? props.attributes.viewerWidth
 					: '100%'}{' '}
-				viewer_height={props.attributes.viewerHeight} url=
-				{props.attributes.imageURL} download=
-				{props.attributes.showDownload.toString()} print=
-				{props.attributes.showPrint.toString()} fullscreen=
-				{props.attributes.showFullscreen.toString()}]
+				viewer_height={props.attributes.viewerHeight}
+				url={props.attributes.imageURL}
+				download={props.attributes.showDownload.toString()}
+				print={props.attributes.showPrint.toString()}
+				fullscreen={props.attributes.showFullscreen.toString()}]
 			</div>
 		);
 	},
