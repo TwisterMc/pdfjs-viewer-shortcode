@@ -18,7 +18,7 @@ module.exports = {
 		"@wordpress/i18n-text-domain": [
 			'error',
 			{
-				allowedTextDomain: 'pdf-js-block'
+				allowedTextDomain: 'pdfjs-viewer-shortcode'
 			}
 		]
 	}

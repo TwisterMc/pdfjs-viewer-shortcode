@@ -16,7 +16,7 @@ const {
 const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];
 
 registerBlockType( 'pdfjsblock/pdfjs-embed', {
-	title: __( 'Embed PDF.js Viewer', 'pdf-js-block' ),
+	title: __( 'Embed PDF.js Viewer', 'pdfjs-viewer-shortcode' ),
 	icon: 'media-document',
 	category: 'common',
 	attributes: {
@@ -51,7 +51,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			default: 0,
 		},
 	},
-	keywords: [ __( 'PDF Selector', 'pdf-js-block' ) ],
+	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
 
 	edit( props ) {
 		const onFileSelect = ( img ) => {
@@ -102,17 +102,17 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 
 		return [
 			<InspectorControls key="i1">
-				<PanelBody title={ __( 'PDF.js Options', 'pdf-js-block' ) }>
+				<PanelBody title={ __( 'PDF.js Options', 'pdfjs-viewer-shortcode' ) }>
 					<PanelRow>
 						<ToggleControl
 							label={ __(
 								'Show Download Option',
-								'pdf-js-block'
+								'pdfjs-viewer-shortcode'
 							) }
 							help={
 								props.attributes.showDownload
-									? __( 'Yes', 'pdf-js-block' )
-									: __( 'No', 'pdf-js-block' )
+									? __( 'Yes', 'pdfjs-viewer-shortcode' )
+									: __( 'No', 'pdfjs-viewer-shortcode' )
 							}
 							checked={ props.attributes.showDownload }
 							onChange={ onToggleDownload }
@@ -120,11 +120,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={ __( 'Show Print Option', 'pdf-js-block' ) }
+							label={ __( 'Show Print Option', 'pdfjs-viewer-shortcode' ) }
 							help={
 								props.attributes.showPrint
-									? __( 'Yes', 'pdf-js-block' )
-									: __( 'No', 'pdf-js-block' )
+									? __( 'Yes', 'pdfjs-viewer-shortcode' )
+									: __( 'No', 'pdfjs-viewer-shortcode' )
 							}
 							checked={ props.attributes.showPrint }
 							onChange={ onTogglePrint }
@@ -134,12 +134,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						<ToggleControl
 							label={ __(
 								'Show Fullscreen Option',
-								'pdf-js-block'
+								'pdfjs-viewer-shortcode'
 							) }
 							help={
 								props.attributes.showFullscreen
-									? __( 'Yes', 'pdf-js-block' )
-									: __( 'No', 'pdf-js-block' )
+									? __( 'Yes', 'pdfjs-viewer-shortcode' )
+									: __( 'No', 'pdfjs-viewer-shortcode' )
 							}
 							checked={ props.attributes.showFullscreen }
 							onChange={ onToggleFullscreen }
@@ -149,7 +149,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						<TextControl
 							label={ __(
 								'Viewer Height (pixels)',
-								'pdf-js-block'
+								'pdfjs-viewer-shortcode'
 							) }
 							value={ props.attributes.viewerHeight }
 							onChange={ onHeightChange }
@@ -159,7 +159,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						<TextControl
 							label={ __(
 								'Viewer Width (pixels)',
-								'pdf-js-block'
+								'pdfjs-viewer-shortcode'
 							) }
 							help="By default 0 will be 100%."
 							value={ props.attributes.viewerWidth }
@@ -170,7 +170,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2">
 				<div>
-					<strong>{ __( 'PDF.js Embed', 'pdf-js-block' ) }</strong>
+					<strong>{ __( 'PDF.js Embed', 'pdfjs-viewer-shortcode' ) }</strong>
 				</div>
 				{ props.attributes.imageURL ? (
 					<div className="pdfjs-upload-wrapper">
@@ -184,7 +184,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						</div>
 						{ props.isSelected ? (
 							<Button className="button" onClick={ onRemoveImg }>
-								{ __( 'Remove PDF', 'pdf-js-block' ) }
+								{ __( 'Remove PDF', 'pdfjs-viewer-shortcode' ) }
 							</Button>
 						) : null }
 					</div>
@@ -196,7 +196,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							value={ props.attributes.imgID }
 							render={ ( { open } ) => (
 								<Button className="button" onClick={ open }>
-									{ __( 'Choose PDF', 'pdf-js-block' ) }
+									{ __( 'Choose PDF', 'pdfjs-viewer-shortcode' ) }
 								</Button>
 							) }
 						/>

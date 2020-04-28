@@ -91,7 +91,7 @@ add_action( 'media_buttons', 'pdfjs_media_button', 12 );
  * Include the media button
  */
 function pdfjs_media_button() {
-	echo '<a href="#" id="insert-pdfjs" class="button">' . __( 'Add PDF', 'pdf-js-block' ) . '</a>';
+	echo '<a href="#" id="insert-pdfjs" class="button">' . __( 'Add PDF', 'pdfjs-viewer-shortcode' ) . '</a>';
 }
 
 add_action( 'wp_enqueue_media', 'include_pdfjs_media_button_js_file' );
