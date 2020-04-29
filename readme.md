@@ -1,22 +1,23 @@
-# PDF.js Viewer Shortcode
+# PDF.js Viewer
 
 * Contributors: FalconerWeb, twistermc
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.0
 * Tested up to: 5.4
-* Stable tag: 1.4.6
+* Stable tag: 1.5
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Requires PHP: 7.2
 
-Embed a beautiful PDF viewer into pages with a simple shortcode.
+Embed a beautiful PDF viewer into pages.
 
 ## Description
 
-Incorporate [Mozilla's PDF.js](https://github.com/mozilla/pdf.js/) viewer into your pages and posts with a simple shortcode. PDF.js is a javascript library for displaying pdf pages within browsers.
+Incorporate [Mozilla's PDF.js](https://github.com/mozilla/pdf.js/) viewer into your pages and posts via a Gutenberg block or a simple shortcode. PDF.js is a javascript library for displaying pdf pages within browsers.
 
 Features:
 
+*   Gutenberg Block and Shortcode
 *   Elegant speckled gray theme
 *   Customizable buttons
 *   Page navigation drawer
@@ -26,7 +27,7 @@ Features:
 *   Loading bar & displays partially loaded PDF (great for huge PDFs!)
 *   Document outline
 *   Advanced zoom settings
-*   Easy to use editor media button that generates the shortcode for you
+*   Classic Editor: Easy to use editor media button that generates the shortcode for you
 *   Support for mobile devices
 
 Shortcode Syntax:
@@ -40,15 +41,20 @@ Shortcode Syntax:
 *   `download` (optional): true/false, enables or disables download button (default: true)
 *   `print` (optional): true/false, enables or disables print button (default: true)
 
-*This plugin does not support a button within the Gutenberg interface yet, however the shortcode still works fine.*
-
 Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode).
 
 ## Installation
 
-This plugin can be installed either directly from your WordPress admin panel, by searching for **PDF.js Viewer Shortcode**, or downloading from the Wordpress Plugin Repository, uploading and expanding the archive into your sites `wp-content/plugins` directory.
+This plugin can be installed either directly from your WordPress admin panel by searching for **PDF.js Viewer**, or downloading from the Wordpress Plugin Repository and uploading and expanding the archive into your sites `wp-content/plugins` directory.
 
 ## Changelog
+
+### v1.5
+
+* Updated Plugin Name
+* Gutenberg Block
+* Updating Mozilla PDF.JS library.
+* Adding a class to the fullscreen link.
 
 ### v1.4.6
 
