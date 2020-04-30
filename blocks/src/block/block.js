@@ -13,6 +13,9 @@ const {
 	TextControl,
 } = wp.components;
 
+const defaultHeight = 1360;
+const defaultWidth = 0;
+
 const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];
 
 registerBlockType( 'pdfjsblock/pdfjs-embed', {
@@ -44,11 +47,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		viewerHeight: {
 			type: 'number',
-			default: 1360,
+			default: defaultHeight,
 		},
 		viewerWidth: {
 			type: 'number',
-			default: 0,
+			default: defaultWidth,
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
@@ -161,7 +164,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 								'Viewer Width (pixels)',
 								'pdfjs-viewer-shortcode'
 							) }
-							help="By default 0 will be 100%."
+							help="By default 0 will be 100%. Minimum 580px."
 							value={ props.attributes.viewerWidth }
 							onChange={ onWidthChange }
 						/>
@@ -210,10 +213,14 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		return (
 			<div className="pdfjs-wrapper">
 				[pdfjs-viewer viewer_width=
-				{ props.attributes.viewerWidth !== 0
+				{ props.attributes.viewerWidth
 					? props.attributes.viewerWidth
-					: '100%' }{ ' ' }
-				viewer_height={ props.attributes.viewerHeight } url=
+					: defaultWidth }{ ' ' }
+				viewer_height=
+				{ props.attributes.viewerHeight
+					? props.attributes.viewerHeight
+					: defaultHeight }{ ' ' }
+				url=
 				{ props.attributes.imageURL } download=
 				{ props.attributes.showDownload.toString() } print=
 				{ props.attributes.showPrint.toString() } fullscreen=
