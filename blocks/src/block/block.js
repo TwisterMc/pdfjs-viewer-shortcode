@@ -10,7 +10,7 @@ const {
 	PanelRow,
 	PanelBody,
 	ToggleControl,
-	TextControl,
+	RangeControl,
 } = wp.components;
 
 const defaultHeight = 1360;
@@ -148,28 +148,35 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							onChange={ onToggleFullscreen }
 						/>
 					</PanelRow>
-					<PanelRow>
-						<TextControl
-							label={ __(
-								'Viewer Height (pixels)',
-								'pdfjs-viewer-shortcode'
-							) }
-							value={ props.attributes.viewerHeight }
-							onChange={ onHeightChange }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							label={ __(
-								'Viewer Width (pixels)',
-								'pdfjs-viewer-shortcode'
-							) }
-							help="By default 0 will be 100%. Minimum 580px."
-							value={ props.attributes.viewerWidth }
-							onChange={ onWidthChange }
-						/>
-					</PanelRow>
 				</PanelBody>
+				<PanelBody title={ __( 'Embed Height', 'pdfjs-viewer-shortcode' ) }>
+					<RangeControl
+						label={ __(
+							'Viewer Height (pixels)',
+							'pdfjs-viewer-shortcode'
+						) }
+						value={ props.attributes.viewerHeight }
+						onChange={ onHeightChange }
+						min={ 0 }
+						max={ 5000 }
+						allowReset={ true }
+					/>
+				</PanelBody>
+				<PanelBody title={ __( 'Embed Width', 'pdfjs-viewer-shortcode' ) }>
+					<RangeControl
+						label={ __(
+							'Viewer Width (pixels)',
+							'pdfjs-viewer-shortcode'
+						) }
+						help="By default 0 will be 100%. Minimum 580px."
+						value={ props.attributes.viewerWidth }
+						onChange={ onWidthChange }
+						min={ 0 }
+						max={ 5000 }
+						allowReset={ true }
+					/>
+				</PanelBody>
+
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2">
 				<div>
@@ -210,21 +217,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	},
 
 	save( props ) {
+		console.log(props.attributes);
 		return (
 			<div className="pdfjs-wrapper">
-				[pdfjs-viewer viewer_width=
-				{ props.attributes.viewerWidth
-					? props.attributes.viewerWidth
-					: defaultWidth }{ ' ' }
-				viewer_height=
-				{ props.attributes.viewerHeight
-					? props.attributes.viewerHeight
-					: defaultHeight }{ ' ' }
-				url=
-				{ props.attributes.imageURL } download=
-				{ props.attributes.showDownload.toString() } print=
-				{ props.attributes.showPrint.toString() } fullscreen=
-				{ props.attributes.showFullscreen.toString() }]
+				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() }]`}
 			</div>
 		);
 	},
