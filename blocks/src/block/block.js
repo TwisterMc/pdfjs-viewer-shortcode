@@ -217,7 +217,6 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	},
 
 	save( props ) {
-		console.log(props.attributes);
 		return (
 			<div className="pdfjs-wrapper">
 				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() }]`}
