@@ -59,25 +59,31 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$file_name = plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf';
 	}
 
-	// check to see if the current value is in pixels.
-	if ( false === strpos( $viewer_width, 'px' ) ) {
-		// check to see if it's 0.
-		if ( '0' === $viewer_width ) {
-			$viewer_width = '100%';
-		} else {
-			// add px extension.
-			$viewer_width = $viewer_width . 'px';
+	// check to see if the current value is in percent.
+	if ( false === strpos( $viewer_width, '%' ) ) {
+		// check to see if the current value is in pixels.
+		if ( false === strpos( $viewer_width, 'px' ) ) {
+			// check to see if it's 0.
+			if ( '0' === $viewer_width ) {
+				$viewer_width = '100%';
+			} else {
+				// add px extension.
+				$viewer_width = $viewer_width . 'px';
+			}
 		}
 	}
 
-	// check to see if the current value is in pixels.
-	if ( false === strpos( $viewer_height, 'px' ) ) {
-		// check to see if it's 0.
-		if ( '0' === $viewer_height ) {
-			$viewer_height = '1360';
-		} else {
-			// add px extension.
-			$viewer_height = $viewer_height . 'px';
+	// check to see if the current value is in percent.
+	if ( false === strpos( $viewer_width, '%' ) ) {
+		// check to see if the current value is in pixels.
+		if ( false === strpos( $viewer_height, 'px' ) ) {
+			// check to see if it's 0.
+			if ( '0' === $viewer_height ) {
+				$viewer_height = '1360';
+			} else {
+				// add px extension.
+				$viewer_height = $viewer_height . 'px';
+			}
 		}
 	}
 
