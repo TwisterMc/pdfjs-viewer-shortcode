@@ -92,12 +92,20 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		};
 
 		const onHeightChange = ( value ) => {
+			// handle the reset button
+			if ( undefined === value ) {
+				value = defaultHeight;
+			}
 			props.setAttributes( {
 				viewerHeight: value,
 			} );
 		};
 
 		const onWidthChange = ( value ) => {
+			// handle the reset button
+			if ( undefined === value ) {
+				value = defaultWidth;
+			}
 			props.setAttributes( {
 				viewerWidth: value,
 			} );
