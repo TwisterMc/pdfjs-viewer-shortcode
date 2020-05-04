@@ -184,7 +184,6 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						allowReset={ true }
 					/>
 				</PanelBody>
-
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2">
 				<div>
