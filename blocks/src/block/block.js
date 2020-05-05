@@ -4,6 +4,7 @@ import './style.scss';
 
 const { registerBlockType } = wp.blocks;
 const { MediaUpload, InspectorControls } = wp.blockEditor;
+const { withState } = wp.compose;
 
 const {
 	Button,
@@ -168,6 +169,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						min={ 0 }
 						max={ 5000 }
 						allowReset={ true }
+						initialPosition={ defaultHeight }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Embed Width', 'pdfjs-viewer-shortcode' ) }>
@@ -182,6 +184,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						min={ 0 }
 						max={ 5000 }
 						allowReset={ true }
+						initialPosition={ defaultWidth }
 					/>
 				</PanelBody>
 			</InspectorControls>,
