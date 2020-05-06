@@ -178,7 +178,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							'Viewer Width (pixels)',
 							'pdfjs-viewer-shortcode'
 						) }
-						help="By default 0 will be 100%. Minimum 580px."
+						help="By default 0 will be 100%."
 						value={ props.attributes.viewerWidth }
 						onChange={ onWidthChange }
 						min={ 0 }
