@@ -146,24 +146,15 @@ function my_register_gutenberg_card_block() {
 	// Register our block's base CSS
 	wp_register_style(
 		'gutenberg-pdfjs',
-		plugins_url( '/blocks/dist/style.css', __FILE__ ),
-		array( 'wp-blocks' )
+		plugins_url( 'blocks/dist/style.css', __FILE__ ),
+		''
 	);
-
-	// Register our block's editor-specific CSS
-	if( is_admin() ) :
-		wp_register_style(
-			'gutenberg-pdfjs-edit-style',
-			plugins_url('/blocks/dist/style.css', __FILE__),
-			array( 'wp-edit-blocks' )
-		);
-	endif;
 
 	// Enqueue the script in the editor
 	register_block_type('blocks/pdfjs-block', array(
 		'editor_script' => 'gutenberg-pdfjs',
 		'editor_style' => 'gutenberg-pdfjs-edit-style',
-		'style' => 'gutenberg-pdfjs-edit-style'
+		'style' => 'gutenberg-pdfjs'
 	));
 }
 

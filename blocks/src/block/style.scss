@@ -1,4 +1,4 @@
-// TODO: Get this on the front-end
-.pdfjs-iframe {
-    max-width: 100%;
+.entry-content > .pdfjs-iframe,
+.entry-content > .pdfjs-wrapper {
+    max-width: 100% !important;
 }
