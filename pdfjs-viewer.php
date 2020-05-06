@@ -74,7 +74,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	}
 
 	// check to see if the current value is in percent.
-	if ( false === strpos( $viewer_width, '%' ) ) {
+	if ( false === strpos( $viewer_height, '%' ) ) {
 		// check to see if the current value is in pixels.
 		if ( false === strpos( $viewer_height, 'px' ) ) {
 			// check to see if it's 0.
