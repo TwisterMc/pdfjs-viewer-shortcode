@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 
-import './style.scss';
+import './editor.scss';
 
 const { registerBlockType } = wp.blocks;
 const { MediaUpload, InspectorControls } = wp.blockEditor;
@@ -187,7 +187,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					/>
 				</PanelBody>
 			</InspectorControls>,
-			<div className="pdfjs-wrapper components-placeholder" key="i2">
+			<div className="pdfjs-wrapper components-placeholder" key="i2" style={{height: props.attributes.viewerHeight}}>
 				<div>
 					<strong>{ __( 'PDF.js Embed', 'pdfjs-viewer-shortcode' ) }</strong>
 				</div>
