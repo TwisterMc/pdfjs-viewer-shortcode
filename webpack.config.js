@@ -8,44 +8,51 @@ module.exports = {
 	entry: './blocks/src/blocks.js',
 	output: {
 		path: __dirname + '/blocks/dist/',
-		filename: 'blocks.build.js'
+		filename: 'blocks.build.js',
+	},
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				style: {
+					name: 'style',
+					test: /style\.s?css$/,
+					chunks: 'all',
+					enforce: true,
+				},
+				editor: {
+					name: 'editor',
+					test: /editor\.s?css$/,
+					chunks: 'all',
+					enforce: true,
+				},
+			},
+		},
 	},
 	plugins: [
-		new MiniCssExtractPlugin(
-			{
-				filename: "style.css"
-			}
-		)
+		new MiniCssExtractPlugin( {
+			filename: '[name].css',
+		} ),
 	],
-module: {
-	rules: [
-		{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			use: [
-				{
-					loader: 'babel-loader'
-			}
-			]
-	},
-		{
-			test: /editor\.scss$/,
-			exclude: /node_modules/,
-			use: [
-				MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
-				"css-loader", // 2) Truncates CSS into JS files
-				"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
-			]
-	},
-		{
-			test: /style\.scss$/,
-			exclude: /node_modules/,
-			use: [
-				MiniCssExtractPlugin.loader, // 3) Extracts the CSS and bundles it
-				"css-loader", // 2) Truncates CSS into JS files
-				"sass-loader" // 1) Compiles SCSS -> CSS using node-sass
-			]
-	}
-		]
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'babel-loader',
+					},
+				],
+			},
+			{
+				test: /\.s?css$/,
+				exclude: /node_modules/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'sass-loader',
+				],
+			},
+		],
 	},
 };

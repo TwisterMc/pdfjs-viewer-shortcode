@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
 
 import './editor.scss';
+import './style.scss';
 
 const { registerBlockType } = wp.blocks;
 const { MediaUpload, InspectorControls } = wp.blockEditor;
