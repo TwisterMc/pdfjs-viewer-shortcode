@@ -12,6 +12,7 @@ const {
 	PanelBody,
 	ToggleControl,
 	RangeControl,
+	SelectControl,
 } = wp.components;
 
 const defaultHeight = 1360;
@@ -53,6 +54,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		viewerWidth: {
 			type: 'number',
 			default: defaultWidth,
+		},
+		viewerScale: {
+			type: 'string',
+			default: 'page-actual',
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
@@ -109,6 +114,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			}
 			props.setAttributes( {
 				viewerWidth: value,
+			} );
+		};
+
+		const onScaleChange = ( value ) => {
+			props.setAttributes( {
+				viewerScale: value,
 			} );
 		};
 
@@ -187,6 +198,26 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						initialPosition={ defaultWidth }
 					/>
 				</PanelBody>
+				<PanelBody title={ __( 'Scale', 'pdfjs-viewer-shortcode' ) }>
+					<SelectControl
+						label="Viewer Scale"
+						value={ props.attributes.viewerScale }
+						options={ [
+							{ label: 'Actual Size', value: 'page-actual' },
+							{ label: 'Page Fit', value: 'page-fit' },
+							{ label: 'Page Width', value: 'page-width' },
+							{ label: '50%', value: '50' },
+							{ label: '75%', value: '75' },
+							{ label: '100%', value: '100' },
+							{ label: '125%', value: '125' },
+							{ label: '150%', value: '150' },
+							{ label: '200%', value: '200' },
+							{ label: '300%', value: '300' },
+							{ label: '400%', value: '400' },
+						] }
+						onChange={ onScaleChange }
+					/>
+				</PanelBody>
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2" style={{height: props.attributes.viewerHeight}}>
 				<div>
@@ -229,7 +260,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	save( props ) {
 		return (
 			<div className="pdfjs-wrapper">
-				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() }]`}
+				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } zoom=${ props.attributes.viewerScale.toString()} ]`}
 			</div>
 		);
 	},

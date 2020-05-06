@@ -28,6 +28,7 @@ function pdfjs_handler( $incoming_from_post ) {
 			'download'      => 'true',
 			'print'         => 'true',
 			'openfile'      => 'false',
+			'zoom'      => 'page-actual',
 		),
 		$incoming_from_post
 	);
@@ -53,6 +54,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$download        = $incoming_from_handler['download'];
 	$print           = $incoming_from_handler['print'];
 	$openfile        = $incoming_from_handler['openfile'];
+	$zoom            = $incoming_from_handler['zoom'];
 
 	// if the PDF URL is missing the file extension, load error PDF.
 	if ( ! strpos( $file_name, '.pdf' ) ) {
@@ -99,7 +101,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
