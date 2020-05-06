@@ -1,6 +1,6 @@
-.entry-content > .pdfjs-iframe,
-.entry-content > .pdfjs-wrapper {
-  max-width: 100% !important; }
+.pdfjs-iframe,
+.pdfjs-wrapper {
+  max-width: 100%; }
 
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9ibG9ja3Mvc3JjL2Jsb2NrL3N0eWxlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBLDZCQUE2QiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZW50cnktY29udGVudCA+IC5wZGZqcy1pZnJhbWUsXG4uZW50cnktY29udGVudCA+IC5wZGZqcy13cmFwcGVyIHtcbiAgbWF4LXdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7IH1cbiJdLCJzb3VyY2VSb290IjoiIn0=*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9ibG9ja3Mvc3JjL2Jsb2NrL3N0eWxlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBLGtCQUFrQiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGRmanMtaWZyYW1lLFxuLnBkZmpzLXdyYXBwZXIge1xuICBtYXgtd2lkdGg6IDEwMCU7IH1cbiJdLCJzb3VyY2VSb290IjoiIn0=*/
