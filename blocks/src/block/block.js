@@ -4,7 +4,6 @@ import './style.scss';
 
 const { registerBlockType } = wp.blocks;
 const { MediaUpload, InspectorControls } = wp.blockEditor;
-const { withState } = wp.compose;
 
 const {
 	Button,
