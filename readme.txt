@@ -3,7 +3,7 @@
 * Contributors: FalconerWeb, twistermc
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.0
-* Tested up to: 5.4
+* Tested up to: 5.4.1
 * Stable tag: 1.5
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -55,6 +55,9 @@ This plugin can be installed either directly from your WordPress admin panel by 
 * Gutenberg Block
 * Updating Mozilla PDF.JS library.
 * Adding a class to the fullscreen link.
+* Ability to customize fullscreen link text.
+* Ability to customize default zoom level.
+* Classes so you can style things easier.
 
 ### v1.4.6
 
