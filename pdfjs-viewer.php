@@ -107,7 +107,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
-		$fullscreen_link = '<a href="' . $final_url . '" class="pdfjs-fullscreen">' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a><br>';
+		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . $final_url . '">' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a></div>';
 	}
 	$iframe_code = '<iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . $final_url . '" title="Embedded PDF" class="pdfjs-iframe"></iframe> ';
 
