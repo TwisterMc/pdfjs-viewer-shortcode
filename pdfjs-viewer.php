@@ -21,14 +21,15 @@ function pdfjs_handler( $incoming_from_post ) {
 	// set defaults.
 	$incoming_from_post = shortcode_atts(
 		array(
-			'url'           => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
-			'viewer_height' => '1360px',
-			'viewer_width'  => '100%',
-			'fullscreen'    => 'true',
-			'download'      => 'true',
-			'print'         => 'true',
-			'openfile'      => 'false',
-			'zoom'      => 'page-actual',
+			'url'             => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
+			'viewer_height'   => '1360px',
+			'viewer_width'    => '100%',
+			'fullscreen'      => 'true',
+			'fullscreen_text' => 'View Fullscreen',
+			'download'        => 'true',
+			'print'           => 'true',
+			'openfile'        => 'false',
+			'zoom'            => 'page-actual',
 		),
 		$incoming_from_post
 	);
@@ -51,6 +52,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$viewer_height   = $incoming_from_handler['viewer_height'];
 	$viewer_width    = $incoming_from_handler['viewer_width'];
 	$fullscreen      = $incoming_from_handler['fullscreen'];
+	$fullscreen_text = $incoming_from_handler['fullscreen_text'];
 	$download        = $incoming_from_handler['download'];
 	$print           = $incoming_from_handler['print'];
 	$openfile        = $incoming_from_handler['openfile'];
@@ -105,7 +107,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
-		$fullscreen_link = '<a href="' . $final_url . '" class="pdfjs-fullscreen">' . __( 'View Fullscreen' ) . '</a><br>';
+		$fullscreen_link = '<a href="' . $final_url . '" class="pdfjs-fullscreen">' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a><br>';
 	}
 	$iframe_code = '<iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . $final_url . '" title="Embedded PDF" class="pdfjs-iframe"></iframe> ';
 

@@ -13,6 +13,7 @@ const {
 	ToggleControl,
 	RangeControl,
 	SelectControl,
+	TextControl,
 } = wp.components;
 
 const defaultHeight = 1360;
@@ -46,6 +47,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		showFullscreen: {
 			type: 'boolean',
 			default: true,
+		},
+		fullscreenText: {
+			type: 'string',
+			default: 'View Fullscreen',
 		},
 		viewerHeight: {
 			type: 'number',
@@ -122,6 +127,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				viewerScale: value,
 			} );
 		};
+		const onFullscreenTextChange = ( value ) => {
+			props.setAttributes( {
+				fullscreenText: value,
+			} );
+		};
 
 		return [
 			<InspectorControls key="i1">
@@ -166,6 +176,13 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showFullscreen }
 							onChange={ onToggleFullscreen }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label="Fullscreen Text"
+							value={ props.attributes.fullscreenText }
+							onChange={ onFullscreenTextChange }
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -260,7 +277,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	save( props ) {
 		return (
 			<div className="pdfjs-wrapper">
-				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } zoom=${ props.attributes.viewerScale.toString()} ]`}
+				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} ]`}
 			</div>
 		);
 	},
