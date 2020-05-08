@@ -38,8 +38,10 @@ Shortcode Syntax:
 *   `viewer_width` (optional): width of the viewer (default: 100%)
 *   `viewer_height` (optional): height of the viewer (default: 1360px)
 *   `fullscreen` (optional): true/false, displays fullscreen link above viewer (default: true)
+*   `fullscreen_text` (optional): text, change the fullscreen link text (default: View Fullscreen)
 *   `download` (optional): true/false, enables or disables download button (default: true)
 *   `print` (optional): true/false, enables or disables print button (default: true)
+*   `zoom` (optional): page-actual/page-width/page-fit/50/75/100/200/300/400, PDF zoom level (default: page-actual)
 
 Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode).
 
