@@ -55,6 +55,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### v1.5
 
 * Updated Plugin Name
+* Updated Plugin Icon
 * Gutenberg Block
 * Updating Mozilla PDF.JS library.
 * Adding a class to the fullscreen link.
