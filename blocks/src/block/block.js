@@ -243,7 +243,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				</div>
 				{ props.attributes.imageURL ? (
 					<div className="pdfjs-upload-wrapper">
-						<div>
+						<div className="pdfjs-upload-button-wrapper">
 							<span className="dashicons dashicons-media-document"></span>
 							<span className="pdfjs-title">
 								{ props.attributes.imgTitle
