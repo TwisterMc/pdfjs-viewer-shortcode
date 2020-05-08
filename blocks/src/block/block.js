@@ -62,7 +62,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		viewerScale: {
 			type: 'string',
-			default: 'page-actual',
+			default: 'auto',
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
