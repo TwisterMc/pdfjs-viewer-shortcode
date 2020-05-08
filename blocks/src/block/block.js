@@ -16,7 +16,7 @@ const {
 	TextControl,
 } = wp.components;
 
-const defaultHeight = 1360;
+const defaultHeight = 800;
 const defaultWidth = 0;
 
 const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];

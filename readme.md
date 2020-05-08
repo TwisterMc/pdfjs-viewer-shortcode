@@ -36,7 +36,7 @@ Shortcode Syntax:
 
 *   `url` (required): direct url to pdf file
 *   `viewer_width` (optional): width of the viewer (default: 100%)
-*   `viewer_height` (optional): height of the viewer (default: 1360px)
+*   `viewer_height` (optional): height of the viewer (default: 800px)
 *   `fullscreen` (optional): true/false, displays fullscreen link above viewer (default: true)
 *   `fullscreen_text` (optional): text, change the fullscreen link text (default: View Fullscreen)
     * Spaces not allowed. Use `%20` in place of spaces.
@@ -62,6 +62,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 * Ability to customize fullscreen link text.
 * Ability to customize default zoom level.
 * Classes so you can style things easier.
+* Shorter default height.
 
 ### v1.4.6
 

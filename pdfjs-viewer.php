@@ -22,7 +22,7 @@ function pdfjs_handler( $incoming_from_post ) {
 	$incoming_from_post = shortcode_atts(
 		array(
 			'url'             => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
-			'viewer_height'   => '1360px',
+			'viewer_height'   => '800px',
 			'viewer_width'    => '100%',
 			'fullscreen'      => 'true',
 			'fullscreen_text' => 'View Fullscreen',
@@ -83,7 +83,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		if ( false === strpos( $viewer_height, 'px' ) ) {
 			// check to see if it's 0.
 			if ( '0' === $viewer_height ) {
-				$viewer_height = '1360';
+				$viewer_height = '800';
 			} else {
 				// add px extension.
 				$viewer_height = $viewer_height . 'px';
