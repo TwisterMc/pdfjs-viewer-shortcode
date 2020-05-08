@@ -220,6 +220,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						label="Viewer Scale"
 						value={ props.attributes.viewerScale }
 						options={ [
+							{ label: 'Automatic', value: 'auto' },
 							{ label: 'Actual Size', value: 'page-actual' },
 							{ label: 'Page Fit', value: 'page-fit' },
 							{ label: 'Page Width', value: 'page-width' },

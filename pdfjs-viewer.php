@@ -29,7 +29,7 @@ function pdfjs_handler( $incoming_from_post ) {
 			'download'        => 'true',
 			'print'           => 'true',
 			'openfile'        => 'false',
-			'zoom'            => 'page-actual',
+			'zoom'            => 'auto',
 		),
 		$incoming_from_post
 	);
