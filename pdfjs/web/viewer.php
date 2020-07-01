@@ -116,7 +116,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 					<span data-l10n-id="presentation_mode_label">Presentation Mode</span>
 				</button>
 
-				<button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" title="Open File" tabindex="52" data-l10n-id="open_file">
+				<button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" <?php if ($_GET["oButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="52" data-l10n-id="open_file">
 					<span data-l10n-id="open_file_label">Open</span>
 				</button>
 
@@ -219,7 +219,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 							<span data-l10n-id="presentation_mode_label">Presentation Mode</span>
 						</button>
 
-						<button id="openFile" class="toolbarButton openFile hiddenLargeView" title="Open File" tabindex="32" data-l10n-id="open_file">
+						<button id="openFile" class="toolbarButton openFile hiddenLargeView" <?php if ($_GET["oButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="32" data-l10n-id="open_file">
 							<span data-l10n-id="open_file_label">Open</span>
 						</button>
 
