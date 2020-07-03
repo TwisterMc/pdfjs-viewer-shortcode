@@ -154,12 +154,14 @@ function my_register_gutenberg_card_block() {
 		''
 	);
 
-	// Enqueue the script in the editor
-	register_block_type('blocks/pdfjs-block', array(
-		'editor_script' => 'gutenberg-pdfjs',
-		'editor_style' => 'gutenberg-pdfjs-edit-style',
-		'style' => 'gutenberg-pdfjs'
-	));
+	// Enqueue the script in the editor.
+	if ( function_exists( 'register_block_type' ) ) {
+		register_block_type( 'blocks/pdfjs-block', array(
+			'editor_script' => 'gutenberg-pdfjs',
+			'editor_style'  => 'gutenberg-pdfjs-edit-style',
+			'style'         => 'gutenberg-pdfjs'
+		) );
+	}
 }
 
 add_action('init', 'my_register_gutenberg_card_block');
