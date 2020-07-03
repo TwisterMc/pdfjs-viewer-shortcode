@@ -3,8 +3,8 @@
 * Contributors: FalconerWeb, twistermc
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.0
-* Tested up to: 5.4.1
-* Stable tag: 1.5.1
+* Tested up to: 5.4.2
+* Stable tag: 1.5.2
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Requires PHP: 7.2
@@ -51,6 +51,11 @@ Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github
 This plugin can be installed either directly from your WordPress admin panel by searching for **PDF.js Viewer**, or downloading from the Wordpress Plugin Repository and uploading and expanding the archive into your sites `wp-content/plugins` directory.
 
 ## Changelog
+
+### v1.5.2
+
+* Hiding the Open button.
+* Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo
 
 ### v1.5.1
 
