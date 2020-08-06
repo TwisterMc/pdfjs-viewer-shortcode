@@ -135,33 +135,34 @@ function include_pdfjs_media_button_js_file() {
 	wp_enqueue_script( 'media_button', plugins_url() . '/pdfjs-viewer-shortcode/pdfjs-media-button.js', array( 'jquery' ), '1.0', true );
 }
 
-if ( function_exists( 'register_block_type' ) ) {
-	/**
-	* Gutenberg
-	*/
-	function my_register_gutenberg_card_block() {
-
-		// Register our block script with WordPress
-		wp_register_script(
-			'gutenberg-pdfjs',
-			plugins_url('/blocks/dist/blocks.build.js', __FILE__),
-			array('wp-blocks', 'wp-element', 'wp-editor')
-		);
-
-		// Register our block's base CSS
-		wp_register_style(
-			'gutenberg-pdfjs',
-			plugins_url( 'blocks/dist/style.css', __FILE__ ),
-			''
-		);
-
-		// Enqueue the script in the editor
-		register_block_type('blocks/pdfjs-block', array(
-			'editor_script' => 'gutenberg-pdfjs',
-			'editor_style' => 'gutenberg-pdfjs-edit-style',
-			'style' => 'gutenberg-pdfjs'
-		));
+/**
+* Gutenberg
+*/
+function my_register_gutenberg_card_block() {
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
 	}
 
-	add_action('init', 'my_register_gutenberg_card_block');
+	// Register our block script with WordPress
+	wp_register_script(
+		'gutenberg-pdfjs',
+		plugins_url('/blocks/dist/blocks.build.js', __FILE__),
+		array('wp-blocks', 'wp-element', 'wp-editor')
+	);
+
+	// Register our block's base CSS
+	wp_register_style(
+		'gutenberg-pdfjs',
+		plugins_url( 'blocks/dist/style.css', __FILE__ ),
+		''
+	);
+
+	// Enqueue the script in the editor
+	register_block_type('blocks/pdfjs-block', array(
+		'editor_script' => 'gutenberg-pdfjs',
+		'editor_style' => 'gutenberg-pdfjs-edit-style',
+		'style' => 'gutenberg-pdfjs'
+	));
 }
+
+add_action('init', 'my_register_gutenberg_card_block');
