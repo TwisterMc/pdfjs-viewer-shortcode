@@ -54,6 +54,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ### v1.5.2
 
+* Allowing the viewer to be called directly.
 * Hiding the Open button.
 * Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo @octoxan
 

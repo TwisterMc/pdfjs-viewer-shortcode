@@ -1,10 +1,3 @@
-<?php
-// If this file is called directly, abort.
-if ( ! isset( $_GET["v"] ) ) {
-	echo ( 'This file was called improperly. Do not call directly.' );
-	die;
-}
-?>
 <!DOCTYPE html>
 <!--
 Copyright 2012 Mozilla Foundation
