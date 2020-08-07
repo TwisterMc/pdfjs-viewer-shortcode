@@ -136,9 +136,12 @@ function include_pdfjs_media_button_js_file() {
 }
 
 /**
- * Gutenberg
- */
+* Gutenberg
+*/
 function my_register_gutenberg_card_block() {
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
 
 	// Register our block script with WordPress
 	wp_register_script(
