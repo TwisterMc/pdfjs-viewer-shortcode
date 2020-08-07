@@ -157,7 +157,6 @@ function my_register_gutenberg_card_block() {
 		''
 	);
 
-{
 	register_block_type( 'blocks/pdfjs-block', array(
 		'editor_script' => 'gutenberg-pdfjs',
 		'editor_style'  => 'gutenberg-pdfjs-edit-style',
