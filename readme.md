@@ -55,7 +55,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### v1.5.2
 
 * Hiding the Open button.
-* Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo 
+* Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo  @octoxan
 
 ### v1.5.1
 
