@@ -48,6 +48,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			type: 'boolean',
 			default: true,
 		},
+		openFullscreen: {
+			type: 'boolean',
+			default: false,
+		},
 		fullscreenText: {
 			type: 'string',
 			default: 'View Fullscreen',
@@ -99,6 +103,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		const onToggleFullscreen = ( value ) => {
 			props.setAttributes( {
 				showFullscreen: value,
+			} );
+		};
+
+		const onToggleOpenFullscreen = ( value ) => {
+			props.setAttributes( {
+				openFullscreen: value,
 			} );
 		};
 
@@ -176,6 +186,21 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showFullscreen }
 							onChange={ onToggleFullscreen }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ __(
+								'Open Fullscreen in new tab?',
+								'pdfjs-viewer-shortcode'
+							) }
+							help={
+								props.attributes.openFullscreen
+									? __( 'Yes', 'pdfjs-viewer-shortcode' )
+									: __( 'No', 'pdfjs-viewer-shortcode' )
+							}
+							checked={ props.attributes.openFullscreen }
+							onChange={ onToggleOpenFullscreen }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -278,7 +303,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	save( props ) {
 		return (
 			<div className="pdfjs-wrapper">
-				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} ]`}
+				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} ]`}
 			</div>
 		);
 	},

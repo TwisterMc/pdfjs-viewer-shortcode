@@ -26,6 +26,7 @@ function pdfjs_handler( $incoming_from_post ) {
 			'viewer_width'    => '100%',
 			'fullscreen'      => 'true',
 			'fullscreen_text' => 'View Fullscreen',
+			'fullscreen_target' => 'false',
 			'download'        => 'true',
 			'print'           => 'true',
 			'openfile'        => 'false',
@@ -47,16 +48,17 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$plugin_version = '1.5.1';
 
-	$viewer_base_url = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
-	$file_name       = $incoming_from_handler['url'];
-	$viewer_height   = $incoming_from_handler['viewer_height'];
-	$viewer_width    = $incoming_from_handler['viewer_width'];
-	$fullscreen      = $incoming_from_handler['fullscreen'];
-	$fullscreen_text = $incoming_from_handler['fullscreen_text'];
-	$download        = $incoming_from_handler['download'];
-	$print           = $incoming_from_handler['print'];
-	$openfile        = $incoming_from_handler['openfile'];
-	$zoom            = $incoming_from_handler['zoom'];
+	$viewer_base_url   = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
+	$file_name         = $incoming_from_handler['url'];
+	$viewer_height     = $incoming_from_handler['viewer_height'];
+	$viewer_width      = $incoming_from_handler['viewer_width'];
+	$fullscreen        = $incoming_from_handler['fullscreen'];
+	$fullscreen_text   = $incoming_from_handler['fullscreen_text'];
+	$fullscreen_target = $incoming_from_handler['fullscreen_target'];
+	$download          = $incoming_from_handler['download'];
+	$print             = $incoming_from_handler['print'];
+	$openfile          = $incoming_from_handler['openfile'];
+	$zoom              = $incoming_from_handler['zoom'];
 
 	// if the PDF URL is missing the file extension, load error PDF.
 	if ( ! strpos( $file_name, '.pdf' ) ) {
@@ -103,13 +105,19 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
+	if ( 'true' === $fullscreen_target ) {
+		$fullscreen_target = 'target="_blank"';
+	} else {
+		$fullscreen_target = '';
+	}
+
 	$file_name = str_replace( get_site_url(), '', $file_name );
 
 	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
-		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . $final_url . '">' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a></div>';
+		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . $final_url . '" ' . $fullscreen_target . '>' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a></div>';
 	}
 	$iframe_code = '<iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . $final_url . '" title="Embedded PDF" class="pdfjs-iframe"></iframe> ';
 
