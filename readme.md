@@ -40,6 +40,7 @@ Shortcode Syntax:
 *   `fullscreen` (optional): true/false, displays fullscreen link above viewer (default: true)
 *   `fullscreen_text` (optional): text, change the fullscreen link text (default: View Fullscreen)
     * Spaces not allowed. Use `%20` in place of spaces.
+*   `fullscreen_target` (optional): true/false, open the fullscreen link in a new tab
 *   `download` (optional): true/false, enables or disables download button (default: true)
 *   `print` (optional): true/false, enables or disables print button (default: true)
 *   `zoom` (optional): auto/page-actual/page-width/page-fit/50/75/100/200/300/400, PDF zoom level (default: auto)
