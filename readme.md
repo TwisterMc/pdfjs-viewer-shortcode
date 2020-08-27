@@ -58,6 +58,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 * Allowing the viewer to be called directly.
 * Hiding the Open button.
 * Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo  @octoxan
+* Made the PDF URL relative to hopefully fix Windows Defender security issues. 
+* Adding option to open the fullscreen link in a new tab.
 
 ### v1.5.1
 
