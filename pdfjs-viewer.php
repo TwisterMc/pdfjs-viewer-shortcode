@@ -46,7 +46,7 @@ function pdfjs_handler( $incoming_from_post ) {
  */
 function pdfjs_generator( $incoming_from_handler ) {
 
-	$plugin_version = '1.5.1';
+	$plugin_version = '1.5.2';
 
 	$viewer_base_url   = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
 	$file_name         = $incoming_from_handler['url'];
