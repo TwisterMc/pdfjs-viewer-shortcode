@@ -3,7 +3,7 @@
 Plugin Name: PDFjs Viewer
 Plugin URI: http://byterevel.com/
 Description: Embed PDFs with the gorgeous PDF.js viewer
-Version: 1.5.2
+Version: 1.5.3
 Author: <a href="http://byterevel.com/">Ben Lawson</a>, <a href="https://www.twistermc.com/">Thomas McMahon</a>
 Contributors: FalconerWeb, twistermc
 License: GPLv2
@@ -46,7 +46,7 @@ function pdfjs_handler( $incoming_from_post ) {
  */
 function pdfjs_generator( $incoming_from_handler ) {
 
-	$plugin_version = '1.5.2';
+	$plugin_version = '1.5.3';
 
 	$viewer_base_url   = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
 	$file_name         = $incoming_from_handler['url'];
@@ -111,7 +111,12 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$fullscreen_target = '';
 	}
 
-	$file_name = str_replace( get_site_url(), '', $file_name );
+	// Find the domain name and remove it from the URL, but not from any other part of the URL.
+	$pos = strpos( $file_name, get_site_url() );
+
+	if ( false !== $pos ){
+		$file_name = substr_replace( $file_name, '', $pos, strlen( get_site_url() ) );
+	}
 
 	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom;
 
