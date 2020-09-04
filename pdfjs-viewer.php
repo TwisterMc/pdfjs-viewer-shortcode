@@ -111,12 +111,19 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$fullscreen_target = '';
 	}
 
-	// Find the domain name and remove it from the URL, but not from any other part of the URL.
-	$pos = strpos( $file_name, get_site_url() );
-
-	if ( false !== $pos ){
-		$file_name = substr_replace( $file_name, '', $pos, strlen( get_site_url() ) );
+	// Find the domain name and remove it from the URL to make Edge happy.
+	// first get the URL protocol.
+	$is_secure = false;
+	if ( isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ) {
+		$is_secure = true;
+	} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] || ! empty( $_SERVER['HTTP_X_FORWARDED_SSL'] ) && 'on' === $_SERVER['HTTP_X_FORWARDED_SSL'] ) {
+		$is_secure = true;
 	}
+	// put it with the slashes.
+	$request_protocol = $is_secure ? 'https://' : 'http://';
+	// replace it in the URL.
+	$site_url  = $request_protocol . $_SERVER['HTTP_HOST'];
+	$file_name = str_replace( $site_url, '', $file_name );
 
 	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom;
 
