@@ -72,6 +72,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
 
 	edit( props ) {
+
+		// eslint-disable-next-line no-console
+		console.log( window.pdfjs_options );
+
 		const onFileSelect = ( img ) => {
 			props.setAttributes( {
 				imageURL: img.url,

@@ -145,7 +145,7 @@ add_action( 'media_buttons', 'pdfjs_media_button', 12 );
  * Include the media button
  */
 function pdfjs_media_button() {
-	echo '<a href="#" id="insert-pdfjs" class="button">' . __( 'Add PDF', 'pdfjs-viewer-shortcode' ) . '</a>';
+	echo '<a href="#" id="insert-pdfjs" class="button">' . __( 'Add PDF', 'pdfjs-viewer' ) . '</a>';
 }
 
 add_action( 'wp_enqueue_media', 'include_pdfjs_media_button_js_file' );
@@ -158,8 +158,8 @@ function include_pdfjs_media_button_js_file() {
 }
 
 /**
-* Gutenberg
-*/
+ * Gutenberg
+ */
 function my_register_gutenberg_card_block() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -171,6 +171,12 @@ function my_register_gutenberg_card_block() {
 		plugins_url( '/blocks/dist/blocks.build.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-element', 'wp-editor' )
 	);
+
+	$pdfjs_array = array(
+		'pdfjs_link_target' => get_option( 'pdfjs_link_target', '' ),
+		'pdfjs_download_button' => get_option( 'pdfjs_download_button', 'on' ),
+	);
+	wp_localize_script( 'gutenberg-pdfjs', 'pdfjs_options', $pdfjs_array );
 
 	// Register our block's base CSS
 	wp_register_style (
@@ -191,3 +197,59 @@ function my_register_gutenberg_card_block() {
 }
 
 add_action( 'init', 'my_register_gutenberg_card_block' );
+
+/**
+ * Settings Page in WP Admin
+ */
+function pdfjs_register_settings() {
+	register_setting( 'pdfjs_options_group', 'pdfjs_heading_text', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_link_target', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_download_button', 'pdfjs_callback' );
+}
+add_action( 'admin_init', 'pdfjs_register_settings' );
+
+function pdfjs_register_options_page() {
+	global $pdfjs_settings_page;
+	$pdfjs_settings_page = add_options_page( 'PDFjs Settings', 'PDFjs Viewer', 'manage_options', 'pdfjs', 'pdfjs_options_page' );
+}
+add_action( 'admin_menu', 'pdfjs_register_options_page' );
+
+// create the settings page
+function pdfjs_options_page() {
+	?>
+	<div class="wrap">
+		<h1><?php esc_html_e( 'PDFjs Viewer Options', 'pdfjs-viewer' ); ?></h1>
+		<form method="post" action="options.php">
+
+			<?php
+			settings_fields( 'pdfjs_options_group' );
+
+			$heading_text    = get_option( 'pdfjs_heading_text', 'Who would you like to meet with?' );
+			$link_target     = get_option( 'pdfjs_link_target', '' );
+			$download_button = get_option( 'pdfjs_download_button', 'on' );
+			?>
+
+			<table class="form-table" role="presentation">
+				<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
+				<tr>
+					<th scope="row"><label for="pdfjs_heading_text"><?php esc_html_e( 'Heading', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="text" class="regular-text" id="pdfjs_heading_text" name="pdfjs_heading_text" value="<?php echo $heading_text; ?>" /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_link_target"><?php esc_html_e( 'Fullscreen Links in New Tabs', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_link_target" name="pdfjs_link_target" <?php echo $link_target ? 'checked' : ''; ?> /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_download_button" name="pdfjs_download_button" <?php echo $download_button ? 'checked' : ''; ?> /></td>
+				</tr>
+			</table>
+			<?php
+			var_dump($link_target);
+			var_dump($download_button);
+			?>
+			<?php submit_button(); ?>
+		</form>
+	</div>
+	<?php
+}
