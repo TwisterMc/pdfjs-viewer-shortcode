@@ -38,7 +38,8 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		showDownload: {
 			type: 'boolean',
-			default: true,
+			default: !! window.pdfjs_options.pdfjs_download_button,
+			// Problem. It changes the default (which is good) but if you toggle the default in the settings it breaks the block.
 		},
 		showPrint: {
 			type: 'boolean',
@@ -74,7 +75,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	edit( props ) {
 
 		// eslint-disable-next-line no-console
-		console.log( window.pdfjs_options );
+		console.log( window.pdfjs_options.pdfjs_download_button );
 
 		const onFileSelect = ( img ) => {
 			props.setAttributes( {
