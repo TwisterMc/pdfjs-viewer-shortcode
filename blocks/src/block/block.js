@@ -72,8 +72,8 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		viewerScale: {
 			type: 'string',
-			default: window.pdfjs_options.pdfjs_embed_scale
-				? window.pdfjs_options.pdfjs_embed_scale
+			default: window.pdfjs_options.pdfjs_viewer_scale
+				? window.pdfjs_options.pdfjs_viewer_scale
 				: 'auto',
 		},
 	},

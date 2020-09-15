@@ -182,7 +182,7 @@ function my_register_gutenberg_card_block() {
 		'pdfjs_fullscreen_link_target' => get_option( 'pdfjs_fullscreen_link_target', '' ),
 		'pdfjs_embed_height'           => get_option( 'pdfjs_embed_height', 800 ),
 		'pdfjs_embed_width'            => get_option( 'pdfjs_embed_width', 0 ),
-		'pdfjs_embed_scale'            => get_option( 'pdfjs_embed_scale', 0 ),
+		'pdfjs_viewer_scale'            => get_option( 'pdfjs_viewer_scale', 0 ),
 	);
 	wp_localize_script( 'gutenberg-pdfjs', 'pdfjs_options', $pdfjs_array );
 
@@ -216,7 +216,7 @@ function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_target', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_embed_height', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_embed_width', 'pdfjs_callback' );
-	register_setting( 'pdfjs_options_group', 'pdfjs_embed_scale', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_scale', 'pdfjs_callback' );
 }
 add_action( 'admin_init', 'pdfjs_register_settings' );
 
@@ -236,14 +236,14 @@ function pdfjs_options_page() {
 			<?php
 			settings_fields( 'pdfjs_options_group' );
 
-			$download_button = get_option( 'pdfjs_download_button', 'on' );
-			$print_button    = get_option( 'pdfjs_print_button', 'on' );
-			$fullscreen_link = get_option( 'pdfjs_fullscreen_link', 'on' );
+			$download_button      = get_option( 'pdfjs_download_button', 'on' );
+			$print_button         = get_option( 'pdfjs_print_button', 'on' );
+			$fullscreen_link      = get_option( 'pdfjs_fullscreen_link', 'on' );
 			$fullscreen_link_text = get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' );
-			$link_target     = get_option( 'pdfjs_fullscreen_link_target', '' );
-			$embed_height    = get_option( 'pdfjs_embed_height', 800 );
-			$embed_width     = get_option( 'pdfjs_embed_width', 0 );
-			$embed_scale     = get_option( 'pdfjs_embed_scale', 'auto' );
+			$link_target          = get_option( 'pdfjs_fullscreen_link_target', '' );
+			$embed_height         = get_option( 'pdfjs_embed_height', 800 );
+			$embed_width          = get_option( 'pdfjs_embed_width', 0 );
+			$viewer_scale         = get_option( 'pdfjs_viewer_scale', 'auto' );
 			?>
 
 			<table class="form-table" role="presentation">
@@ -283,8 +283,8 @@ function pdfjs_options_page() {
 					<td><input type="number" class="regular-text" id="pdfjs_embed_width" name="pdfjs_embed_width" value="<?php echo $embed_width ? $embed_width : 0; ?>" /></td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="pdfjs_embed_scale"><?php esc_html_e( 'Embed Scale', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="text" class="regular-text" id="pdfjs_embed_scale" name="pdfjs_embed_scale" value="<?php echo $embed_scale ? $embed_scale : 'auto'; ?>" /></td>
+					<th scope="row"><label for="pdfjs_viewer_scale"><?php esc_html_e( 'Viewer Scale', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="text" class="regular-text" id="pdfjs_viewer_scale" name="pdfjs_viewer_scale" value="<?php echo $viewer_scale ? $viewer_scale : 'auto'; ?>" /></td>
 				</tr>
 			</table>
 			<?php submit_button(); ?>
