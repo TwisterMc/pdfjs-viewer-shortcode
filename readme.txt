@@ -57,6 +57,11 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ## Changelog
 
+### 1.5.6
+
+* New options page to set the default settings.
+* Only showing the 'Add PDF' media button to posts using the classic editor as it only works in the classic editor.
+
 ### v1.5.4
 
 * Reworking way we make the PDF url relative.
