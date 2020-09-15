@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const debug = process.env.NODE_ENV !== 'production';
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
 	context: __dirname,
@@ -13,6 +14,9 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin( {
 			filename: 'style.css',
+		} ),
+		new WebpackShellPlugin( {
+			onBuildEnd: [ 'cp readme.md readme.txt' ],
 		} ),
 	],
 	module: {

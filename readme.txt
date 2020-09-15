@@ -49,7 +49,7 @@ Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github
 
 ## Invalid Block? Update it.
 
-Older blocks will be marked as _invalid_ in Gutenberg as we add new features. You just need to "[Attempt Block Recovery](https://www.kadenceblocks.com/docs/how-to-recover-a-broken-block/)" and that should update it.
+Older blocks will be marked as _invalid_ in Gutenberg as we add new features. You just need to "[Attempt Block Recovery](https://www.kadenceblocks.com/docs/how-to-recover-a-broken-block/)" and that should update it. 
 
 ## Installation
 
@@ -70,8 +70,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 * Making the PDF URL relative so that maybe Microsoft Defender won't complain.
 * Allowing the viewer to be called directly.
 * Hiding the Open button.
-* Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo @octoxan
-* Made the PDF URL relative to hopefully fix Windows Defender security issues.
+* Checking for `register_block_type` function before calling it to better support WordPress 4.x. Thanks @Now-Italy-Demo  @octoxan
+* Made the PDF URL relative to hopefully fix Windows Defender security issues. 
 * Adding option to open the fullscreen link in a new tab.
 
 ### v1.5.1
