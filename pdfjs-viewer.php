@@ -248,6 +248,12 @@ function pdfjs_options_page() {
 
 			<table class="form-table" role="presentation">
 				<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
+				<p>
+					<?php esc_html_e( 'Defaults only affect new posts and existing posts when you edit them.', 'pdfjs-viewer' ); ?>
+				</p>
+				<p>
+					<?php esc_html_e( 'When editing existing posts, it may cause existing blocks to have "unexpected or invalid content" upon editing. Don\'t worry, just click the three little dots, choose "Attempt Block Recovery", and everything should be working again. This "unexpected or invalid content" will not affect live content, just content in the editor.', 'pdfjs-viewer' ); ?>
+				</p>
 				<tr>
 					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_download_button" name="pdfjs_download_button" <?php echo $download_button ? 'checked' : ''; ?> /></td>
