@@ -284,7 +284,23 @@ function pdfjs_options_page() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_viewer_scale"><?php esc_html_e( 'Viewer Scale', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="text" class="regular-text" id="pdfjs_viewer_scale" name="pdfjs_viewer_scale" value="<?php echo $viewer_scale ? $viewer_scale : 'auto'; ?>" /></td>
+					<td>
+						<select id="pdfjs_viewer_scale" name="pdfjs_viewer_scale">
+							<option value="auto" <?php echo $viewer_scale === 'auto' ? 'selected' : ''; ?>>Automatic</option>
+							<option value="page-actual" <?php echo $viewer_scale === 'page-actual' ? 'selected' : ''; ?>>Actual Size</option>
+							<option value="page-fit" <?php echo $viewer_scale === 'page-fit' ? 'selected' : ''; ?>>Page Fit</option>
+							<option value="page-width" <?php echo $viewer_scale === 'page-width' ? 'selected' : ''; ?>>Page Width</option>
+							<option value="50" <?php echo $viewer_scale === '50' ? 'selected' : ''; ?>>50%</option>
+							<option value="75" <?php echo $viewer_scale === '75' ? 'selected' : ''; ?>>75%</option>
+							<option value="100" <?php echo $viewer_scale === '100' ? 'selected' : ''; ?>>100%</option>
+							<option value="125" <?php echo $viewer_scale === '125' ? 'selected' : ''; ?>>125%</option>
+							<option value="150" <?php echo $viewer_scale === '150' ? 'selected' : ''; ?>>150%</option>
+							<option value="200" <?php echo $viewer_scale === '200' ? 'selected' : ''; ?>>200%</option>
+							<option value="300" <?php echo $viewer_scale === '300' ? 'selected' : ''; ?>>300%</option>
+							<option value="400" <?php echo $viewer_scale === '400' ? 'selected' : ''; ?>>400%</option>
+						</select>
+					</td>
+
 				</tr>
 			</table>
 			<?php submit_button(); ?>
