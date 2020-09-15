@@ -151,10 +151,12 @@ function pdfjs_media_button() {
 add_action( 'wp_enqueue_media', 'include_pdfjs_media_button_js_file' );
 
 /**
- * Include the media button JS
+ * Include the media button JS button in the classic editor.
  */
 function include_pdfjs_media_button_js_file() {
-	wp_enqueue_script( 'media_button', plugins_url() . '/pdfjs-viewer-shortcode/pdfjs-media-button.js', array( 'jquery' ), '1.0', true );
+	if ( use_block_editor_for_post( get_post() ) !== 1 ) {
+		wp_enqueue_script( 'media_button', plugins_url() . '/pdfjs-viewer-shortcode/pdfjs-media-button.js', array( 'jquery' ), '1.0', true );
+	}
 }
 
 /**
