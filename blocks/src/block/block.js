@@ -39,44 +39,47 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		showDownload: {
 			type: 'boolean',
 			default: !! window.pdfjs_options.pdfjs_download_button,
-			// Problem. It changes the default (which is good) but if you toggle the default in the settings it breaks the block.
 		},
 		showPrint: {
 			type: 'boolean',
-			default: true,
+			default: !! window.pdfjs_options.pdfjs_print_button,
 		},
 		showFullscreen: {
 			type: 'boolean',
-			default: true,
+			default: !! window.pdfjs_options.pdfjs_fullscreen_button,
 		},
 		openFullscreen: {
 			type: 'boolean',
-			default: false,
+			default: !! window.pdfjs_options.pdfjs_fullscreen_link_button,
 		},
 		fullscreenText: {
 			type: 'string',
-			default: 'View Fullscreen',
+			default: window.pdfjs_options.pdfjs_fullscreen_link_text
+				? window.pdfjs_options.pdfjs_fullscreen_link_text
+				: 'View Fullscreen',
 		},
 		viewerHeight: {
 			type: 'number',
-			default: defaultHeight,
+			default: window.pdfjs_options.pdfjs_embed_height
+				? Number( window.pdfjs_options.pdfjs_embed_height )
+				: 800,
 		},
 		viewerWidth: {
 			type: 'number',
-			default: defaultWidth,
+			default: window.pdfjs_options.pdfjs_embed_width
+				? Number( window.pdfjs_options.pdfjs_embed_width )
+				: 0,
 		},
 		viewerScale: {
 			type: 'string',
-			default: 'auto',
+			default: window.pdfjs_options.pdfjs_embed_scale
+				? window.pdfjs_options.pdfjs_embed_scale
+				: 'auto',
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
 
 	edit( props ) {
-
-		// eslint-disable-next-line no-console
-		console.log( window.pdfjs_options.pdfjs_download_button );
-
 		const onFileSelect = ( img ) => {
 			props.setAttributes( {
 				imageURL: img.url,

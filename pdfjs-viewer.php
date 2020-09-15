@@ -173,8 +173,14 @@ function my_register_gutenberg_card_block() {
 	);
 
 	$pdfjs_array = array(
-		'pdfjs_link_target' => get_option( 'pdfjs_link_target', '' ),
-		'pdfjs_download_button' => get_option( 'pdfjs_download_button', 'on' ),
+		'pdfjs_download_button'        => get_option( 'pdfjs_download_button', 'on' ),
+		'pdfjs_print_button'           => get_option( 'pdfjs_print_button', 'on' ),
+		'pdfjs_fullscreen_link'        => get_option( 'pdfjs_fullscreen_link', 'on' ),
+		'pdfjs_fullscreen_link_text'   => get_option( 'pdfjs_fullscreen_link_text', 'on' ),
+		'pdfjs_fullscreen_link_target' => get_option( 'pdfjs_fullscreen_link_target', '' ),
+		'pdfjs_embed_height'           => get_option( 'pdfjs_embed_height', 800 ),
+		'pdfjs_embed_width'            => get_option( 'pdfjs_embed_width', 0 ),
+		'pdfjs_embed_scale'            => get_option( 'pdfjs_embed_scale', 0 ),
 	);
 	wp_localize_script( 'gutenberg-pdfjs', 'pdfjs_options', $pdfjs_array );
 
@@ -193,7 +199,6 @@ function my_register_gutenberg_card_block() {
 			'style'         => 'gutenberg-pdfjs',
 		)
 	);
-
 }
 
 add_action( 'init', 'my_register_gutenberg_card_block' );
@@ -202,9 +207,14 @@ add_action( 'init', 'my_register_gutenberg_card_block' );
  * Settings Page in WP Admin
  */
 function pdfjs_register_settings() {
-	register_setting( 'pdfjs_options_group', 'pdfjs_heading_text', 'pdfjs_callback' );
-	register_setting( 'pdfjs_options_group', 'pdfjs_link_target', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_download_button', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_print_button', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_text', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_target', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_embed_height', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_embed_width', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_embed_scale', 'pdfjs_callback' );
 }
 add_action( 'admin_init', 'pdfjs_register_settings' );
 
@@ -224,30 +234,51 @@ function pdfjs_options_page() {
 			<?php
 			settings_fields( 'pdfjs_options_group' );
 
-			$heading_text    = get_option( 'pdfjs_heading_text', 'Who would you like to meet with?' );
-			$link_target     = get_option( 'pdfjs_link_target', '' );
 			$download_button = get_option( 'pdfjs_download_button', 'on' );
+			$print_button    = get_option( 'pdfjs_print_button', 'on' );
+			$fullscreen_link = get_option( 'pdfjs_fullscreen_link', 'on' );
+			$fullscreen_link_text = get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' );
+			$link_target     = get_option( 'pdfjs_fullscreen_link_target', '' );
+			$embed_height    = get_option( 'pdfjs_embed_height', 800 );
+			$embed_width     = get_option( 'pdfjs_embed_width', 0 );
+			$embed_scale     = get_option( 'pdfjs_embed_scale', 'auto' );
 			?>
 
 			<table class="form-table" role="presentation">
 				<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
 				<tr>
-					<th scope="row"><label for="pdfjs_heading_text"><?php esc_html_e( 'Heading', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="text" class="regular-text" id="pdfjs_heading_text" name="pdfjs_heading_text" value="<?php echo $heading_text; ?>" /></td>
-				</tr>
-				<tr>
-					<th scope="row"><label for="pdfjs_link_target"><?php esc_html_e( 'Fullscreen Links in New Tabs', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="checkbox" id="pdfjs_link_target" name="pdfjs_link_target" <?php echo $link_target ? 'checked' : ''; ?> /></td>
-				</tr>
-				<tr>
 					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_download_button" name="pdfjs_download_button" <?php echo $download_button ? 'checked' : ''; ?> /></td>
 				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_print_button"><?php esc_html_e( 'Show Print Button', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_print_button" name="pdfjs_print_button" <?php echo $print_button ? 'checked' : ''; ?> /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_fullscreen_link"><?php esc_html_e( 'Show Fullscreen Link', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_fullscreen_link" name="pdfjs_fullscreen_link" <?php echo $fullscreen_link ? 'checked' : ''; ?> /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_fullscreen_link_text"><?php esc_html_e( 'Fullscreen Link Text', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="text" class="regular-text" id="pdfjs_fullscreen_link_text" name="pdfjs_fullscreen_link_text" value="<?php echo $fullscreen_link_text ? $fullscreen_link_text : 'View Fullscreen'; ?>" /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_fullscreen_link_target"><?php esc_html_e( 'Fullscreen Links in New Tabs', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_fullscreen_link_target" name="pdfjs_fullscreen_link_target" <?php echo $link_target ? 'checked' : ''; ?> /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_embed_height"><?php esc_html_e( 'Embed Height', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="number" class="regular-text" id="pdfjs_embed_height" name="pdfjs_embed_height" value="<?php echo $embed_height ? $embed_height : 800; ?>" /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_embed_width"><?php esc_html_e( 'Embed Width', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="number" class="regular-text" id="pdfjs_embed_width" name="pdfjs_embed_width" value="<?php echo $embed_width ? $embed_width : 0; ?>" /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_embed_scale"><?php esc_html_e( 'Embed Scale', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="text" class="regular-text" id="pdfjs_embed_scale" name="pdfjs_embed_scale" value="<?php echo $embed_scale ? $embed_scale : 'auto'; ?>" /></td>
+				</tr>
 			</table>
-			<?php
-			var_dump($link_target);
-			var_dump($download_button);
-			?>
 			<?php submit_button(); ?>
 		</form>
 	</div>
