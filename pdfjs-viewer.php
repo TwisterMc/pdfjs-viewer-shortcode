@@ -138,6 +138,9 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$file_name = str_replace( $site_url, '', urldecode($file_name) );
 
+	// Any additional changes needed?
+	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
+
 	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom;
 
 	$fullscreen_link = '';
