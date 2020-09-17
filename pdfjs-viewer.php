@@ -18,6 +18,12 @@ add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );
  * Get the embed info from the shortcode.
  */
 function pdfjs_handler( $incoming_from_post ) {
+
+	// do not run this code on the admin screens
+	if ( is_admin() || defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		return;
+	}
+
 	// set defaults.
 	$incoming_from_post = shortcode_atts(
 		array(
