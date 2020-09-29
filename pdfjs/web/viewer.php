@@ -192,7 +192,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 							<span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
 						</button>
 						<div class="toolbarButtonSpacer"></div>
-						<button id="viewFind" class="toolbarButton" title="Find in Document" tabindex="12" data-l10n-id="findbar">
+						<button id="viewFind" class="toolbarButton" <?php if (isset($_GET["sButton"]) && $_GET["sButton"]!=="true") { echo 'style="display:none;"'; }?> title="Find in Document" tabindex="12" data-l10n-id="findbar">
 							<span data-l10n-id="findbar_label">Find</span>
 						</button>
 						<div class="splitToolbarButton hiddenSmallView">

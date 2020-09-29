@@ -63,6 +63,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 * Only showing the 'Add PDF' media button to posts using the classic editor as it only works in the classic editor.
 * Added a filter to pass in a custom domain if URLs are proxied.
 * Added a filter if you want to edit the PDF URL.
+* Ability to Search via setting on options page.
+* Ability to show Sidebar via setting on options page.
 
 ### v1.5.4
 

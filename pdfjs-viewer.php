@@ -66,6 +66,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$openfile          = $incoming_from_handler['openfile'];
 	$zoom              = $incoming_from_handler['zoom'];
 	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
+	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
 
 	// if the PDF URL is missing the file extension, load error PDF.
 	if ( ! strpos( $file_name, '.pdf' ) ) {
@@ -112,6 +113,10 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
+	if ( 'true' !== $searchbutton ) {
+		$searchbutton = 'false';
+	}
+
 	if ( 'true' === $fullscreen_target ) {
 		$fullscreen_target = 'target="_blank"';
 	} else {
@@ -142,7 +147,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// Any additional changes needed?
 	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom . '&pagemode=' . $pagemode;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile. '&sButton=' . $searchbutton . '&v=' . $plugin_version . '#zoom=' . $zoom . '&pagemode=' . $pagemode;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
@@ -228,6 +233,7 @@ add_action( 'init', 'my_register_gutenberg_card_block' );
 function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_download_button', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_print_button', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_search_button', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_text', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_target', 'pdfjs_callback' );
@@ -256,6 +262,7 @@ function pdfjs_options_page() {
 
 			$download_button      = get_option( 'pdfjs_download_button', 'on' );
 			$print_button         = get_option( 'pdfjs_print_button', 'on' );
+			$search_button        = get_option( 'pdfjs_search_button', 'on' );
 			$fullscreen_link      = get_option( 'pdfjs_fullscreen_link', 'on' );
 			$fullscreen_link_text = get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' );
 			$link_target          = get_option( 'pdfjs_fullscreen_link_target', '' );
@@ -268,10 +275,7 @@ function pdfjs_options_page() {
 			<table class="form-table" role="presentation">
 				<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
 				<p>
-					<?php esc_html_e( 'Defaults only affect new posts and existing posts when you edit them.', 'pdfjs-viewer' ); ?>
-				</p>
-				<p>
-					<?php esc_html_e( 'When editing existing posts, it may cause existing blocks to have "unexpected or invalid content" upon editing. Don\'t worry, just click the three little dots, choose "Attempt Block Recovery", and everything should be working again. This "unexpected or invalid content" will not affect live content, just content in the editor.', 'pdfjs-viewer' ); ?>
+					<?php esc_html_e( 'Most defaults only affect new posts and existing posts when you edit them.', 'pdfjs-viewer' ); ?>
 				</p>
 				<tr>
 					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
@@ -280,6 +284,10 @@ function pdfjs_options_page() {
 				<tr>
 					<th scope="row"><label for="pdfjs_print_button"><?php esc_html_e( 'Show Print Button', 'pdfjs-viewer' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_print_button" name="pdfjs_print_button" <?php echo $print_button ? 'checked' : ''; ?> /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_search_button"><?php esc_html_e( 'Show Search Button', 'pdfjs-viewer' ); ?> <sup>1</sup></label></th>
+					<td><input type="checkbox" id="pdfjs_search_button" name="pdfjs_search_button" <?php echo $search_button ? 'checked' : ''; ?> /></td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_fullscreen_link"><?php esc_html_e( 'Show Fullscreen Link', 'pdfjs-viewer' ); ?></label></th>
@@ -321,7 +329,7 @@ function pdfjs_options_page() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="pdfjs_viewer_pagemode"><?php esc_html_e( 'Page Mode', 'pdfjs-viewer' ); ?></label></th>
+					<th scope="row"><label for="pdfjs_viewer_pagemode"><?php esc_html_e( 'Page Mode', 'pdfjs-viewer' ); ?> <sup>1</sup></label></th>
 					<td>
 						<select id="pdfjs_viewer_pagemode" name="pdfjs_viewer_pagemode">
 							<option value="none" <?php echo $viewer_pagemode === 'none' ? 'selected' : ''; ?>>None</option>
@@ -333,6 +341,12 @@ function pdfjs_options_page() {
 				</tr>
 			</table>
 			<?php submit_button(); ?>
+			<p>
+				<?php esc_html_e( 'When editing existing content, it may cause existing blocks to have "unexpected or invalid content" upon editing. Don\'t worry, just click the three little dots, choose "Attempt Block Recovery", and everything should be working again. This "unexpected or invalid content" will not affect live content, just content in the editor.', 'pdfjs-viewer' ); ?>
+			</p>
+			<p>
+				<sup>1</sup> These options are not customizable when creating content at this time.
+			</p>
 		</form>
 	</div>
 	<?php
