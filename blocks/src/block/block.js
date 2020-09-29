@@ -76,6 +76,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				? window.pdfjs_options.pdfjs_viewer_scale
 				: 'auto',
 		},
+		searchText: {
+			type: 'string',
+			default: '',
+		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
 
@@ -148,6 +152,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		const onFullscreenTextChange = ( value ) => {
 			props.setAttributes( {
 				fullscreenText: value,
+			} );
+		};
+
+		const onSearchTextChange = ( value ) => {
+			props.setAttributes( {
+				searchText: value,
 			} );
 		};
 
@@ -269,6 +279,16 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						onChange={ onScaleChange }
 					/>
 				</PanelBody>
+				<PanelBody title={ __( 'Extra', 'pdfjs-viewer-shortcode' ) }>
+					<PanelRow>
+						<TextControl
+							label="Search Term Highlight"
+							value={ props.attributes.searchText }
+							onChange={ onSearchTextChange }
+							help="Only single words are working at this time."
+						/>
+					</PanelRow>
+				</PanelBody>
 			</InspectorControls>,
 			<div className="pdfjs-wrapper components-placeholder" key="i2" style={{height: props.attributes.viewerHeight}}>
 				<div>
@@ -311,7 +331,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	save( props ) {
 		return (
 			<div className="pdfjs-wrapper">
-				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} ]`}
+				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} search_term="${ encodeURIComponent( props.attributes.searchText ) }" ]`}
 			</div>
 		);
 	},

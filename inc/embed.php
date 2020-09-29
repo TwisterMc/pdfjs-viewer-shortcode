@@ -19,6 +19,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$zoom              = $incoming_from_handler['zoom'];
 	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
+	$search_term       = $incoming_from_handler['search_term'];
 
 	// if the PDF URL is missing the file extension, load error PDF.
 	if ( ! strpos( $file_name, '.pdf' ) ) {
@@ -65,14 +66,20 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$openfile = 'false';
 	}
 
-	if ( 'true' !== $searchbutton ) {
-		$searchbutton = 'false';
+	if ( 'on' === $searchbutton ) {
+		$searchbutton = 'true';
 	}
 
 	if ( 'true' === $fullscreen_target ) {
 		$fullscreen_target = 'target="_blank"';
 	} else {
 		$fullscreen_target = '';
+	}
+
+	if ( isset( $search_term) && $search_term !== '' ) {
+		$searchTerm = '&search=' . $search_term;
+	} else {
+		$searchTerm = '';
 	}
 
 	// Find the domain name and remove it from the URL to make Edge happy.
@@ -99,7 +106,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// Any additional changes needed?
 	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile. '&sButton=' . $searchbutton . '&v=' . $plugin_version . '#zoom=' . $zoom . '&pagemode=' . $pagemode;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile. '&sButton=' . $searchbutton . '&v=' . $plugin_version . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {

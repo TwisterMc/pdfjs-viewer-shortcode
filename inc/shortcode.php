@@ -27,6 +27,7 @@ function pdfjs_handler( $incoming_from_post ) {
 			'print'           => 'true',
 			'openfile'        => 'false',
 			'zoom'            => 'auto',
+			'search_term'     => '',
 		),
 		$incoming_from_post
 	);
