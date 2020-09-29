@@ -19,7 +19,7 @@ add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );
  */
 function pdfjs_handler( $incoming_from_post ) {
 
-	// do not run this code on the admin screens
+	// do not run this code on the admin screens.
 	if ( is_admin() || defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return;
 	}
@@ -119,7 +119,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	// Find the domain name and remove it from the URL to make Edge happy.
 
-	// Check to see if a custom site domain is set elsewhere
+	// Check to see if a custom site domain is set elsewhere.
 	$site_url = apply_filters( 'pdfjs_set_custom_domain', '' );
 
 	if ( ! $site_url ) {
