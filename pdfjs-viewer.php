@@ -65,6 +65,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$print             = $incoming_from_handler['print'];
 	$openfile          = $incoming_from_handler['openfile'];
 	$zoom              = $incoming_from_handler['zoom'];
+	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
 
 	// if the PDF URL is missing the file extension, load error PDF.
 	if ( ! strpos( $file_name, '.pdf' ) ) {
@@ -141,7 +142,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// Any additional changes needed?
 	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&v=' . $plugin_version . '#zoom=' . $zoom . '&pagemode=' . $pagemode;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
@@ -233,6 +234,7 @@ function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_embed_height', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_embed_width', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_scale', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_pagemode', 'pdfjs_callback' );
 }
 add_action( 'admin_init', 'pdfjs_register_settings' );
 
@@ -260,6 +262,7 @@ function pdfjs_options_page() {
 			$embed_height         = get_option( 'pdfjs_embed_height', 800 );
 			$embed_width          = get_option( 'pdfjs_embed_width', 0 );
 			$viewer_scale         = get_option( 'pdfjs_viewer_scale', 'auto' );
+			$viewer_pagemode      = get_option( 'pdfjs_viewer_pagemode', 'none' );
 			?>
 
 			<table class="form-table" role="presentation">
@@ -316,7 +319,17 @@ function pdfjs_options_page() {
 							<option value="400" <?php echo $viewer_scale === '400' ? 'selected' : ''; ?>>400%</option>
 						</select>
 					</td>
-
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_viewer_pagemode"><?php esc_html_e( 'Page Mode', 'pdfjs-viewer' ); ?></label></th>
+					<td>
+						<select id="pdfjs_viewer_pagemode" name="pdfjs_viewer_pagemode">
+							<option value="none" <?php echo $viewer_pagemode === 'none' ? 'selected' : ''; ?>>None</option>
+							<option value="thumbs" <?php echo $viewer_pagemode === 'thumbs' ? 'selected' : ''; ?>>Thumbs</option>
+							<option value="bookmarks" <?php echo $viewer_pagemode === 'bookmarks' ? 'selected' : ''; ?>>Bookmarks</option>
+							<option value="attachments" <?php echo $viewer_pagemode === 'attachments' ? 'selected' : ''; ?>>Attachments</option>
+						</select>
+					</td>
 				</tr>
 			</table>
 			<?php submit_button(); ?>
