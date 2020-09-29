@@ -15,6 +15,11 @@ License: GPLv2
 include_once 'inc/shortcode.php';
 
 /**
+ * Incoming details from post
+ */
+include_once 'inc/incoming-from-post.php';
+
+/**
  * Generate the PDF embed code.
  */
 include_once 'inc/embed.php';
