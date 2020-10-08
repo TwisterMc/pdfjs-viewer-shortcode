@@ -123,3 +123,26 @@ function pdfjs_options_page() {
 	</div>
 	<?php
 }
+
+/**
+ * Add Settings Link to Plugins Page
+ */
+add_filter( 'plugin_action_links_pdfjs-viewer-shortcode/pdfjs-viewer.php', 'pdfjs_settings_link' );
+function pdfjs_settings_link( $links ) {
+	// Build and escape the URL.
+	$url = esc_url(
+		add_query_arg(
+			'page',
+			'pdfjs',
+			get_admin_url() . 'admin.php'
+		)
+	);
+	// Create the link.
+	$settings_link = "<a href='$url'>" . __( 'Settings', 'pdfjs-viewer' ) . '</a>';
+	// Adds the link to the end of the array.
+	array_push(
+		$links,
+		$settings_link
+	);
+	return $links;
+}
