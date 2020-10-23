@@ -4,7 +4,7 @@
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.0
 * Tested up to: 5.5.1
-* Stable tag: 1.5.4
+* Stable tag: 1.5.6
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Requires PHP: 7.2
@@ -44,6 +44,7 @@ Shortcode Syntax:
 *   `download` (optional): true/false, enables or disables download button (default: true)
 *   `print` (optional): true/false, enables or disables print button (default: true)
 *   `zoom` (optional): auto/page-actual/page-width/page-fit/50/75/100/200/300/400, PDF zoom level (default: auto)
+*   `search_term` (optional): string, highlights matching text on PDF load. Only single words are working at this time.
 
 Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode).
 
@@ -61,11 +62,14 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 * New options page to set the default settings.
 * Only showing the 'Add PDF' media button to posts using the classic editor as it only works in the classic editor.
-* Added a filter to pass in a custom domain if URLs are proxied.
-* Added a filter if you want to edit the PDF URL.
+* Added a filter to pass in a custom domain if URLs are proxied. `pdfjs_set_custom_domain`
+* Added a filter if you want to edit the PDF URL. `pdfjs_set_custom_edits`
 * Ability to hide Search via setting on options page.
 * Ability to show Sidebar via setting on options page.
 * Ability to highlight a search term on PDF load.
+
+### v1.5.5
+* High Five 🖐
 
 ### v1.5.4
 
