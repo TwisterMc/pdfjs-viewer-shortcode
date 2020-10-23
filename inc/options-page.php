@@ -101,7 +101,7 @@ function pdfjs_options_page() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="pdfjs_viewer_pagemode"><?php esc_html_e( 'Page Mode', 'pdfjs-viewer' ); ?> <sup>1</sup></label></th>
+					<th scope="row"><label for="pdfjs_viewer_pagemode"><?php esc_html_e( 'Page Mode (aka Sidebar)', 'pdfjs-viewer' ); ?> <sup>1</sup></label></th>
 					<td>
 						<select id="pdfjs_viewer_pagemode" name="pdfjs_viewer_pagemode">
 							<option value="none" <?php echo $viewer_pagemode === 'none' ? 'selected' : ''; ?>>None</option>
@@ -117,7 +117,7 @@ function pdfjs_options_page() {
 				<?php esc_html_e( 'When editing existing content, it may cause existing blocks to have "unexpected or invalid content" upon editing. Don\'t worry, just click the three little dots, choose "Attempt Block Recovery", and everything should be working again. This "unexpected or invalid content" will not affect live content, just content in the editor.', 'pdfjs-viewer' ); ?>
 			</p>
 			<p>
-				<sup>1</sup> These options are not customizable when creating content at this time.
+				<sup>1</sup> <?php esc_html_e( 'These options are not customizable per page/post at this time. Only globally.'); ?>
 			</p>
 		</form>
 	</div>
