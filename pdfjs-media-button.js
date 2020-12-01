@@ -13,7 +13,23 @@ jQuery(function($) {
         frame.on('select', function(){
 	        var selectionURL = frame.state().get('selection').first().toJSON().url;
 	        selectionURL = encodeURIComponent(selectionURL);
-	        wp.media.editor.insert('[pdfjs-viewer url="' + selectionURL + '" viewer_width=100% viewer_height=800px fullscreen=true download=true print=true]');
+
+	        let fullscreenLink = "fullscreen=false";
+	        if (typeof window.pdfjs_options.pdfjs_fullscreen_link !== 'undefined') {
+		        let fullscreenLink = "fullscreen=true";
+	        }
+
+	        let downloadLink = "download=false";
+	        if (typeof window.pdfjs_options.pdfjs_download_button !== 'undefined') {
+		        let downloadLink = "download=true";
+	        }
+
+	        let printLink = "print=false";
+	        if (typeof window.pdfjs_options.pdfjs_print_button !== 'undefined') {
+		        let printLink = "print=true";
+	        }
+
+	        wp.media.editor.insert('[pdfjs-viewer url="' + selectionURL + '" viewer_width=' + window.pdfjs_options.pdfjs_embed_height + 'px viewer_height=' + window.pdfjs_options.pdfjs_embed_height + 'px ' + fullscreenLink + ' download=true print=true]');
 	    });
 
 	    frame.open();
