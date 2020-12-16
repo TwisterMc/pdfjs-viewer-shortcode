@@ -62,6 +62,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 * Starting to hook up options page to the shortcode.
 * Fixing a potential code injection problem
+* Fix for WordPress 2021 Theme
 
 ### 1.5.7
 

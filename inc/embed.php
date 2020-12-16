@@ -112,7 +112,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	if ( 'true' === $fullscreen ) {
 		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . $final_url . '" ' . $fullscreen_target . '>' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a></div>';
 	}
-	$iframe_code = '<iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . $final_url . '" title="Embedded PDF" class="pdfjs-iframe"></iframe> ';
+	$iframe_code = '<div><iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . $final_url . '" title="Embedded PDF" class="pdfjs-iframe"></iframe></div>';
 
 	return $fullscreen_link . $iframe_code;
 }
