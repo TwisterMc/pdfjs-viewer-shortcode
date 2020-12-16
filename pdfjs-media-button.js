@@ -2,7 +2,7 @@ jQuery(function($) {
     $('#insert-pdfjs').click(openMediaWindow);
 
     function openMediaWindow() {
-    	console.log('pdfjs media button clicked');
+    	//console.log('pdfjs media button clicked');
     	var frame = wp.media({
             title: 'Insert a PDF',
             library: {type: 'application/pdf'},
