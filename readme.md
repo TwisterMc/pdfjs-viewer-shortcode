@@ -58,6 +58,11 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ## Changelog
 
+### 1.5.8
+
+* Starting to hook up options page to the shortcode.
+* Fixing a potential code injection problem
+
 ### 1.5.7
 
 * Fix for those not running WordPress 5+ where a fatal error would show because a function I called didn't exist.
