@@ -47,7 +47,7 @@ function pdfjs_options_page() {
 			<table class="form-table" role="presentation">
 				<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
 				<p>
-					<?php esc_html_e( 'Most defaults only affect new posts and existing posts when you edit them.', 'pdfjs-viewer' ); ?>
+					<?php esc_html_e( 'Most defaults only affect new posts and existing posts when you edit them. Not all options work with the shortcode.', 'pdfjs-viewer' ); ?>
 				</p>
 				<tr>
 					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
