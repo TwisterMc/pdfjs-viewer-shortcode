@@ -79,7 +79,10 @@ function pdfjs_options_page() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_embed_width"><?php esc_html_e( 'Embed Width', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="number" class="regular-text" id="pdfjs_embed_width" name="pdfjs_embed_width" value="<?php echo $embed_width ? $embed_width : 0; ?>" /></td>
+					<td>
+						<input type="number" class="regular-text" id="pdfjs_embed_width" name="pdfjs_embed_width" value="<?php echo $embed_width ? $embed_width : 0; ?>" />
+						<p><?php esc_html_e( 'Note: 0 = 100%', 'pdfjs-viewer' ); ?></p>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_viewer_scale"><?php esc_html_e( 'Viewer Scale', 'pdfjs-viewer' ); ?></label></th>
