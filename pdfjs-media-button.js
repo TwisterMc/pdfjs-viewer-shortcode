@@ -15,21 +15,31 @@ jQuery(function($) {
 			selectionURL = encodeURIComponent(selectionURL);
 
 			let fullscreenLink = "fullscreen=false";
-			if (typeof window.pdfjs_options['pdfjs_fullscreen_link'] !== 'undefined') {
-				let fullscreenLink = "fullscreen=true";
+			if (typeof window.pdfjs_options.pdfjs_fullscreen_link !== 'undefined') {
+				fullscreenLink = "fullscreen=true";
 			}
 
 			let downloadLink = "download=false";
-			if (typeof window.pdfjs_options['pdfjs_download_button'] !== 'undefined') {
-				let downloadLink = "download=true";
+			if (typeof window.pdfjs_options.pdfjs_download_button !== 'undefined') {
+				downloadLink = "download=true";
 			}
 
 			let printLink = "print=false";
-			if (typeof window.pdfjs_options['pdfjs_print_button'] !== 'undefined') {
-				let printLink = "print=true";
+			if (typeof window.pdfjs_options.pdfjs_print_button !== 'undefined') {
+				printLink = "print=true";
 			}
 
-			wp.media.editor.insert('[pdfjs-viewer url="' + selectionURL + '" viewer_width=' + window.pdfjs_options.pdfjs_embed_height + 'px viewer_height=' + window.pdfjs_options.pdfjs_embed_height + 'px ' + fullscreenLink + ' download=true print=true]');
+			let viewerWidth = "100%";
+			if (typeof window.pdfjs_options.pdfjs_embed_width !== 'undefined' && window.pdfjs_options.pdfjs_embed_width !== '0' && window.pdfjs_options.pdfjs_embed_width !== '') {
+				viewerWidth = window.pdfjs_options.pdfjs_embed_width + "px";
+			}
+
+			let viewerHeight = "800px";
+			if (typeof window.pdfjs_options.pdfjs_embed_height !== 'undefined' && window.pdfjs_options.pdfjs_embed_height !== '0' && window.pdfjs_options.pdfjs_embed_height !== '') {
+				viewerHeight = window.pdfjs_options.pdfjs_embed_height + "px";
+			}
+
+			wp.media.editor.insert('[pdfjs-viewer url="' + selectionURL + '" viewer_width=' + viewerWidth + ' viewer_height=' + viewerHeight + ' ' + fullscreenLink + ' download=true print=true]');
 		});
 
 		frame.open();
