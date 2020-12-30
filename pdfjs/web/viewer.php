@@ -29,17 +29,17 @@ See https://github.com/adobe-type-tools/cmap-resources
 	<title>PDF.js viewer</title>
 
 
-	<link rel="stylesheet" href="viewer.css?v=<?php echo htmlentities($_GET["v"], ENT_QUOTES); ?>">
+	<link rel="stylesheet" href="viewer.css">
 
 
 	<!-- This snippet is used in production (included from viewer.html) -->
 	<link rel="resource" type="application/l10n" href="locale/locale.properties">
-	<script src="l10n.js?v=<?php echo htmlentities($_GET["v"], ENT_QUOTES); ?>"></script>
+	<script src="l10n.js"></script>
 
-	<script src="../build/pdf.js?v=<?php echo htmlentities($_GET["v"], ENT_QUOTES); ?>"></script>
+	<script src="../build/pdf.js"></script>
 
 
-	<script src="viewer.js?v=<?php echo htmlentities($_GET["v"], ENT_QUOTES); ?>"></script>
+	<script src="viewer.js"></script>
 
 </head>
 

@@ -4,8 +4,6 @@
  */
 function pdfjs_generator( $incoming_from_handler ) {
 
-	$plugin_version = '1.5.4';
-
 	$viewer_base_url   = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
 	$file_name         = $incoming_from_handler['url'];
 	$viewer_height     = $incoming_from_handler['viewer_height'];
@@ -106,7 +104,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// Any additional changes needed?
 	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile. '&sButton=' . $searchbutton . '&v=' . $plugin_version . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile. '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
