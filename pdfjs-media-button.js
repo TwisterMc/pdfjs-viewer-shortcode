@@ -1,5 +1,5 @@
 jQuery(function($) {
-	$('#insert-pdfjs').click(openMediaWindow);
+	$('.js-insert-pdfjs').click(openMediaWindow);
 
 	function openMediaWindow() {
 		//console.log('pdfjs media button clicked');
