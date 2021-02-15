@@ -57,6 +57,9 @@ See https://github.com/adobe-type-tools/cmap-resources
 				</button>
 				<button id="viewAttachments" class="toolbarButton" title="Show Attachments" tabindex="4" data-l10n-id="attachments">
 					<span data-l10n-id="attachments_label">Attachments</span>
+            </button>
+            <button id="viewLayers" class="toolbarButton" title="Show Layers (double-click to reset all layers to the default state)" tabindex="5" data-l10n-id="layers">
+               <span data-l10n-id="layers_label">Layers</span>
 				</button>
 			</div>
 		</div>
@@ -67,6 +70,8 @@ See https://github.com/adobe-type-tools/cmap-resources
 			</div>
 			<div id="attachmentsView" class="hidden">
 			</div>
+          <div id="layersView" class="hidden">
+          </div>
 		</div>
 		<div id="sidebarResizer" class="hidden"></div>
 	</div>  <!-- sidebarContainer -->
