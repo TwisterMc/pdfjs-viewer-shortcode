@@ -1,5 +1,5 @@
 <?php
-// ==== Shortcode ====
+/** ==== Shortcode ==== */
 
 // tell WordPress to register the pdfjs-viewer shortcode.
 add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );
@@ -17,17 +17,17 @@ function pdfjs_handler( $incoming_from_post ) {
 	// set defaults.
 	$incoming_from_post = shortcode_atts(
 		array(
-			'url'             => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
-			'viewer_height'   => '800px',
-			'viewer_width'    => '100%',
-			'fullscreen'      => 'true',
-			'fullscreen_text' => 'View Fullscreen',
+			'url'               => plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf',
+			'viewer_height'     => '800px',
+			'viewer_width'      => '100%',
+			'fullscreen'        => 'true',
+			'fullscreen_text'   => 'View Fullscreen',
 			'fullscreen_target' => 'false',
-			'download'        => 'true',
-			'print'           => 'true',
-			'openfile'        => 'false',
-			'zoom'            => 'auto',
-			'search_term'     => '',
+			'download'          => 'true',
+			'print'             => 'true',
+			'openfile'          => 'false',
+			'zoom'              => 'auto',
+			'search_term'       => '',
 		),
 		$incoming_from_post
 	);

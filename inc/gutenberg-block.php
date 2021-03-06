@@ -7,7 +7,7 @@ function my_register_gutenberg_card_block() {
 		return;
 	}
 
-	// Register our block script with WordPress
+	// Register our block script with WordPress.
 	wp_register_script (
 		'gutenberg-pdfjs',
 		plugins_url( '../blocks/dist/blocks.build.js', __FILE__ ),
@@ -26,8 +26,8 @@ function my_register_gutenberg_card_block() {
 	);
 	wp_localize_script( 'gutenberg-pdfjs', 'pdfjs_options', $pdfjs_array );
 
-	// Register our block's base CSS
-	wp_register_style (
+	// Register our block's base CSS.
+	wp_register_style(
 		'gutenberg-pdfjs',
 		plugins_url( '../blocks/dist/style.css', __FILE__ ),
 		''

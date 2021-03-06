@@ -120,7 +120,7 @@ function pdfjs_options_page() {
 				<?php esc_html_e( 'When editing existing content, it may cause existing blocks to have "unexpected or invalid content" upon editing. Don\'t worry, just click the three little dots, choose "Attempt Block Recovery", and everything should be working again. This "unexpected or invalid content" will not affect live content, just content in the editor.', 'pdfjs-viewer' ); ?>
 			</p>
 			<p>
-				<sup>1</sup> <?php esc_html_e( 'These options are not customizable per page/post at this time. Only globally.'); ?>
+				<sup>1</sup> <?php esc_html_e( 'These options are not customizable per page/post at this time. Only globally.' ); ?>
 			</p>
 		</form>
 	</div>
