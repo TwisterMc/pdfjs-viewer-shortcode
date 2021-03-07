@@ -12,25 +12,25 @@ License: GPLv2
 /**
  * Shortcode
  */
-include_once 'inc/shortcode.php';
+require 'inc/shortcode.php';
 
 /**
  * Generate the PDF embed code.
  */
-include_once 'inc/embed.php';
+require 'inc/embed.php';
 
 /**
  * Media Button for Classic Editor
  */
-include_once 'inc/media-button.php';
+require 'inc/media-button.php';
 
 /**
  * Gutenberg Block
  */
-include_once 'inc/gutenberg-block.php';
+require 'inc/gutenberg-block.php';
 
 
 /**
  * Options Page
  */
-include_once 'inc/options-page.php';
+require 'inc/options-page.php';
