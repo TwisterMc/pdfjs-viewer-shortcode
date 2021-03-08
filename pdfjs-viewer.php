@@ -29,7 +29,6 @@ require 'inc/media-button.php';
  */
 require 'inc/gutenberg-block.php';
 
-
 /**
  * Options Page
  */

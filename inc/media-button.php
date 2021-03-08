@@ -1,5 +1,7 @@
 <?php
-// ==== Media Button ====
+/**
+ * Media Button
+ */
 
 // priority is 12 since default button is 10.
 add_action( 'media_buttons', 'pdfjs_media_button', 12 );

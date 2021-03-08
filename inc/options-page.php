@@ -22,7 +22,7 @@ function pdfjs_register_options_page() {
 }
 add_action( 'admin_menu', 'pdfjs_register_options_page' );
 
-// create the settings page
+// create the settings page.
 function pdfjs_options_page() {
 	?>
 	<div class="wrap">
@@ -44,11 +44,11 @@ function pdfjs_options_page() {
 			$viewer_pagemode      = get_option( 'pdfjs_viewer_pagemode', 'none' );
 			?>
 
+			<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
+			<p>
+				<?php esc_html_e( 'Most defaults only affect new posts and existing posts when you edit them. Not all options work with the shortcode.', 'pdfjs-viewer' ); ?>
+			</p>
 			<table class="form-table" role="presentation">
-				<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
-				<p>
-					<?php esc_html_e( 'Most defaults only affect new posts and existing posts when you edit them. Not all options work with the shortcode.', 'pdfjs-viewer' ); ?>
-				</p>
 				<tr>
 					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_download_button" name="pdfjs_download_button" <?php echo $download_button ? 'checked' : ''; ?> /></td>
@@ -67,7 +67,7 @@ function pdfjs_options_page() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_fullscreen_link_text"><?php esc_html_e( 'Fullscreen Link Text', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="text" class="regular-text" id="pdfjs_fullscreen_link_text" name="pdfjs_fullscreen_link_text" value="<?php echo $fullscreen_link_text ? $fullscreen_link_text : 'View Fullscreen'; ?>" /></td>
+					<td><input type="text" class="regular-text" id="pdfjs_fullscreen_link_text" name="pdfjs_fullscreen_link_text" value="<?php echo esc_html( $fullscreen_link_text ? $fullscreen_link_text : 'View Fullscreen' ); ?>" /></td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_fullscreen_link_target"><?php esc_html_e( 'Fullscreen Links in New Tabs', 'pdfjs-viewer' ); ?></label></th>
@@ -75,12 +75,12 @@ function pdfjs_options_page() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_embed_height"><?php esc_html_e( 'Embed Height', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="number" class="regular-text" id="pdfjs_embed_height" name="pdfjs_embed_height" value="<?php echo $embed_height ? $embed_height : 800; ?>" /></td>
+					<td><input type="number" class="regular-text" id="pdfjs_embed_height" name="pdfjs_embed_height" value="<?php echo esc_html( $embed_height ? $embed_height : 800 ); ?>" /></td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_embed_width"><?php esc_html_e( 'Embed Width', 'pdfjs-viewer' ); ?></label></th>
 					<td>
-						<input type="number" class="regular-text" id="pdfjs_embed_width" name="pdfjs_embed_width" value="<?php echo $embed_width ? $embed_width : 0; ?>" />
+						<input type="number" class="regular-text" id="pdfjs_embed_width" name="pdfjs_embed_width" value="<?php echo esc_html( $embed_width ? $embed_width : 0 ); ?>" />
 						<p><?php esc_html_e( 'Note: 0 = 100%', 'pdfjs-viewer' ); ?></p>
 					</td>
 				</tr>

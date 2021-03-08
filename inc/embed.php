@@ -74,7 +74,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$fullscreen_target = '';
 	}
 
-	if ( isset( $search_term) && $search_term !== '' ) {
+	if ( isset( $search_term ) && '' !== $search_term ) {
 		$searchTerm = '&search=' . $search_term;
 	} else {
 		$searchTerm = '';
@@ -96,15 +96,15 @@ function pdfjs_generator( $incoming_from_handler ) {
 		// Put it with the slashes.
 		$request_protocol = $is_secure ? 'https://' : 'http://';
 		// Replace it in the URL.
-		$site_url  = $request_protocol . $_SERVER['HTTP_HOST'];
+		$site_url = $request_protocol . $_SERVER['HTTP_HOST'];
 	}
 
-	$file_name = str_replace( $site_url, '', urldecode($file_name) );
+	$file_name = str_replace( $site_url, '', urldecode( $file_name ) );
 
 	// Any additional changes needed?
 	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile. '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
+	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {

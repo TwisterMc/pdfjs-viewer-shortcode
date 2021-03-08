@@ -32,8 +32,6 @@ function pdfjs_handler( $incoming_from_post ) {
 		$incoming_from_post
 	);
 
-	$pdfjs_output = pdfjs_generator( $incoming_from_post );
-
 	// send back text to replace shortcode in post.
-	return $pdfjs_output;
+	return pdfjs_generator( $incoming_from_post );
 }
