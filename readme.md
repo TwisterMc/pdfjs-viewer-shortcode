@@ -4,7 +4,7 @@
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.9
 * Tested up to: 5.7
-* Stable tag: 2.0.0
+* Stable tag: 2.0.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Requires PHP: 7.2
@@ -57,6 +57,9 @@ Older blocks will be marked as _invalid_ in Gutenberg as we add new features. Yo
 This plugin can be installed either directly from your WordPress admin panel by searching for **PDF.js Viewer**, or downloading from the Wordpress Plugin Repository and uploading and expanding the archive into your sites `wp-content/plugins` directory.
 
 ## Changelog
+
+### 2.0.1
+* Now works with ACF fields! Thanks @imj13
 
 ### 2.0.0
 
