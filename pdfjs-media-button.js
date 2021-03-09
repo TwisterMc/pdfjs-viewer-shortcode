@@ -1,9 +1,15 @@
 jQuery( function( $ ) {
 	$( '.js-insert-pdfjs' ).click( openMediaWindow );
 
+	acf.addAction( 'load', function() {
+		$( '.js-insert-pdfjs' ).on( 'click', function() {
+			openMediaWindow();
+		} );
+	} );
+
 	function openMediaWindow() {
 		//console.log('pdfjs media button clicked');
-		const frame = wp.media({
+		const frame = wp.media( {
 			title: 'Insert a PDF',
 			library: { type: 'application/pdf' },
 			multiple: false,
