@@ -75,6 +75,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	}
 
 	if ( isset( $search_term ) && '' !== $search_term ) {
+		$search_term = htmlspecialchars($search_term, ENT_QUOTES);
 		$searchTerm = '&search=' . $search_term;
 	} else {
 		$searchTerm = '';
