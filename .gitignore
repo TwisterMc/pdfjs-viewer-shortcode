@@ -1,3 +1,4 @@
 .idea*
 /node_modules/
 /olaf-pdfjs-viewer-shortcode alias
+.history/*

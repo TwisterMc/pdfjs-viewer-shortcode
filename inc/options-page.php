@@ -1,4 +1,67 @@
 <?php
+
+/**
+ * Create Array of Settings
+ * In Development
+ */
+$plugin_settings = array(
+	'dowload' => array(
+		'name' => 'Show Download Button',
+		'slug' => 'download_button',
+	),
+	'print' => array(
+		'name' => 'Show Print Button',
+		'slug' => 'print_button',
+	),
+	'search' => array(
+		'name' => 'Show Search Button',
+		'slug' => 'search_button',
+	),
+
+	'fullscreen' => array(
+		'name' => 'Show Fullscreen Link',
+		'slug' => 'fullscreen_link',
+	),
+	'fullscreen_text' => array(
+		'name' => 'Fullscreen Link Text',
+		'slug' => 'fullscreen_link_text',
+	),
+	'fullscreen_tab' => array(
+		'name' => 'Fullscreen Links in New Tabs',
+		'slug' => 'fullscreen_link_target',
+	),
+
+	'height' => array(
+		'name' => 'Embed Height',
+		'slug' => 'embed_height',
+	),
+	'width' => array(
+		'name' => 'Embed Width',
+		'slug' => 'embed_width',
+	),
+
+	'viewer' => array(
+		'name' => 'SViewer Scale',
+		'slug' => 'viewer_scale',
+	),
+	'sidebar' => array(
+		'name' => 'Page Mode (aka Sidebar)',
+		'slug' => 'viewer_pagemode',
+	),
+);
+
+// Future Things
+// $keys = array_keys($plugin_settings);
+// for($i = 0; $i < count($plugin_settings); $i++) {
+//     echo $keys[$i] . '  ';
+//     foreach($plugin_settings[$keys[$i]] as $key => $value) {
+//         echo $key . " : " . $value ;
+//     }
+//     echo  ' | ';
+// }
+// var_dump($plugin_settings);
+
+
 /**
  * Settings Page in WP Admin
  */
