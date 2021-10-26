@@ -18,7 +18,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
 	$search_term       = $incoming_from_handler['search_term'];
-	$post_id           = $incoming_from_handler['post_id'];
+	$attachment_id     = $incoming_from_handler['attachment_id'];
 
 	// if the PDF URL is missing the file extension, load error PDF.
 	if ( ! strpos( $file_name, '.pdf' ) ) {
@@ -106,7 +106,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// Any additional changes needed?
 	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
 
-	$final_url = $viewer_base_url . '?file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm . '&postId=' . $post_id;
+	$final_url = $viewer_base_url . '?attachment_id=' . $attachment_id . '&file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {

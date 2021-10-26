@@ -28,6 +28,7 @@ function pdfjs_handler( $incoming_from_post ) {
 			'openfile'          => 'false',
 			'zoom'              => 'auto',
 			'search_term'       => '',
+			'attachment_id'     => '',
 		),
 		$incoming_from_post
 	);

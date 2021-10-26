@@ -1,3 +1,7 @@
+<?php
+	require_once $_SERVER['DOCUMENT_ROOT'].'/wp-load.php';
+?>
+
 <!DOCTYPE html>
 <!--
 Copyright 2012 Mozilla Foundation
@@ -28,6 +32,9 @@ See https://github.com/adobe-type-tools/cmap-resources
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>PDF.js viewer</title>
 
+	<script>
+		const pdfjs_url = '<?php echo wp_get_attachment_url( $_GET['attachment_id'] ) ?>'
+	</script>
 
 		<link rel="stylesheet" href="viewer.css">
 
