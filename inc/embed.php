@@ -77,25 +77,6 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$searchTerm = '';
 	}
 
-	// Find the domain name and remove it from the URL to make Edge happy.
-
-	// Check to see if a custom site domain is set elsewhere.
-	$site_url = apply_filters( 'pdfjs_set_custom_domain', '' );
-
-//	if ( ! $site_url ) {
-//		// Get the URL protocol.
-//		$is_secure = false;
-//		if ( isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ) {
-//			$is_secure = true;
-//		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] || ! empty( $_SERVER['HTTP_X_FORWARDED_SSL'] ) && 'on' === $_SERVER['HTTP_X_FORWARDED_SSL'] ) {
-//			$is_secure = true;
-//		}
-//		// Put it with the slashes.
-//		$request_protocol = $is_secure ? 'https://' : 'http://';
-//		// Replace it in the URL.
-//		$site_url = $request_protocol . $_SERVER['HTTP_HOST'];
-//	}
-
 	$attachment_info = '';
 	if ( $attachment_id ) {
 		$attachment_info = '?attachment_id=' . $attachment_id;
