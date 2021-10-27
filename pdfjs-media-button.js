@@ -8,7 +8,6 @@ jQuery( function( $ ) {
 	} );
 
 	function openMediaWindow() {
-		//console.log('pdfjs media button clicked');
 		const frame = wp.media( {
 			title: 'Insert a PDF',
 			library: { type: 'application/pdf' },
@@ -18,6 +17,7 @@ jQuery( function( $ ) {
 
 		frame.on( 'select', function() {
 			let selectionURL = frame.state().get('selection').first().toJSON().url;
+			let selectionID = frame.state().get('selection').first().toJSON().id;
 			selectionURL = encodeURIComponent(selectionURL);
 
 			let fullscreenLink = "fullscreen=false";
@@ -45,7 +45,7 @@ jQuery( function( $ ) {
 				viewerHeight = window.pdfjs_options.pdfjs_embed_height + "px";
 			}
 
-			wp.media.editor.insert('[pdfjs-viewer url="' + selectionURL + '" viewer_width=' + viewerWidth + ' viewer_height=' + viewerHeight + ' ' + fullscreenLink + ' ' + downloadLink + ' ' + printLink + ']');
+			wp.media.editor.insert('[pdfjs-viewer attachment_id="' + selectionID + '" viewer_width=' + viewerWidth + ' viewer_height=' + viewerHeight + ' ' + fullscreenLink + ' ' + downloadLink + ' ' + printLink + ']');
 		} );
 
 		frame.open();

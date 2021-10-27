@@ -335,7 +335,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		);
 		return (
 			<div className="pdfjs-wrapper">
-				{`[pdfjs-viewer viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} search_term="${ encodeURIComponent( updatedSearchString ) }" attachment_id=${ props.attributes.imgID } ]`}
+				{`[pdfjs-viewer attachment_id=${ props.attributes.imgID } viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ encodeURIComponent( props.attributes.fullscreenText ) }" zoom=${ props.attributes.viewerScale.toString()} search_term="${ encodeURIComponent( updatedSearchString ) }"  ]`}
 			</div>
 		);
 	},
