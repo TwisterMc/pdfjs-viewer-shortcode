@@ -60,6 +60,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ### 2.0.3
 
+* Added the file ID to the URL.
+* Hooked WordPress into the viewer to pull the URL in. Should fix some possible security concerns.
 * Removed the file URL from the URL.
 * Removed the `pdfjs_set_custom_edits` filter.
 * Removed the `pdfjs_set_custom_domain` filter.
