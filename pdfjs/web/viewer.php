@@ -33,7 +33,17 @@ See https://github.com/adobe-type-tools/cmap-resources
 	<title>PDF.js viewer</title>
 
 	<script>
-		const pdfjs_url = '<?php echo wp_get_attachment_url( $_GET['attachment_id'] ) ?>'
+		let pdfjs_url;
+		const file_url = '<?php echo $_GET['file_url']; ?>';
+		const file_id = '<?php echo $_GET['attachment_id']; ?>';
+
+		if ( file_id ) {
+			pdfjs_url = '<?php echo wp_get_attachment_url( $_GET['attachment_id'] ); ?>'
+		} else if ( typeof file_url !== 'undefined'  ) {
+			pdfjs_url = file_url;
+		} else {
+			pefjs_url = '<?php plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf' ?>'
+		}
 	</script>
 
 		<link rel="stylesheet" href="viewer.css">

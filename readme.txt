@@ -58,6 +58,11 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ## Changelog
 
+### 2.0.3
+
+* Removed the file URL from the URL.
+* Removed the `pdfjs_set_custom_edits` filter.
+
 ### 2.0.2
 * Preventing XSS with the search term
 

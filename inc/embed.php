@@ -5,7 +5,6 @@
 function pdfjs_generator( $incoming_from_handler ) {
 
 	$viewer_base_url   = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
-	$file_name         = $incoming_from_handler['url'];
 	$viewer_height     = $incoming_from_handler['viewer_height'];
 	$viewer_width      = $incoming_from_handler['viewer_width'];
 	$fullscreen        = $incoming_from_handler['fullscreen'];
@@ -19,11 +18,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
 	$search_term       = $incoming_from_handler['search_term'];
 	$attachment_id     = $incoming_from_handler['attachment_id'];
-
-	// if the PDF URL is missing the file extension, load error PDF.
-	if ( ! strpos( $file_name, '.pdf' ) ) {
-		$file_name = plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf';
-	}
+	$file_url          = $incoming_from_handler['url'];
 
 	// check to see if the current value is in percent.
 	if ( false === strpos( $viewer_width, '%' ) ) {
@@ -77,7 +72,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	if ( isset( $search_term ) && '' !== $search_term ) {
 		$search_term = htmlspecialchars($search_term, ENT_QUOTES);
-		$searchTerm = '&search=' . $search_term;
+		$searchTerm  = '&search=' . $search_term;
 	} else {
 		$searchTerm = '';
 	}
@@ -87,26 +82,28 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// Check to see if a custom site domain is set elsewhere.
 	$site_url = apply_filters( 'pdfjs_set_custom_domain', '' );
 
-	if ( ! $site_url ) {
-		// Get the URL protocol.
-		$is_secure = false;
-		if ( isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ) {
-			$is_secure = true;
-		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] || ! empty( $_SERVER['HTTP_X_FORWARDED_SSL'] ) && 'on' === $_SERVER['HTTP_X_FORWARDED_SSL'] ) {
-			$is_secure = true;
-		}
-		// Put it with the slashes.
-		$request_protocol = $is_secure ? 'https://' : 'http://';
-		// Replace it in the URL.
-		$site_url = $request_protocol . $_SERVER['HTTP_HOST'];
+//	if ( ! $site_url ) {
+//		// Get the URL protocol.
+//		$is_secure = false;
+//		if ( isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ) {
+//			$is_secure = true;
+//		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] || ! empty( $_SERVER['HTTP_X_FORWARDED_SSL'] ) && 'on' === $_SERVER['HTTP_X_FORWARDED_SSL'] ) {
+//			$is_secure = true;
+//		}
+//		// Put it with the slashes.
+//		$request_protocol = $is_secure ? 'https://' : 'http://';
+//		// Replace it in the URL.
+//		$site_url = $request_protocol . $_SERVER['HTTP_HOST'];
+//	}
+
+	$attachment_info = '';
+	if ( $attachment_id ) {
+		$attachment_info = '?attachment_id=' . $attachment_id;
+	} elseif ( $file_url ) {
+		$attachment_info = '?file_url=' . $file_url;
 	}
 
-	$file_name = str_replace( $site_url, '', urldecode( $file_name ) );
-
-	// Any additional changes needed?
-	$file_name = apply_filters( 'pdfjs_set_custom_edits', $file_name );
-
-	$final_url = $viewer_base_url . '?attachment_id=' . $attachment_id . '&file=' . $file_name . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
+	$final_url = $viewer_base_url . $attachment_info . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . $searchTerm;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
