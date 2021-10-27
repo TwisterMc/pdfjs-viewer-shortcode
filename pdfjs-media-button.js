@@ -16,9 +16,7 @@ jQuery( function( $ ) {
 		} );
 
 		frame.on( 'select', function() {
-			let selectionURL = frame.state().get('selection').first().toJSON().url;
 			let selectionID = frame.state().get('selection').first().toJSON().id;
-			selectionURL = encodeURIComponent(selectionURL);
 
 			let fullscreenLink = "fullscreen=false";
 			if (typeof window.pdfjs_options.pdfjs_fullscreen_link !== 'undefined' && window.pdfjs_options.pdfjs_fullscreen_link !== '') {
