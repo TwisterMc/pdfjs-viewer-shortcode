@@ -1,5 +1,17 @@
 <?php
-	require_once $_SERVER['DOCUMENT_ROOT'].'/wp-load.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/wp-load.php';
+$attachment_id = $_GET['attachment_id'] ?? '0';
+$file_url      = $_GET['file_url'] ?? '0';
+$pdfjs_url = '';
+
+if ( '0' !== $attachment_id ) {
+	$pdfjs_url = wp_get_attachment_url( $_GET['attachment_id'] );
+} elseif ( '0' !== $file_url ) {
+	$pdfjs_url = $file_url;
+} else {
+	$pdfjs_url = plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,17 +45,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 	<title>PDF.js viewer</title>
 
 	<script>
-		let pdfjs_url;
-		const file_url = '<?php echo $_GET['file_url']; ?>';
-		const file_id = '<?php echo $_GET['attachment_id']; ?>';
-
-		if ( file_id ) {
-			pdfjs_url = '<?php echo wp_get_attachment_url( $_GET['attachment_id'] ); ?>'
-		} else if ( typeof file_url !== 'undefined'  ) {
-			pdfjs_url = file_url;
-		} else {
-			pefjs_url = '<?php plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf' ?>'
-		}
+		const pdfjs_url = '<?php echo $pdfjs_url; ?>'
 	</script>
 
 		<link rel="stylesheet" href="viewer.css">
