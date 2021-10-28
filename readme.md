@@ -4,7 +4,7 @@
 * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 * Requires at least: 4.9
 * Tested up to: 5.8.1
-* Stable tag: 2.0.3
+* Stable tag: 2.1.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Requires PHP: 7.2
@@ -18,15 +18,14 @@ Incorporate [Mozilla's PDF.js](https://github.com/mozilla/pdf.js/) viewer into y
 Features:
 
 *   Gutenberg Block and Shortcode
-*   Elegant speckled gray theme
+*   Elegant Theme that adapts to dark and light mode (if browser supports dynamic CSS)
 *   Customizable buttons
 *   Page navigation drawer
-*   Advanced search functionality
-*   Language support for all languages
+*   Search functionality
 *   Protected PDF password entry
 *   Loading bar & displays partially loaded PDF (great for huge PDFs!)
 *   Document outline
-*   Advanced zoom settings
+*   Zoom settings
 *   Classic Editor: Easy to use editor media button that generates the shortcode for you
 *   Support for mobile devices
 
@@ -58,7 +57,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ## Changelog
 
-### 2.0.3
+### 2.1.0
 
 * Added the file ID to the URL.
 * Hooked WordPress into the viewer to pull the URL in. Should fix some possible security concerns.
