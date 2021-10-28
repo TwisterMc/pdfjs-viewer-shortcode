@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/wp-load.php';
-$attachment_id = $_GET['attachment_id'] ?? '0';
-$file_url      = $_GET['file_url'] ?? '0';
+$attachment_id = isset( $_GET['attachment_id'] ) ? $_GET['attachment_id'] : '0';
+$file_url      = isset( $_GET['file_url'] ) ? $_GET['file_url'] : '0';
 $pdfjs_url = '';
 
 if ( '0' !== $attachment_id ) {
@@ -45,7 +45,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 	<title>PDF.js viewer</title>
 
 	<script>
-		const pdfjs_url = '<?php echo $pdfjs_url; ?>'
+		const pdfjs_url = '<?php echo sanitize_text_field($pdfjs_url); ?>'
 	</script>
 
 		<link rel="stylesheet" href="viewer.css">
