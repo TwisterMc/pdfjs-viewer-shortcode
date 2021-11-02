@@ -43,7 +43,6 @@ Shortcode Syntax:
 *   `download` (optional): true/false, enables or disables download button (default: true)
 *   `print` (optional): true/false, enables or disables print button (default: true)
 *   `zoom` (optional): auto/page-actual/page-width/page-fit/50/75/100/200/300/400, PDF zoom level (default: auto)
-*   `search_term` (optional): string, highlights matching text on PDF load. Only single words are working at this time.
 
 Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode).
 
@@ -64,6 +63,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 * Removed the file URL from the URL.
 * Removed the `pdfjs_set_custom_edits` filter.
 * Removed the `pdfjs_set_custom_domain` filter.
+* Sanitizing inputs
+* Removing search term.
 
 ### 2.0.2
 * Preventing XSS with the search term
