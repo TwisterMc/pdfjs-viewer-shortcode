@@ -29,7 +29,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	// make a function to do what we want
 
-	$viewer_base_url   = plugins_url() . '/pdfjs-viewer-shortcode/pdfjs/web/viewer.php';
+	$viewer_base_url   = plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.php';
 	$viewer_height     = sanatize_number( $incoming_from_handler['viewer_height'] );
 	$viewer_width      = sanatize_number( $incoming_from_handler['viewer_width'] );
 	$fullscreen        = $incoming_from_handler['fullscreen'];

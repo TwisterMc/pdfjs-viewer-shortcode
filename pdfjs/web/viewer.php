@@ -8,7 +8,7 @@ if ( '0' !== $attachment_id ) {
 } elseif ( '0' !== $file_url ) {
 	$pdfjs_url = $file_url;
 } else {
-	$pdfjs_url = plugins_url() . '/pdfjs-viewer-shortcode/pdf-loading-error.pdf';
+	$pdfjs_url = plugin_dir_url( __FILE__ ) . 'pdf-loading-error.pdf';
 }
 
 ?>
