@@ -27,9 +27,6 @@ function pdfjs_set_true_false( $input ) {
  * Generate the PDF embed code.
  */
 function pdfjs_generator( $incoming_from_handler ) {
-
-	// make a function to do what we want
-
 	$viewer_base_url   = plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.php';
 	$viewer_height     = pdfjs_sanatize_number( $incoming_from_handler['viewer_height'] );
 	$viewer_width      = pdfjs_sanatize_number( $incoming_from_handler['viewer_width'] );
@@ -91,7 +88,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
-		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . esc_url( $final_url ) . '" ' . $fullscreen_target . '>' . sanitize_text_field( urldecode( $fullscreen_text ) ) . '</a></div>';
+		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . esc_url( $final_url ) . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
 	}
 	$iframe_code = '<div><iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . esc_url( $final_url ) . '" title="Embedded PDF" class="pdfjs-iframe"></iframe></div>';
 
