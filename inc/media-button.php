@@ -2,6 +2,7 @@
 /**
  * Media Button
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 // priority is 12 since default button is 10.
 add_action( 'media_buttons', 'pdfjs_media_button', 12 );

@@ -9,6 +9,8 @@ Contributors: FalconerWeb, twistermc
 License: GPLv2
  **/
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
+
 /**
  * Shortcode
  */

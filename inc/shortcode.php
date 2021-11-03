@@ -1,6 +1,8 @@
 <?php
 /** ==== Shortcode ==== */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
+
 // tell WordPress to register the pdfjs-viewer shortcode.
 add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );
 
