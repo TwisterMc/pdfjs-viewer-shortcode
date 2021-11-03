@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 /**
  * Gutenberg Block
  */
-function my_register_gutenberg_card_block() {
+function pdfjs_register_gutenberg_card_block() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
@@ -49,4 +49,4 @@ function my_register_gutenberg_card_block() {
 	);
 }
 
-add_action( 'init', 'my_register_gutenberg_card_block' );
+add_action( 'init', 'pdfjs_register_gutenberg_card_block' );

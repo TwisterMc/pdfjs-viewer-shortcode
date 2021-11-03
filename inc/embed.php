@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 /**
  * Takes a setting and ensures it's a number if it's a number or sanitizing it
  */
-function sanatize_number( $input ) {
+function pdfjs_sanatize_number( $input ) {
 	if ( is_numeric( $input ) ) {
 		return $input;
 	} else {
@@ -15,7 +15,7 @@ function sanatize_number( $input ) {
 /**
  * Takes a setting and ensures it returns as true or false
  */
-function set_true_false( $input ) {
+function pdfjs_set_true_false( $input ) {
 	if ( 'true' !== $input ) {
 		return 'false';
 	} else {
@@ -31,18 +31,18 @@ function pdfjs_generator( $incoming_from_handler ) {
 	// make a function to do what we want
 
 	$viewer_base_url   = plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.php';
-	$viewer_height     = sanatize_number( $incoming_from_handler['viewer_height'] );
-	$viewer_width      = sanatize_number( $incoming_from_handler['viewer_width'] );
+	$viewer_height     = pdfjs_sanatize_number( $incoming_from_handler['viewer_height'] );
+	$viewer_width      = pdfjs_sanatize_number( $incoming_from_handler['viewer_width'] );
 	$fullscreen        = $incoming_from_handler['fullscreen'];
 	$fullscreen_text   = esc_html( $incoming_from_handler['fullscreen_text'] );
-	$fullscreen_target = set_true_false( $incoming_from_handler['fullscreen_target'] );
-	$download          = set_true_false( $incoming_from_handler['download'] );
-	$print             = set_true_false( $incoming_from_handler['print'] );
-	$openfile          = set_true_false( $incoming_from_handler['openfile'] );
-	$zoom              = sanatize_number( $incoming_from_handler['zoom'] );
+	$fullscreen_target = pdfjs_set_true_false( $incoming_from_handler['fullscreen_target'] );
+	$download          = pdfjs_set_true_false( $incoming_from_handler['download'] );
+	$print             = pdfjs_set_true_false( $incoming_from_handler['print'] );
+	$openfile          = pdfjs_set_true_false( $incoming_from_handler['openfile'] );
+	$zoom              = pdfjs_sanatize_number( $incoming_from_handler['zoom'] );
 	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
-	$attachment_id     = sanatize_number( $incoming_from_handler['attachment_id'] );
+	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = esc_url( $incoming_from_handler['url'] );
 
 	// check to see if the current value is in percent.
