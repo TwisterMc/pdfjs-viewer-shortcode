@@ -59,6 +59,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### 2.1.1
 
 * Updating how we call the WordPress plugin directory.
+* Updating function names.
+* More sanitization.
 
 ### 2.1.0
 
