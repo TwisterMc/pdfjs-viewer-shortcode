@@ -2,8 +2,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/wp-load.php';
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
-$attachment_id = isset( $_GET['attachment_id'] ) ? $_GET['attachment_id'] : '0';
-$file_url      = isset( $_GET['file_url'] ) ? $_GET['file_url'] : '0';
+$attachment_id = isset( $_GET['attachment_id'] ) && is_numeric( $_GET['attachment_id'] ) ? $_GET['attachment_id'] : '0';
+$file_url      = isset( $_GET['file_url'] ) ? esc_url( $_GET['file_url'] ) : '0';
 
 if ( '0' !== $attachment_id ) {
 	$pdfjs_url = wp_get_attachment_url( $_GET['attachment_id'] );
