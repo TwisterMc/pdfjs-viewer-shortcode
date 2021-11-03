@@ -85,12 +85,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$fullscreen_target = '';
 	}
 
-	$attachment_info = '';
-	if ( $attachment_id ) {
-		$attachment_info = '?attachment_id=' . $attachment_id;
-	} elseif ( $file_url ) {
-		$attachment_info = '?file_url=' . $file_url;
-	}
+	$attachment_info = '?file=' . $file_url . '&attachment_id=' . $attachment_id;
 
 	$final_url = $viewer_base_url . $attachment_info . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode;
 
