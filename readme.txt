@@ -31,7 +31,7 @@ Features:
 
 Shortcode Syntax:
 
-`[pdfjs-viewer attachment_id="397" viewer_width=600px viewer_height=700px fullscreen=true download=true print=true]`
+`[pdfjs-viewer url=http://www.website.com/test.pdf viewer_width=600px viewer_height=700px fullscreen=true download=true print=true]`
 
 *   `attachment_id` (required): ID of the media file in WordPress
 *   `viewer_width` (optional): width of the viewer (default: 100%)
@@ -55,6 +55,10 @@ Older blocks will be marked as _invalid_ in Gutenberg as we add new features. Yo
 This plugin can be installed either directly from your WordPress admin panel by searching for **PDF.js Viewer**, or downloading from the Wordpress Plugin Repository and uploading and expanding the archive into your sites `wp-content/plugins` directory.
 
 ## Changelog
+
+### 2.1.3
+
+* Updating the shortcode in the read me
 
 ### 2.1.2
 
