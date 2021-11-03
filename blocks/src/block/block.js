@@ -141,11 +141,13 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		};
 
 		const onScaleChange = ( value ) => {
+			value = value.replace(/(<([^>]+)>)/gi, "")
 			props.setAttributes( {
 				viewerScale: value,
 			} );
 		};
 		const onFullscreenTextChange = ( value ) => {
+			value = value.replace(/(<([^>]+)>)/gi, "")
 			props.setAttributes( {
 				fullscreenText: value,
 			} );
