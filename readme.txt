@@ -56,6 +56,10 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ## Changelog
 
+### 2.1.4
+
+* Decoding PDF urls when other plugins encode them in the classic editor.
+
 ### 2.1.3
 
 * Adding a version number to some JS files to break caches

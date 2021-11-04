@@ -4,6 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 add_filter( 'init', function() {
 	if ( isset( $_GET['pdfjs_id'] ) ) {
 
+		/**
+		 * Custom Template
+		 */
+
 		$attachment_id = isset( $_GET['pdfjs_id'] ) && is_numeric( $_GET['pdfjs_id'] ) ? $_GET['pdfjs_id'] : '0';
 
 		if ( '0' !== $attachment_id ) {

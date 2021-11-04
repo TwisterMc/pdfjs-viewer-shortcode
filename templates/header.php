@@ -14,15 +14,33 @@
 
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
+	<!----- needs to be enqueued -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="google" content="notranslate">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="resource" type="application/l10n" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/locale/locale.properties' ?>">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.css' ?>">
+	<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.worker.js' ?>"></script>
+	<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.js' ?>"></script>
+	<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.js' ?>"></script>
+	<script>
+		window.addEventListener('load', function() {
+			console.log('go')
+			PDFViewerApplication.open('<?php echo esc_url( $pdfjs_url ); ?>')
+		});
+
+
+
+	</script>
+
+	<!--- // ----->
+
 	<?php wp_head(); ?>
 
 </head>
 
-<body <?php body_class(); ?>>
+<body tabindex="1" class="loadingInProgress">
 
-<h1>test</h1>
-<?php
-wp_body_open();
 
 
 
