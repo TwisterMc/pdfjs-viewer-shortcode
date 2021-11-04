@@ -42,6 +42,15 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = esc_url( $incoming_from_handler['url'] );
 
+	// checks to see if the $file_url is encoded, if so, decode it.
+	if ( strpos( $file_url, '%2F' ) ) {
+		$file_url = urldecode( $file_url );
+		// for some reason encoded urls contain an extra http:// so lets remove it.
+		$file_url = str_replace( 'http://http', 'http', $file_url );
+		// escape it again just in case.
+		$file_url = esc_url( $file_url );
+	}
+
 	// check to see if the current value is in percent.
 	if ( false === strpos( $viewer_width, '%' ) ) {
 		// check to see if the current value is in pixels.
