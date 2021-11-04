@@ -1,6 +1,6 @@
 <?php
 /**
-Plugin Name: PDFjs Viewer
+Plugin Name: PDFjs Viewer - Embed PDFs
 Plugin URI: http://byterevel.com/
 Description: Embed PDFs with the gorgeous PDF.js viewer
 Version: 2.1.3
