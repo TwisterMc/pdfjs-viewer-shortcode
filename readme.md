@@ -59,6 +59,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### 2.1.3
 
 * Adding a version number to some JS files to break caches
+* Fixing an issue where the fullscreen text didn't have spaces
 * Updating the shortcode in the read me
 
 ### 2.1.2
