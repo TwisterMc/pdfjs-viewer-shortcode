@@ -42,13 +42,6 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = esc_url( $incoming_from_handler['url'] );
 
-	$message = $incoming_from_handler['fullscreen_text'];
-	if ( is_array( $message ) || is_object( $message ) ) {
-		error_log( print_r( $message, true ) );
-	} else {
-		error_log( $message );
-	}
-
 	// check to see if the current value is in percent.
 	if ( false === strpos( $viewer_width, '%' ) ) {
 		// check to see if the current value is in pixels.
