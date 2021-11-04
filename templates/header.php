@@ -9,12 +9,16 @@
 
 <head>
 
+	<meta name="pdfJS" content="<?php echo get_transient( 'pdfjs_button_download_' . $attachment_id ); ?>">
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<!----- needs to be enqueued -->
+	<script>
+		const pdf_js_document = '<?php echo esc_url( $pdfjs_url ); ?>'
+	</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="google" content="notranslate">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,15 +27,6 @@
 	<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.worker.js' ?>"></script>
 	<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.js' ?>"></script>
 	<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.js' ?>"></script>
-	<script>
-		window.addEventListener('load', function() {
-			console.log('go')
-			PDFViewerApplication.open('<?php echo esc_url( $pdfjs_url ); ?>')
-		});
-
-
-
-	</script>
 
 	<!--- // ----->
 
