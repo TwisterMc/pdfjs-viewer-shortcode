@@ -42,12 +42,12 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = esc_url( $incoming_from_handler['url'] );
 
-	set_transient( 'pdfjs_button_download_' . $attachment_id, $download, 60 * 60 * 12 );
-	set_transient( 'pdfjs_button_print_' . $attachment_id, $print, 60 * 60 * 12 );
-	set_transient( 'pdfjs_button_openfile_' . $attachment_id, $openfile, 60 * 60 * 12 );
-	set_transient( 'pdfjs_button_zoom_' . $attachment_id, $zoom, 60 * 60 * 12 );
-	set_transient( 'pdfjs_button_pagemode_' . $attachment_id, $pagemode, 60 * 60 * 12 );
-	set_transient( 'pdfjs_button_searchbutton_' . $attachment_id, $searchbutton, 60 * 60 * 12 );
+	set_transient( 'pdfjs_button_download_' . $attachment_id, $download );
+	set_transient( 'pdfjs_button_print_' . $attachment_id, $print );
+	set_transient( 'pdfjs_button_openfile_' . $attachment_id, $openfile );
+	set_transient( 'pdfjs_button_zoom_' . $attachment_id, $zoom );
+	set_transient( 'pdfjs_button_pagemode_' . $attachment_id, $pagemode );
+	set_transient( 'pdfjs_button_searchbutton_' . $attachment_id, $searchbutton );
 
 	// checks to see if the $file_url is encoded, if so, decode it.
 	if ( strpos( $file_url, '%2F' ) ) {

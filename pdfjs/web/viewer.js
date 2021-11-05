@@ -4893,7 +4893,7 @@ var defaultOptions = {
   },
   defaultUrl: {
     value: "compressed.tracemonkey-pldi-09.pdf",
-    // value: pdf_js_document,
+    // value: "",
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {

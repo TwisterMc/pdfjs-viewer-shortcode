@@ -2,11 +2,50 @@
 /**
  * The fullscreen template file
  */
-
-include( 'header.php' );
 ?>
+<!DOCTYPE html>
 
-	<div id="outerContainer">
+<html class="no-js" <?php language_attributes(); ?>>
+
+	<head>
+		<title>PDFJS Viewer</title>
+
+		<meta name="pdfjs" content="<?php echo esc_url( $pdfjs_url ); ?>">
+
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="google" content="notranslate">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+		<!----- should be enqueued -->
+		<link rel="resource" type="application/l10n" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/locale/locale.properties' ?>">
+		<link rel="stylesheet" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.css' ?>">
+		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.worker.js' ?>"></script>
+		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.js' ?>"></script>
+		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.js' ?>"></script>
+		<!--- // ----->
+
+		<script>
+			setTimeout(function(){
+				PDFViewerApplication.open('<?php echo esc_url( $pdfjs_url ); ?>')
+			}, 1000);
+		</script>
+
+		<?php
+		$button_download = get_transient( 'pdfjs_button_download_' . $attachment_id );
+		$button_print    = get_transient( 'pdfjs_button_print_' . $attachment_id );
+		$button_open     = get_transient( 'pdfjs_button_openfile_' . $attachment_id );
+		$button_zoom     = get_transient( 'pdfjs_button_zoom_' . $attachment_id );
+		$button_pagemode = get_transient( 'pdfjs_button_pagemode_' . $attachment_id );
+		$buttoon_search  = get_transient( 'pdfjs_button_searchbutton_' . $attachment_id );
+		?>
+
+	</head>
+
+<body tabindex="1" class="loadingInProgress">
+
+<div id="outerContainer">
 
 		<div id="sidebarContainer">
 			<div id="toolbarSidebar">
@@ -360,5 +399,7 @@ include( 'header.php' );
 	<div id="printContainer"></div>
 
 
-<?php
-include( 'footer.php' );
+<?php wp_footer(); ?>
+
+</body>
+</html>
