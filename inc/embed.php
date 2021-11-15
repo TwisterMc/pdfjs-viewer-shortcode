@@ -41,6 +41,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = esc_url( $incoming_from_handler['url'] );
+	$pdfjs_custom_page = get_option( 'pdfjs_custom_page', '' );
 
 	set_transient( 'pdfjs_button_download_' . $attachment_id, $download );
 	set_transient( 'pdfjs_button_print_' . $attachment_id, $print );
@@ -104,7 +105,11 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
-		$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . esc_url( $final_url ) . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
+		if ( $pdfjs_custom_page ) {
+			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
+		} else {
+			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . esc_url( $final_url ) . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
+		}
 	}
 	$iframe_code = '<div><iframe width="' . $viewer_width . '" height="' . $viewer_height . '" src="' . esc_url( $final_url ) . '" title="Embedded PDF" class="pdfjs-iframe"></iframe></div>';
 
