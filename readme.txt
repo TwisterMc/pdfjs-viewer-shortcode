@@ -59,6 +59,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### 2.1.5
 
 * Detect ACF before running ACF code. 
+* Beta: Added a feature flag to load the PDF in full screen view differently.
 
 ### 2.1.4
 
