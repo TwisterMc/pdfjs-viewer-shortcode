@@ -1,11 +1,13 @@
 jQuery( function( $ ) {
-	$( '.js-insert-pdfjs' ).click( PDFjs_openMediaWindow );
+	$('.js-insert-pdfjs').click(PDFjs_openMediaWindow);	
 
-	acf.addAction( 'load', function() {
-		$( '.js-insert-pdfjs' ).on( 'click', function() {
-			PDFjs_openMediaWindow();
-		} );
-	} );
+	if (typeof acf !== 'undefined') {
+		acf.addAction( 'load', function() {
+			$( '.js-insert-pdfjs' ).on( 'click', function() {
+				PDFjs_openMediaWindow();
+			} );
+		});
+	}
 
 	function PDFjs_openMediaWindow() {
 		const frame = wp.media( {
