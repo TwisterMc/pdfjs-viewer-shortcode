@@ -1,6 +1,13 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
+$message = "Hello";
+if ( is_array( $message ) || is_object( $message ) ) {
+	error_log( print_r( $message, true ) );
+} else {
+	error_log( $message );
+}
+
 add_filter( 'init', function() {
 	if ( isset( $_GET['pdfjs_id'] ) ) {
 

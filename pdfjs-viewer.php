@@ -39,4 +39,8 @@ require 'inc/options-page.php';
 /**
  * Custom URL - Work in Progress
  */
-//require 'inc/custom-page.php';
+$pdfjs_custom_page = get_option( 'pdfjs_custom_page', 0 );
+
+if ($pdfjs_custom_page) {
+	require 'inc/custom-page.php';
+}

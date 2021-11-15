@@ -77,6 +77,7 @@ function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_embed_width', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_scale', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_pagemode', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_custom_page', 'pdfjs_callback' );
 }
 add_action( 'admin_init', 'pdfjs_register_settings' );
 
@@ -106,6 +107,7 @@ function pdfjs_options_page() {
 			$embed_width          = get_option( 'pdfjs_embed_width', 0 );
 			$viewer_scale         = get_option( 'pdfjs_viewer_scale', 'auto' );
 			$viewer_pagemode      = get_option( 'pdfjs_viewer_pagemode', 'none' );
+			$pdfjs_custom_page    = get_option( 'pdfjs_custom_page', '' );
 			?>
 
 			<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer' ); ?></h2>
@@ -177,6 +179,10 @@ function pdfjs_options_page() {
 							<option value="attachments" <?php echo $viewer_pagemode === 'attachments' ? 'selected' : ''; ?>>Attachments</option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'BETA: Alt PDF Loading', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php echo $pdfjs_custom_page ? 'checked' : ''; ?> /> <span> // Proceed with caution. May break things.</span></td>
 				</tr>
 			</table>
 			<?php submit_button(); ?>
