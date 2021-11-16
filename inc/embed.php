@@ -101,12 +101,13 @@ function pdfjs_generator( $incoming_from_handler ) {
 
 	$attachment_info = '?file=' . $file_url . '&attachment_id=' . $attachment_id;
 
-	$final_url = $viewer_base_url . $attachment_info . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode;
+	$nonce     = wp_create_nonce( 'pdfjs_full_screen' );
+	$final_url = $viewer_base_url . $attachment_info . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '#zoom=' . $zoom . '&pagemode=' . $pagemode . '&_wpnonce=' . $nonce;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
 		if ( $pdfjs_custom_page ) {
-			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
+			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '&_wpnonce=' . $nonce . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
 		} else {
 			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . esc_url( $final_url ) . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
 		}
