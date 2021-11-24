@@ -34,11 +34,11 @@ function include_pdfjs_media_button_js_file() {
 
 	if ( function_exists( 'use_block_editor_for_post' ) ) {
 		if ( use_block_editor_for_post( get_post() ) !== 1 ) {
-			wp_enqueue_script( 'media_button', plugin_dir_url( __DIR__ ) . 'pdfjs-media-button.js', array( 'jquery' ), '2.1.4', true );
+			wp_enqueue_script( 'media_button', plugin_dir_url( __DIR__ ) . 'pdfjs-media-button.js', array( 'jquery' ), '2.1.5', true );
 			wp_localize_script( 'media_button', 'pdfjs_options', $pdfjs_array );
 		}
 	} else {
-		wp_enqueue_script( 'media_button', plugin_dir_url( __DIR__ ) . 'pdfjs-media-button.js', array( 'jquery' ), '2.1.4', true );
+		wp_enqueue_script( 'media_button', plugin_dir_url( __DIR__ ) . 'pdfjs-media-button.js', array( 'jquery' ), '2.1.5', true );
 		wp_localize_script( 'media_button', 'pdfjs_options', $pdfjs_array );
 	}
 }
