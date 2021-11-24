@@ -181,8 +181,8 @@ function pdfjs_options_page() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'BETA: Alt PDF Loading', 'pdfjs-viewer' ); ?></label></th>
-					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php echo $pdfjs_custom_page ? 'checked' : ''; ?> /> <span> // Proceed with caution. May break things.</span></td>
+					<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'Alternative PDF Loading', 'pdfjs-viewer' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php echo $pdfjs_custom_page ? 'checked' : ''; ?> /> <span style="color:red;"> // Alpha. Proceed with caution. May break things.</span></td>
 				</tr>
 			</table>
 			<?php submit_button(); ?>
