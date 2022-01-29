@@ -107,7 +107,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
 		if ( $pdfjs_custom_page ) {
-			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '&_wpnonce=' . $nonce . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
+			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '&_wpnonce=' . $nonce . '#zoom=' . $zoom . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
 		} else {
 			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="' . esc_url( $final_url ) . '" ' . $fullscreen_target . '>' . sanitize_text_field( $fullscreen_text ) . '</a></div>';
 		}

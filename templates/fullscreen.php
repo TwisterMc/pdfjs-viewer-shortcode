@@ -115,15 +115,15 @@
 						<span data-l10n-id="presentation_mode_label">Presentation Mode</span>
 					</button>
 
-					<button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" <?php if ($_GET["oButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="52" data-l10n-id="open_file">
+					<button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" <?php if ($button_open!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="52" data-l10n-id="open_file">
 						<span data-l10n-id="open_file_label">Open</span>
 					</button>
 
-					<button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" <?php if ($_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="53" data-l10n-id="print">
+					<button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" <?php if ($button_print!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="53" data-l10n-id="print">
 						<span data-l10n-id="print_label">Print</span>
 					</button>
 
-					<button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" <?php if ($_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="54" data-l10n-id="download">
+					<button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" <?php if ($button_download!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="54" data-l10n-id="download">
 						<span data-l10n-id="download_label">Download</span>
 					</button>
 
@@ -198,7 +198,7 @@
 								<span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
 							</button>
 							<div class="toolbarButtonSpacer"></div>
-							<button id="viewFind" class="toolbarButton" <?php if (isset($_GET["sButton"]) && $_GET["sButton"]!=="true") { echo 'style="display:none;"'; }?> title="Find in Document" tabindex="12" data-l10n-id="findbar">
+							<button id="viewFind" class="toolbarButton" <?php if ($buttoon_search!=="true") { echo 'style="display:none;"'; }?> title="Find in Document" tabindex="12" data-l10n-id="findbar">
 								<span data-l10n-id="findbar_label">Find</span>
 							</button>
 							<div class="splitToolbarButton hiddenSmallView">
@@ -218,15 +218,15 @@
 								<span data-l10n-id="presentation_mode_label">Presentation Mode</span>
 							</button>
 
-							<button id="openFile" class="toolbarButton openFile hiddenLargeView" <?php if ($_GET["oButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="32" data-l10n-id="open_file">
+							<button id="openFile" class="toolbarButton openFile hiddenLargeView" <?php if ($button_open!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="32" data-l10n-id="open_file">
 								<span data-l10n-id="open_file_label">Open</span>
 							</button>
 
-							<button id="print" class="toolbarButton print hiddenMediumView" <?php if ($_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="33" data-l10n-id="print">
+							<button id="print" class="toolbarButton print hiddenMediumView" <?php if ($button_print!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="33" data-l10n-id="print">
 								<span data-l10n-id="print_label">Print</span>
 							</button>
 
-							<button id="download" class="toolbarButton download hiddenMediumView" <?php if ($_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="34" data-l10n-id="download">
+							<button id="download" class="toolbarButton download hiddenMediumView" <?php if ($button_download!=="true") { echo 'style="display:none;"'; } ?> title="Download" tabindex="34" data-l10n-id="download">
 								<span data-l10n-id="download_label">Download</span>
 							</button>
 							<a href="#" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
