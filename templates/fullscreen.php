@@ -29,7 +29,7 @@
 		<script>
 			setTimeout(function(){
 				PDFViewerApplication.open('<?php echo esc_url( $pdfjs_url ); ?>')
-			}, 1000);
+			}, 100);
 		</script>
 
 		<?php
