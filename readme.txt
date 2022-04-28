@@ -59,6 +59,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### 2.1.7
 
 * Fixed the fullscreen settings for new PDFs
+* Fixing a bug where, on fresh installs, the fullscreen text would be 'on'
+* Tested with WordPress 6.0-beta3-53297
 
 ### 2.1.6
 

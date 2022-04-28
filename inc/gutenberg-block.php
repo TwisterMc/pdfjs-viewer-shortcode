@@ -23,7 +23,7 @@ function pdfjs_register_gutenberg_card_block() {
 		'pdfjs_download_button'        => get_option( 'pdfjs_download_button', 'on' ),
 		'pdfjs_print_button'           => get_option( 'pdfjs_print_button', 'on' ),
 		'pdfjs_fullscreen_link'        => get_option( 'pdfjs_fullscreen_link', 'on' ),
-		'pdfjs_fullscreen_link_text'   => get_option( 'pdfjs_fullscreen_link_text', 'on' ),
+		'pdfjs_fullscreen_link_text'   => get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' ),
 		'pdfjs_fullscreen_link_target' => get_option( 'pdfjs_fullscreen_link_target', '' ),
 		'pdfjs_embed_height'           => get_option( 'pdfjs_embed_height', 800 ),
 		'pdfjs_embed_width'            => get_option( 'pdfjs_embed_width', 0 ),
