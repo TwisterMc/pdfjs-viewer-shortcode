@@ -19,6 +19,9 @@ const {
 const defaultHeight = 800;
 const defaultWidth = 0;
 
+console.log('------------------')
+console.log(window.pdfjs_options.pdfjs_fullscreen_button)
+
 const ALLOWED_MEDIA_TYPES = [ 'application/pdf' ];
 
 registerBlockType( 'pdfjsblock/pdfjs-embed', {
@@ -46,11 +49,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		showFullscreen: {
 			type: 'boolean',
-			default: !! window.pdfjs_options.pdfjs_fullscreen_button,
+			default: !! window.pdfjs_options.pdfjs_fullscreen_link,
 		},
 		openFullscreen: {
 			type: 'boolean',
-			default: !! window.pdfjs_options.pdfjs_fullscreen_link_button,
+			default: !! window.pdfjs_options.pdfjs_fullscreen_link_target,
 		},
 		fullscreenText: {
 			type: 'string',
@@ -212,6 +215,8 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							checked={ props.attributes.openFullscreen }
 							onChange={ onToggleOpenFullscreen }
 						/>
+						{console.log('-----------')}
+						{console.log(props.attributes.openFullscreen)}
 					</PanelRow>
 					<PanelRow>
 						<TextControl
