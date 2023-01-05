@@ -3,7 +3,7 @@
 -   Contributors: FalconerWeb, twistermc
 -   Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
 -   Requires at least: 4.9
--   Tested up to: 5.9
+-   Tested up to: 6.1
 -   Stable tag: 2.1.8
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### 2.1.8
 
 -   Preventing users from adding JS to shortcodes.
+-   Bumping version numbers
 
 ### 2.1.7
 
