@@ -2,9 +2,20 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 /**
- * Takes a setting and ensures it's a number if it's a number or sanitizing it
+ * Takes a setting and ensures it's a number if it's a number
  */
 function pdfjs_sanatize_number( $input ) {
+	if ( is_numeric( $input ) ) {
+		return $input;
+	} else {
+		return 0;
+	}
+}
+
+/**
+ * Takes a setting and ensures it's a number if it's a number or sanitizing it
+ */
+function pdfjs_sanatize_text_number( $input ) {
 	if ( is_numeric( $input ) ) {
 		return $input;
 	} else {
@@ -28,15 +39,15 @@ function pdfjs_set_true_false( $input ) {
  */
 function pdfjs_generator( $incoming_from_handler ) {
 	$viewer_base_url   = plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.php';
-	$viewer_height     = pdfjs_sanatize_number( $incoming_from_handler['viewer_height'] );
-	$viewer_width      = pdfjs_sanatize_number( $incoming_from_handler['viewer_width'] );
+	$viewer_height     = pdfjs_sanatize_text_number( $incoming_from_handler['viewer_height'] );
+	$viewer_width      = pdfjs_sanatize_text_number( $incoming_from_handler['viewer_width'] );
 	$fullscreen        = $incoming_from_handler['fullscreen'];
 	$fullscreen_text   = esc_html( $incoming_from_handler['fullscreen_text'] );
 	$fullscreen_target = pdfjs_set_true_false( $incoming_from_handler['fullscreen_target'] );
 	$download          = pdfjs_set_true_false( $incoming_from_handler['download'] );
 	$print             = pdfjs_set_true_false( $incoming_from_handler['print'] );
 	$openfile          = pdfjs_set_true_false( $incoming_from_handler['openfile'] );
-	$zoom              = pdfjs_sanatize_number( $incoming_from_handler['zoom'] );
+	$zoom              = pdfjs_sanatize_text_number( $incoming_from_handler['zoom'] );
 	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
@@ -64,7 +75,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		// check to see if the current value is in pixels.
 		if ( false === strpos( $viewer_width, 'px' ) ) {
 			// check to see if it's 0.
-			if ( '0' === $viewer_width ) {
+			if ( '0' === $viewer_width || str_contains($viewer_width, '"') || str_contains($viewer_width, "'")) {
 				$viewer_width = '100%';
 			} else {
 				// add px extension.
@@ -78,7 +89,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 		// check to see if the current value is in pixels.
 		if ( false === strpos( $viewer_height, 'px' ) ) {
 			// check to see if it's 0.
-			if ( '0' === $viewer_height ) {
+			if ( '0' === $viewer_height || str_contains($viewer_height, '"') || str_contains($viewer_height, "'")) {
 				$viewer_height = '800';
 			} else {
 				// add px extension.
@@ -86,6 +97,14 @@ function pdfjs_generator( $incoming_from_handler ) {
 			}
 		}
 	}
+
+
+	// check to ensure there are no quotes in the zoom setting so people can't sneak bad stuff in
+	if (str_contains($zoom, '"') || str_contains($zoom, "'")) {
+		$zoom = 'auto';
+	}
+	var_dump($viewer_height);
+
 
 	if ( 'on' === $searchbutton ) {
 		$searchbutton = 'true';
