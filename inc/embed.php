@@ -103,8 +103,6 @@ function pdfjs_generator( $incoming_from_handler ) {
 	if (str_contains($zoom, '"') || str_contains($zoom, "'")) {
 		$zoom = 'auto';
 	}
-	var_dump($viewer_height);
-
 
 	if ( 'on' === $searchbutton ) {
 		$searchbutton = 'true';
