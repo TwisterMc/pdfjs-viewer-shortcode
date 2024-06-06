@@ -19,7 +19,7 @@
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 
 		<!----- should be enqueued -->
-		<link rel="resource" type="application/l10n" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/locale/locale.properties' ?>">
+		<link rel="resource" type="application/l10n" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/locale/locale.json' ?>">
 		<link rel="stylesheet" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.css' ?>">
 		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.worker.js' ?>"></script>
 		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.js' ?>"></script>
