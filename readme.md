@@ -56,6 +56,10 @@ This plugin can be installed either directly from your WordPress admin panel by 
 
 ## Changelog
 
+### 2.2
+- Updated to PDFjs 4.3.136
+- Renamed 'Download' to 'Save' based on PDFjs change.
+
 ### 2.1.8
 
 -   Preventing users from adding JS to shortcodes.
