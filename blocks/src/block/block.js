@@ -159,7 +159,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					<PanelRow>
 						<ToggleControl
 							label={ __(
-								'Show Download Option',
+								'Show Save Option',
 								'pdfjs-viewer-shortcode'
 							) }
 							help={
