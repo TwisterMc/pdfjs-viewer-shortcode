@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
  */
 $plugin_settings = array(
 	'dowload' => array(
-		'name' => 'Show Download Button',
+		'name' => 'Show Save Button',
 		'slug' => 'download_button',
 	),
 	'print' => array(
@@ -116,7 +116,7 @@ function pdfjs_options_page() {
 			</p>
 			<table class="form-table" role="presentation">
 				<tr>
-					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Download Button', 'pdfjs-viewer' ); ?></label></th>
+					<th scope="row"><label for="pdfjs_download_button"><?php esc_html_e( 'Show Save Button', 'pdfjs-viewer' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_download_button" name="pdfjs_download_button" <?php echo $download_button ? 'checked' : ''; ?> /></td>
 				</tr>
 				<tr>
