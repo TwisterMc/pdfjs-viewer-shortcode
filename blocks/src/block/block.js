@@ -140,12 +140,6 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			} );
 		};
 
-		const onScaleChange = ( value ) => {
-			value = value.replace(/(<([^>]+)>)/gi, "")
-			props.setAttributes( {
-				viewerScale: value,
-			} );
-		};
 		const onFullscreenTextChange = ( value ) => {
 			value = value.replace(/(<([^>]+)>)/gi, "")
 			props.setAttributes( {
@@ -248,27 +242,6 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						max={ 5000 }
 						allowReset={ true }
 						initialPosition={ defaultWidth }
-					/>
-				</PanelBody>
-				<PanelBody title={ __( 'Scale', 'pdfjs-viewer-shortcode' ) }>
-					<SelectControl
-						label="Viewer Scale"
-						value={ props.attributes.viewerScale }
-						options={ [
-							{ label: 'Automatic', value: 'auto' },
-							{ label: 'Actual Size', value: 'page-actual' },
-							{ label: 'Page Fit', value: 'page-fit' },
-							{ label: 'Page Width', value: 'page-width' },
-							{ label: '50%', value: '50' },
-							{ label: '75%', value: '75' },
-							{ label: '100%', value: '100' },
-							{ label: '125%', value: '125' },
-							{ label: '150%', value: '150' },
-							{ label: '200%', value: '200' },
-							{ label: '300%', value: '300' },
-							{ label: '400%', value: '400' },
-						] }
-						onChange={ onScaleChange }
 					/>
 				</PanelBody>
 			</InspectorControls>,

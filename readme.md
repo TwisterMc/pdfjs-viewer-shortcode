@@ -25,7 +25,6 @@ Features:
 -   Protected PDF password entry
 -   Loading bar & displays partially loaded PDF (great for huge PDFs!)
 -   Document outline
--   Zoom settings
 -   Classic Editor: Easy to use editor media button that generates the shortcode for you
 -   Support for mobile devices
 
@@ -42,7 +41,6 @@ Shortcode Syntax:
 -   `fullscreen_target` (optional): true/false, open the fullscreen link in a new tab
 -   `download` (optional): true/false, enables or disables download button (default: true)
 -   `print` (optional): true/false, enables or disables print button (default: true)
--   `zoom` (optional): auto/page-actual/page-width/page-fit/50/75/100/200/300/400, PDF zoom level (default: auto)
 
 Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode).
 
@@ -59,6 +57,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ### 2.2
 - Updated to PDFjs 4.3.136
 - Renamed 'Download' to 'Save' based on PDFjs change.
+- Removed the zoom feature to hopefully fix Edge issues.
 
 ### 2.1.8
 
