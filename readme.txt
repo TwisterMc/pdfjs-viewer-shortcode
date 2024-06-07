@@ -58,6 +58,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 - Updated to PDFjs 4.3.136
 - Renamed 'Download' to 'Save' based on PDFjs change.
 - Removed the zoom feature to hopefully fix Edge issues.
+- Disabling the Alternative PDF Loading version
 
 ### 2.1.8
 
