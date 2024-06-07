@@ -87,7 +87,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = sanitize_url( $incoming_from_handler['url'] );
-	$pdfjs_custom_page = get_option( 'pdfjs_custom_page', '' );
+	$pdfjs_custom_page = false; // DISABLED get_option( 'pdfjs_custom_page', '' );
 
 	set_transient( 'pdfjs_button_download_' . $attachment_id, $download );
 	set_transient( 'pdfjs_button_print_' . $attachment_id, $print );

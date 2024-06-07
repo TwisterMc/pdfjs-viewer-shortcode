@@ -162,7 +162,7 @@ function pdfjs_options_page() {
 						</select>
 					</td>
 				</tr>
-				<tr>
+				<tr style="display:none;">
 					<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'Alternative PDF Loading', 'pdfjs-viewer' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php echo $pdfjs_custom_page ? 'checked' : ''; ?> /> <span style="color:rebeccapurple;"> - Beta. Test with caution and <a href="https://wordpress.org/support/plugin/pdfjs-viewer-shortcode/" target="_blank">leave feedback</a> on how it works.</span></td>
 				</tr>
