@@ -18,6 +18,10 @@ $plugin_settings = array(
 		'name' => 'Show Search Button',
 		'slug' => 'search_button',
 	),
+	'search' => array(
+		'name' => 'Show Editing Buttons',
+		'slug' => 'editing_buttons',
+	),
 
 	'fullscreen' => array(
 		'name' => 'Show Fullscreen Link',
@@ -70,6 +74,7 @@ function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_download_button', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_print_button', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_search_button', 'pdfjs_callback' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_editing_buttons', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_text', 'pdfjs_callback' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_fullscreen_link_target', 'pdfjs_callback' );
@@ -100,6 +105,7 @@ function pdfjs_options_page() {
 			$download_button      = get_option( 'pdfjs_download_button', 'on' );
 			$print_button         = get_option( 'pdfjs_print_button', 'on' );
 			$search_button        = get_option( 'pdfjs_search_button', 'on' );
+			$editing_buttons        = get_option( 'pdfjs_editing_buttons', 'on' );
 			$fullscreen_link      = get_option( 'pdfjs_fullscreen_link', 'on' );
 			$fullscreen_link_text = get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' );
 			$link_target          = get_option( 'pdfjs_fullscreen_link_target', '' );
@@ -126,6 +132,10 @@ function pdfjs_options_page() {
 				<tr>
 					<th scope="row"><label for="pdfjs_search_button"><?php esc_html_e( 'Show Search Button', 'pdfjs-viewer' ); ?> <sup>1</sup></label></th>
 					<td><input type="checkbox" id="pdfjs_search_button" name="pdfjs_search_button" <?php echo $search_button ? 'checked' : ''; ?> /></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="pdfjs_editing_buttons"><?php esc_html_e( 'Show Editing Buttons', 'pdfjs-viewer' ); ?> <sup>1</sup></label></th>
+					<td><input type="checkbox" id="pdfjs_editing_buttons" name="pdfjs_editing_buttons" <?php echo $editing_buttons ? 'checked' : ''; ?> /></td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="pdfjs_fullscreen_link"><?php esc_html_e( 'Show Fullscreen Link', 'pdfjs-viewer' ); ?></label></th>

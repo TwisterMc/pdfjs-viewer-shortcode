@@ -85,6 +85,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$zoom              = pdfjs_validate_zoom( $incoming_from_handler['zoom'] );
 	$pagemode          = get_option( 'pdfjs_viewer_pagemode', 'none' );
 	$searchbutton      = get_option( 'pdfjs_search_button', 'on' );
+	$editingbuttons    = get_option( 'pdfjs_editing_buttons', 'on' );
 	$attachment_id     = pdfjs_sanatize_number( $incoming_from_handler['attachment_id'] );
 	$file_url          = sanitize_url( $incoming_from_handler['url'] );
 	$pdfjs_custom_page = false; // DISABLED get_option( 'pdfjs_custom_page', '' );
@@ -95,6 +96,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	set_transient( 'pdfjs_button_zoom_' . $attachment_id, $zoom );
 	set_transient( 'pdfjs_button_pagemode_' . $attachment_id, $pagemode );
 	set_transient( 'pdfjs_button_searchbutton_' . $attachment_id, $searchbutton );
+	set_transient( 'pdfjs_button_editingbuttons_' . $attachment_id, $editingbuttons );
 
 	// checks to see if the $file_url is encoded, if so, decode it.
 	if ( strpos( $file_url, '%2F' ) ) {
@@ -119,6 +121,12 @@ function pdfjs_generator( $incoming_from_handler ) {
 		$searchbutton = 'false';
 	}
 
+	if ( 'on' === $editingbuttons ) {
+		$editingbuttons = 'true';
+	} else {
+		$editingbuttons = 'false';
+	}
+
 	if ( 'true' === $fullscreen_target ) {
 		$fullscreen_target = 'target="_blank"';
 	} else {
@@ -128,7 +136,7 @@ function pdfjs_generator( $incoming_from_handler ) {
 	$attachment_info = '?file=' . $file_url . '&attachment_id=' . $attachment_id;
 
 	$nonce     = wp_create_nonce( 'pdfjs_full_screen' );
-	$final_url = $viewer_base_url . $attachment_info . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '&pagemode=' . $pagemode . '&_wpnonce=' . $nonce;
+	$final_url = $viewer_base_url . $attachment_info . '&dButton=' . $download . '&pButton=' . $print . '&oButton=' . $openfile . '&sButton=' . $searchbutton . '&editButtons=' . $editingbuttons . '&pagemode=' . $pagemode . '&_wpnonce=' . $nonce;
 
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
