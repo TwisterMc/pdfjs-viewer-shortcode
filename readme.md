@@ -1,9 +1,9 @@
 # PDF.js Viewer
 
 -   Contributors: FalconerWeb, twistermc
--   Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode
+-   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 4.9
--   Tested up to: 6.5
+-   Tested up to: 6.6.1
 -   Stable tag: 2.2.1
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -55,7 +55,8 @@ This plugin can be installed either directly from your WordPress admin panel by 
 ## Changelog
 
 ### 2.2.1
-- mjs workaround
+- .mjs workaround
+- Updated to PDFjs 4.5.136
 
 ### 2.2
 - Updated to PDFjs 4.3.136
