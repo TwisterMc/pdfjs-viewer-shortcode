@@ -15,7 +15,7 @@ function pdfjs_register_gutenberg_card_block() {
 		'gutenberg-pdfjs',
 		plugins_url( '../blocks/dist/blocks.build.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-element', 'wp-editor' ),
-		'2.2.1',
+		'2.2.2',
 		true
 	);
 
@@ -36,7 +36,7 @@ function pdfjs_register_gutenberg_card_block() {
 		'gutenberg-pdfjs',
 		plugins_url( '../blocks/dist/style.css', __FILE__ ),
 		'',
-		'2.2.1'
+		'2.2.2'
 	);
 
 	register_block_type(
