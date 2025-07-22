@@ -178,15 +178,15 @@ See https://github.com/adobe-type-tools/cmap-resources
 
         <div id="secondaryToolbar" class="secondaryToolbar hidden doorHangerRight">
             <div id="secondaryToolbarButtonContainer">
-                <button id="secondaryOpenFile" class="secondaryToolbarButton" <?php if ($_GET["oButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="51" data-l10n-id="pdfjs-open-file-button">
+                <button id="secondaryOpenFile" class="secondaryToolbarButton" <?php if (isset($_GET["oButton"]) && $_GET["oButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Open File" tabindex="51" data-l10n-id="pdfjs-open-file-button">
                     <span data-l10n-id="pdfjs-open-file-button-label">Open</span>
                 </button>
 
-                <button id="secondaryPrint" class="secondaryToolbarButton visibleMediumView" <?php if ($_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="52" data-l10n-id="pdfjs-print-button">
+                <button id="secondaryPrint" class="secondaryToolbarButton visibleMediumView" <?php if (isset($_GET["pButton"]) && $_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="52" data-l10n-id="pdfjs-print-button">
                     <span data-l10n-id="pdfjs-print-button-label">Print</span>
                 </button>
 
-                <button id="secondaryDownload" class="secondaryToolbarButton visibleMediumView" <?php if ($_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Save" tabindex="53" data-l10n-id="pdfjs-save-button">
+                <button id="secondaryDownload" class="secondaryToolbarButton visibleMediumView" <?php if (isset($_GET["dButton"]) && $_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Save" tabindex="53" data-l10n-id="pdfjs-save-button">
                     <span data-l10n-id="pdfjs-save-button-label">Save</span>
                 </button>
 
@@ -311,11 +311,11 @@ See https://github.com/adobe-type-tools/cmap-resources
 
                         <div id="editorModeSeparator" class="verticalToolbarSeparator"></div>
 
-                        <button id="print" class="toolbarButton hiddenMediumView" <?php if ($_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="41" data-l10n-id="pdfjs-print-button">
+                        <button id="print" class="toolbarButton hiddenMediumView" <?php if (isset($_GET["pButton"]) && $_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="41" data-l10n-id="pdfjs-print-button">
                             <span data-l10n-id="pdfjs-print-button-label">Print</span>
                         </button>
 
-                        <button id="download" class="toolbarButton hiddenMediumView" <?php if ($_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Save" tabindex="42" data-l10n-id="pdfjs-save-button">
+                        <button id="download" class="toolbarButton hiddenMediumView" <?php if (isset($_GET["dButton"]) && $_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?> title="Save" tabindex="42" data-l10n-id="pdfjs-save-button">
                             <span data-l10n-id="pdfjs-save-button-label">Save</span>
                         </button>
 
