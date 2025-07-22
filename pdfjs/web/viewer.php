@@ -294,7 +294,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                         <span id="numPages" class="toolbarLabel"></span>
                     </div>
                     <div id="toolbarViewerRight">
-                        <div id="editorModeButtons" class="splitToolbarButton toggled" role="radiogroup">
+                        <div id="editorModeButtons" class="splitToolbarButton toggled" <?php if ($_GET["editButtons"]!=="true") { echo 'style="display:none;"'; } ?> role="radiogroup">
                             <button id="editorHighlight" class="toolbarButton" hidden="true" disabled="disabled" title="Highlight" role="radio" aria-checked="false" aria-controls="editorHighlightParamsToolbar" tabindex="31" data-l10n-id="pdfjs-editor-highlight-button">
                                 <span data-l10n-id="pdfjs-editor-highlight-button-label">Highlight</span>
                             </button>
@@ -309,7 +309,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                             </button>
                         </div>
 
-                        <div id="editorModeSeparator" class="verticalToolbarSeparator"></div>
+                        <div id="editorModeSeparator" class="verticalToolbarSeparator" <?php if ($_GET["editButtons"]!=="true") { echo 'style="display:none;"'; } ?>></div>
 
                         <button id="print" class="toolbarButton hiddenMediumView" <?php if (isset($_GET["pButton"]) && $_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?> title="Print" tabindex="41" data-l10n-id="pdfjs-print-button">
                             <span data-l10n-id="pdfjs-print-button-label">Print</span>
@@ -319,7 +319,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                             <span data-l10n-id="pdfjs-save-button-label">Save</span>
                         </button>
 
-                        <div class="verticalToolbarSeparator hiddenMediumView"></div>
+                        <div class="verticalToolbarSeparator hiddenMediumView" <?php if ($_GET["pButton"]!=="true" and $_GET["dButton"]!=="true") { echo 'style="display:none;"'; } ?>></div>
 
                         <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="43" data-l10n-id="pdfjs-tools-button" aria-expanded="false" aria-controls="secondaryToolbar">
                             <span data-l10n-id="pdfjs-tools-button-label">Tools</span>
