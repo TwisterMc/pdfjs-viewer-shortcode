@@ -273,6 +273,8 @@ See https://github.com/adobe-type-tools/cmap-resources
                   </div>
                 </div>
 
+                <div id="editorModeSeparator" class="verticalToolbarSeparator"></div>
+
                 <div class="toolbarHorizontalGroup hiddenMediumView">
                   <button id="printButton" class="toolbarButton" type="button" tabindex="0" data-l10n-id="pdfjs-print-button" <?php if (isset($_GET["pButton"]) && $_GET["pButton"]!=="true") { echo 'style="display:none;"'; }?>>
                     <span data-l10n-id="pdfjs-print-button-label"></span>
@@ -305,8 +307,6 @@ See https://github.com/adobe-type-tools/cmap-resources
                 </button>
 
                       </div>
-
-                      <!-- end fix ^^^ -->
 
                 <div class="horizontalToolbarSeparator"></div>
 
