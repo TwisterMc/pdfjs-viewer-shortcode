@@ -58,6 +58,7 @@ This plugin can be installed either directly from your WordPress admin panel by 
 - Updated PDFjs to PDF.js 5.3.93
 - Merged 'Add toggle to disable editing buttons' PR
 - Merged 'Fix PHP Warnings: Undefined array key' PR
+- Package security updates / rebuild
 
 ### 2.2.2
 - PDFjs with legacy browser support
