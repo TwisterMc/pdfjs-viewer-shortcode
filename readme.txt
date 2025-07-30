@@ -3,8 +3,8 @@
 -   Contributors: FalconerWeb, twistermc
 -   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 4.9
--   Tested up to: 6.6.1
--   Stable tag: 2.2.2
+-   Tested up to: 6.8.2
+-   Stable tag: 2.2.3
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
 -   Requires PHP: 7.2
@@ -53,6 +53,12 @@ Older blocks will be marked as _invalid_ in Gutenberg as we add new features. Yo
 This plugin can be installed either directly from your WordPress admin panel by searching for **PDF.js Viewer**, or downloading from the Wordpress Plugin Repository and uploading and expanding the archive into your sites `wp-content/plugins` directory.
 
 ## Changelog
+
+### 2.2.3
+- Updated PDFjs to PDF.js 5.3.93
+- Merged 'Add toggle to disable editing buttons' PR
+- Merged 'Fix PHP Warnings: Undefined array key' PR
+- Package security updates / rebuild
 
 ### 2.2.2
 - PDFjs with legacy browser support

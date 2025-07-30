@@ -2,3 +2,4 @@
 /node_modules/
 /olaf-pdfjs-viewer-shortcode alias
 .history/*
+*.DS_Store
