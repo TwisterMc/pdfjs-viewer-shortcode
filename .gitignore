@@ -1,5 +1,6 @@
 .idea*
 /node_modules/
+/vendor/
 /olaf-pdfjs-viewer-shortcode alias
 .history/*
 *.DS_Store
