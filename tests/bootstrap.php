@@ -1,7 +1,4 @@
 <?php
-use Brain\Monkey; 
-
-require __DIR__ . '/../vendor/autoload.php';
 
 // Define minimal constants / functions used by the plugin during tests.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,6 +7,151 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! defined( 'PDFJS_PLUGIN_VERSION' ) ) {
     define( 'PDFJS_PLUGIN_VERSION', 'test-version' );
 }
+
+if ( ! function_exists( 'add_action' ) ) {
+    function add_action( $hook, $callback, $priority = 10, $accepted_args = 1 ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'add_filter' ) ) {
+    function add_filter( $hook, $callback, $priority = 10, $accepted_args = 1 ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'add_shortcode' ) ) {
+    function add_shortcode( $tag, $callback ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'register_setting' ) ) {
+    function register_setting( $option_group, $option_name, $args = array() ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'wp_cache_get' ) ) {
+    function wp_cache_get( $key, $group = '' ) {
+        static $cache = array();
+        $cache_key = $group . ':' . $key;
+        return array_key_exists( $cache_key, $cache ) ? $cache[ $cache_key ] : false;
+    }
+}
+if ( ! function_exists( 'wp_cache_set' ) ) {
+    function wp_cache_set( $key, $data, $group = '', $expire = 0 ) {
+        static $cache = array();
+        $cache[ $group . ':' . $key ] = $data;
+        return true;
+    }
+}
+if ( ! function_exists( 'wp_cache_delete' ) ) {
+    function wp_cache_delete( $key, $group = '' ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'add_query_arg' ) ) {
+    function add_query_arg( $key, $value = null, $url = null ) {
+        $query = array();
+        if ( is_array( $key ) ) {
+            $query = $key;
+            $url = $value;
+        } else {
+            $query = array( $key => $value );
+        }
+
+        $parts = parse_url( $url );
+        $base = '';
+        if ( isset( $parts['scheme'] ) ) {
+            $base .= $parts['scheme'] . '://';
+        }
+        if ( isset( $parts['host'] ) ) {
+            $base .= $parts['host'];
+        }
+        if ( isset( $parts['port'] ) ) {
+            $base .= ':' . $parts['port'];
+        }
+        if ( isset( $parts['path'] ) ) {
+            $base .= $parts['path'];
+        }
+
+        $existing = array();
+        if ( isset( $parts['query'] ) ) {
+            parse_str( $parts['query'], $existing );
+        }
+        $merged = array_merge( $existing, $query );
+        return $base . '?' . http_build_query( $merged );
+    }
+}
+if ( ! function_exists( 'absint' ) ) {
+    function absint( $maybeint ) {
+        return abs( intval( $maybeint ) );
+    }
+}
+if ( ! function_exists( '__' ) ) {
+    function __( $text, $domain = 'default' ) {
+        return translate( $text, $domain );
+    }
+}
+if ( ! function_exists( 'esc_textarea' ) ) {
+    function esc_textarea( $text ) {
+        return htmlspecialchars( (string) $text, ENT_QUOTES, 'UTF-8' );
+    }
+}
+if ( ! function_exists( 'get_admin_url' ) ) {
+    function get_admin_url( $blog_id = null, $path = '', $scheme = 'admin' ) {
+        return 'https://example.com/wp-admin/';
+    }
+}
+if ( ! function_exists( 'settings_fields' ) ) {
+    function settings_fields( $option_group ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'submit_button' ) ) {
+    function submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true ) {
+        return true;
+    }
+}
+if ( ! function_exists( 'checked' ) ) {
+    function checked( $checked, $current = true, $echo = true ) {
+        return (string) $checked === (string) $current ? 'checked="checked"' : '';
+    }
+}
+if ( ! function_exists( 'selected' ) ) {
+    function selected( $selected, $current = true, $echo = true ) {
+        return (string) $selected === (string) $current ? 'selected="selected"' : '';
+    }
+}
+if ( ! function_exists( 'wp_kses_post' ) ) {
+    function wp_kses_post( $data ) {
+        return $data;
+    }
+}
+if ( ! function_exists( 'get_post_mime_type' ) ) {
+    function get_post_mime_type( $post_id = 0 ) {
+        return 'application/pdf';
+    }
+}
+if ( ! function_exists( 'wp_get_attachment_url' ) ) {
+    function wp_get_attachment_url( $attachment_id = 0 ) {
+        return 'https://example.com/wp-content/uploads/test.pdf';
+    }
+}
+if ( ! function_exists( 'get_the_title' ) ) {
+    function get_the_title( $post = 0 ) {
+        return 'Test PDF';
+    }
+}
+if ( ! function_exists( 'wp_die' ) ) {
+    function wp_die( $message = '' ) {
+        throw new RuntimeException( (string) $message );
+    }
+}
+if ( ! function_exists( 'add_options_page' ) ) {
+    function add_options_page( $page_title, $menu_title, $capability, $menu_slug, $callback = '' ) {
+        return 'settings_page_pdfjs';
+    }
+}
+
+require __DIR__ . '/../vendor/autoload.php';
 
 // Basic stubs for WordPress functions used in tests.
 if ( ! function_exists( 'plugin_dir_url' ) ) {
@@ -238,17 +380,6 @@ if ( ! function_exists( 'register_block_type' ) ) {
         return true;
     }
 }
-if ( ! function_exists( 'function_exists' ) ) {
-    // This is a PHP built-in, but we need to ensure it's available
-}
-if ( ! function_exists( 'file_exists' ) ) {
-    // This is a PHP built-in, but we need to ensure it's available
-}
 if ( ! defined( 'REST_REQUEST' ) ) {
     define( 'REST_REQUEST', false );
 }
-
-// Prepare Brain Monkey lifecycle hooks.
-Monkey\setUp();
-
-// PHPUnit shutdown will call Monkey\tearDown() via tests' tearDown. Use trait below.

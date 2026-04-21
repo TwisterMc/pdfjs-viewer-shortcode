@@ -1,19 +1,24 @@
 {
-  "name": "twistermc/pdfjs-viewer-shortcode",
-  "type": "wordpress-plugin",
-  "require": {
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.6",
-    "brain/monkey": "^2.6"
-  },
-  "autoload": {
-    "files": [
-      "inc/embed.php",
-      "inc/render-viewer.php",
-      "inc/shortcode.php",
-      "inc/gutenberg-block.php",
-      "inc/media-button.php"
-    ]
-  }
+	"name": "twistermc/pdfjs-viewer-shortcode",
+	"type": "wordpress-plugin",
+	"require": {},
+	"require-dev": {
+		"phpunit/phpunit": "^9.6",
+		"brain/monkey": "^2.6"
+	},
+	"scripts": {
+		"test": "phpunit --configuration phpunit.xml.dist",
+		"test:coverage": "phpunit --configuration phpunit.xml.dist --coverage-text"
+	},
+	"autoload": {
+		"files": [
+			"inc/embed.php",
+			"inc/external-domains.php",
+			"inc/render-viewer.php",
+			"inc/shortcode.php",
+			"inc/gutenberg-block.php",
+			"inc/media-button.php",
+			"inc/options-page.php"
+		]
+	}
 }

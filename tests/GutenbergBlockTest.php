@@ -42,4 +42,54 @@ final class GutenbergBlockTest extends TestCase {
         $this->assertArrayHasKey('pdfjs_viewer_url', $localized);
         $this->assertEquals('https://example.com/wp-content/plugins/pdfjs-viewer-shortcode/pdfjs/web/viewer.php', $localized['pdfjs_viewer_url']);
     }
+
+    public function test_block_render_maps_attributes_to_render_args() {
+        Functions\when( 'is_admin' )->justReturn( false );
+        Functions\when( 'get_option' )->alias( function( $name, $default = null ) {
+            $map = array(
+                'pdfjs_embed_height' => 800,
+                'pdfjs_embed_width' => 0,
+                'pdfjs_viewer_scale' => 'auto',
+                'pdfjs_fullscreen_link' => 'on',
+                'pdfjs_fullscreen_link_text' => 'View Fullscreen',
+                'pdfjs_fullscreen_link_target' => '',
+                'pdfjs_download_button' => 'on',
+                'pdfjs_print_button' => 'on',
+                'pdfjs_search_button' => 'on',
+                'pdfjs_editing_buttons' => 'on',
+            );
+            return array_key_exists( $name, $map ) ? $map[ $name ] : $default;
+        } );
+
+        $captured = null;
+        Functions\when( 'pdfjs_render_viewer' )->alias( function( $args ) use ( &$captured ) {
+            $captured = $args;
+            return '<iframe class="from-block"></iframe>';
+        } );
+
+        $result = pdfjs_block_render(
+            array(
+                'externalURL' => 'https://cdn.example.com/file.pdf',
+                'viewerHeight' => 950,
+                'viewerWidth' => 1200,
+                'viewerScale' => '125',
+                'showFullscreen' => true,
+                'fullscreenText' => 'Read Fullscreen',
+                'openFullscreen' => true,
+                'showDownload' => false,
+                'showPrint' => false,
+            )
+        );
+
+        $this->assertEquals( '<iframe class="from-block"></iframe>', $result );
+        $this->assertIsArray( $captured );
+        $this->assertEquals( 'https://cdn.example.com/file.pdf', $captured['url'] );
+        $this->assertEquals( '', $captured['attachment_id'] );
+        $this->assertEquals( '950px', $captured['viewer_height'] );
+        $this->assertEquals( '1200px', $captured['viewer_width'] );
+        $this->assertEquals( '125', $captured['zoom'] );
+        $this->assertEquals( 'false', $captured['download'] );
+        $this->assertEquals( 'false', $captured['print'] );
+        $this->assertEquals( 'true', $captured['fullscreen_target'] );
+    }
 }
