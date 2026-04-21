@@ -7,8 +7,8 @@
 		"brain/monkey": "^2.6"
 	},
 	"scripts": {
-		"test": "phpunit --configuration phpunit.xml.dist",
-		"test:coverage": "phpunit --configuration phpunit.xml.dist --coverage-text"
+		"test": "bash ./scripts/test-php.sh",
+		"test:coverage": "vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --testdox --colors=always"
 	},
 	"autoload": {
 		"files": [
