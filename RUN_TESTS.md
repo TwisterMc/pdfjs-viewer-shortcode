@@ -11,7 +11,13 @@ composer test
 
 # Run with coverage summary in terminal
 composer test:coverage
+
+# Run phpunit directly (same flags as composer test)
+vendor/bin/phpunit --configuration phpunit.xml.dist --testdox --colors=always
 ```
+
+`npm test` and `composer test` now run through `scripts/test-php.sh`, which always prints
+discovery and pass/fail status even in shells where PHPUnit produces no stdout.
 
 ## PHPUnit Direct Commands
 
