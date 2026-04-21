@@ -10,6 +10,7 @@
 		"test": "npm run test:php",
 		"test:php": "bash ./scripts/test-php.sh",
 		"test:php:coverage": "composer test:coverage",
+		"test:wp:integration": "composer test:integration",
 		"build": "wp-scripts build blocks/src/index.js --output-path=blocks/build && npm run readme",
 		"start": "wp-scripts start blocks/src/index.js --output-path=blocks/build",
 		"update:pdfjs": "bash ./scripts/update-pdfjs.sh",

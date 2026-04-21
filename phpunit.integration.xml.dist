@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/integration/bootstrap.php"
+         colors="true"
+         verbose="true">
+  <testsuites>
+    <testsuite name="WordPress Integration Tests">
+      <directory suffix="Test.php">tests/integration</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="WP_PHP_BINARY" value="php"/>
+    <env name="WP_TESTS_DOMAIN" value="example.org"/>
+    <env name="WP_TESTS_EMAIL" value="admin@example.org"/>
+    <env name="WP_TESTS_TITLE" value="Test Blog"/>
+  </php>
+</phpunit>

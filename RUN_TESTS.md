@@ -12,12 +12,41 @@ composer test
 # Run with coverage summary in terminal
 composer test:coverage
 
+# Run true WordPress integration tests (requires WP test env)
+composer test:integration
+
 # Run phpunit directly (same flags as composer test)
 vendor/bin/phpunit --configuration phpunit.xml.dist --testdox --colors=always
 ```
 
 `npm test` and `composer test` now run through `scripts/test-php.sh`, which always prints
 discovery and pass/fail status even in shells where PHPUnit produces no stdout.
+
+## WordPress Integration Setup
+
+The integration suite uses `WP_UnitTestCase` and loads the plugin inside a real WordPress
+test runtime.
+
+1. Ensure MySQL is available.
+2. Install WordPress test libraries and core:
+
+```bash
+bash ./scripts/install-wp-tests.sh wordpress_test root root 127.0.0.1
+```
+
+3. Export test library path (defaults to `/tmp/wordpress-tests-lib` if omitted):
+
+```bash
+export WP_TESTS_DIR=/tmp/wordpress-tests-lib
+```
+
+4. Run integration tests:
+
+```bash
+composer test:integration
+# or
+npm run test:wp:integration
+```
 
 ## PHPUnit Direct Commands
 

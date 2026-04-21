@@ -8,7 +8,8 @@
 	},
 	"scripts": {
 		"test": "bash ./scripts/test-php.sh",
-		"test:coverage": "vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --testdox --colors=always"
+		"test:coverage": "vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --testdox --colors=always",
+		"test:integration": "bash ./scripts/test-wp-integration.sh"
 	},
 	"autoload": {
 		"files": [
