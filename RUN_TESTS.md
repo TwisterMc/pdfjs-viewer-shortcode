@@ -3,10 +3,10 @@
 ## Preferred Commands
 
 ```bash
-# Run all PHP unit tests
+# Run everything (unit + WordPress integration)
 npm test
 
-# Same as npm test (Composer directly)
+# Run PHP unit tests only (Composer)
 composer test
 
 # Run with coverage summary in terminal
@@ -19,8 +19,10 @@ composer test:integration
 vendor/bin/phpunit --configuration phpunit.xml.dist --testdox --colors=always
 ```
 
-`npm test` and `composer test` now run through `scripts/test-php.sh`, which always prints
-discovery and pass/fail status even in shells where PHPUnit produces no stdout.
+`composer test` runs through `scripts/test-php.sh`, which always prints discovery and
+pass/fail status even in shells where PHPUnit produces no stdout.
+
+`npm test` runs `test:php` first and then `test:wp:integration`.
 
 ## WordPress Integration Setup
 

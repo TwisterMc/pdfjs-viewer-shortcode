@@ -7,7 +7,7 @@
 		"node": "^22.22.2 || ^24.15.0 || >=26.0.0"
 	},
 	"scripts": {
-		"test": "npm run test:php",
+		"test": "npm run test:php && npm run test:wp:integration",
 		"test:php": "bash ./scripts/test-php.sh",
 		"test:php:coverage": "composer test:coverage",
 		"test:wp:integration": "composer test:integration",
