@@ -1,12 +1,13 @@
 # Spanish (Spain) Translation for PDFjs Viewer - Embed PDFs
-# Copyright (C) 2025 PDFjs Viewer - Embed PDFs
+# Copyright (C) 2026 PDFjs Viewer - Embed PDFs
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PDFjs Viewer - Embed PDFs 2.2.5\n"
-"Report-Msgid-Bugs-To: https://github.com/TwisterMc/PDF.js-Viewer-Shortcode/issues\n"
-"POT-Creation-Date: 2025-11-13 00:00:00+00:00\n"
-"PO-Revision-Date: 2025-11-13 00:00:00+00:00\n"
+"Project-Id-Version: PDFjs Viewer - Embed PDFs 3.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdfjs-viewer-"
+"shortcode\n"
+"POT-Creation-Date: 2026-04-20T03:16:39+00:00\n"
+"PO-Revision-Date: 2026-04-05 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -15,220 +16,550 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: blocks/src/block/block.js:23
-msgid "Embed PDF.js Viewer"
-msgstr "Incrustar visor PDF.js"
+#. Plugin Name of the plugin
+#: pdfjs-viewer.php
+msgid "PDFjs Viewer - Embed PDFs"
+msgstr ""
 
-#: blocks/src/block/block.js:80
-msgid "PDF Selector"
-msgstr "Selector de PDF"
+#. Plugin URI of the plugin
+#: pdfjs-viewer.php
+msgid "https://github.com/TwisterMc/pdfjs-viewer-shortcode"
+msgstr ""
 
-#: blocks/src/block/block.js:173
-msgid "PDF.js Options"
-msgstr "Opciones de PDF.js"
+#. Description of the plugin
+#: pdfjs-viewer.php
+msgid "Embed PDFs with the gorgeous PDF.js viewer"
+msgstr ""
 
-#: blocks/src/block/block.js:178
-msgid "Show Save Option"
-msgstr "Mostrar opción de guardar"
+#. Author of the plugin
+#: pdfjs-viewer.php
+msgid ""
+"<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
+"byterevel.com/\">Ben Lawson</a> | <a href=\"https://ko-fi.com/"
+"twistermc\">Support this plugin</a>"
+msgstr ""
 
-#: blocks/src/block/block.js:182
-#: blocks/src/block/block.js:196
-#: blocks/src/block/block.js:210
-#: blocks/src/block/block.js:224
-msgid "Yes"
-msgstr "Sí"
+#. Translators: Message about block recovery after plugin updates.
+#: inc/admin-notice.php:66
+msgid ""
+"PDFjs Viewer has been updated.\n"
+"\n"
+"If you edit a post that contains a PDF, you may see a message with an "
+"\"Attempt Block Recovery\" button. Simply click it as this is a normal part "
+"of how WordPress handles updates.\n"
+"\n"
+"If you choose not to recover the block, your existing PDFs will still work "
+"perfectly, and your visitors won't see any changes."
+msgstr ""
+"PDFjs Viewer ha sido actualizado.\n"
+"\n"
+"Si editas una publicación que contiene un PDF, es posible que veas un "
+"mensaje con un botón \"Intentar recuperación de bloque\". Simplemente haz "
+"clic en él, ya que esto es una parte normal de cómo WordPress gestiona las "
+"actualizaciones.\n"
+"\n"
+"Si decides no recuperar el bloque, tus PDFs existentes seguirán funcionando "
+"perfectamente y tus visitantes no verán ningún cambio."
 
-#: blocks/src/block/block.js:183
-#: blocks/src/block/block.js:197
-#: blocks/src/block/block.js:211
-#: blocks/src/block/block.js:225
-msgid "No"
-msgstr "No"
+#: inc/admin-notice.php:74
+msgid "Dismiss notice"
+msgstr "Cerrar aviso"
 
-#: blocks/src/block/block.js:192
-msgid "Show Print Option"
-msgstr "Mostrar opción de imprimir"
+#: inc/admin-notice.php:74
+msgid "Dismiss"
+msgstr "Cerrar"
 
-#: blocks/src/block/block.js:206
-msgid "Show Fullscreen Option"
-msgstr "Mostrar opción de pantalla completa"
+#: inc/admin-notice.php:124
+msgid "Insufficient permissions."
+msgstr "Permisos insuficientes."
 
-#: blocks/src/block/block.js:220
-msgid "Open Fullscreen in new tab?"
-msgstr "¿Abrir pantalla completa en nueva pestaña?"
-
-#: blocks/src/block/block.js:240
-#: inc/options-page.php:113
-msgid "Embed Height"
-msgstr "Altura de incrustación"
-
-#: blocks/src/block/block.js:244
-msgid "Viewer Height (pixels)"
-msgstr "Altura del visor (píxeles)"
-
-#: blocks/src/block/block.js:254
-#: inc/options-page.php:117
-msgid "Embed Width"
-msgstr "Ancho de incrustación"
-
-#: blocks/src/block/block.js:258
-msgid "Viewer Width (pixels)"
-msgstr "Ancho del visor (píxeles)"
-
-#: blocks/src/block/block.js:274
-msgid "PDF.js Embed"
-msgstr "Incrustación PDF.js"
-
-#: blocks/src/block/block.js:285
-msgid "Remove PDF"
-msgstr "Eliminar PDF"
-
-#: blocks/src/block/block.js:289
-msgid "Remove the current PDF file"
-msgstr "Eliminar el archivo PDF actual"
-
-#: blocks/src/block/block.js:297
-msgid "Choose a PDF file"
-msgstr "Elegir un archivo PDF"
-
-#: blocks/src/block/block.js:301
-msgid "Open media library to choose a PDF file"
-msgstr "Abrir la biblioteca de medios para elegir un archivo PDF"
-
-#: blocks/src/block/block.js:325
-msgid "PDF Preview"
-msgstr "Vista previa del PDF"
-
-#: blocks/src/block/block.js:342
-msgid "PDF document preview"
-msgstr "Vista previa del documento PDF"
-
-#: inc/custom-page.php:9
+#: inc/custom-page.php:7 inc/custom-page.php:17 inc/custom-page.php:21
 msgid "Security Check Failed"
 msgstr "Verificación de seguridad fallida"
 
-#: inc/media-button.php:14
-msgid "Add PDF"
-msgstr "Agregar PDF"
+#: inc/custom-page.php:28
+msgid "Invalid attachment."
+msgstr "Archivo adjunto no válido."
+
+#: inc/custom-page.php:33
+msgid "You do not have permission to view this attachment."
+msgstr "No tienes permiso para ver este archivo adjunto."
+
+#: inc/custom-page.php:39
+msgid "This attachment is not a PDF file."
+msgstr "Este archivo adjunto no es un archivo PDF."
+
+#: inc/elementor-integration.php:24 inc/elementor-widget.php:32
+msgid "PDF.js Viewer"
+msgstr "Visor PDF.js"
+
+#: inc/elementor-widget.php:81
+msgid "PDF Content"
+msgstr "Contenido PDF"
+
+#: inc/elementor-widget.php:89
+msgid "Select PDF"
+msgstr "Seleccionar PDF"
+
+#: inc/elementor-widget.php:92
+msgid "Select a PDF file from your media library."
+msgstr "Selecciona un archivo PDF de tu biblioteca de medios."
+
+#: inc/elementor-widget.php:103
+msgid "External PDF URL"
+msgstr "URL del PDF externo"
+
+#: inc/elementor-widget.php:105
+msgid "Enter the full URL to a PDF from an allowed domain"
+msgstr "Introduce la URL completa a un PDF de un dominio permitido"
+
+#: inc/elementor-widget.php:117
+msgid "Display Options"
+msgstr "Opciones de visualización"
+
+#: inc/elementor-widget.php:125
+msgid "Viewer Height"
+msgstr "Altura del visor"
+
+#: inc/elementor-widget.php:151
+msgid "Viewer Width"
+msgstr "Ancho del visor"
+
+#: inc/elementor-widget.php:177
+msgid "Zoom Level"
+msgstr "Nivel de zoom"
+
+#: inc/elementor-widget.php:180 inc/options-page.php:191
+msgid "Auto"
+msgstr "Automático"
+
+#: inc/elementor-widget.php:181
+msgid "Fit Page"
+msgstr "Ajustar a la página"
+
+#: inc/elementor-widget.php:182
+msgid "Fit Width"
+msgstr "Ajustar al ancho"
+
+#: inc/elementor-widget.php:200
+msgid "Toolbar Options"
+msgstr "Opciones de la barra de herramientas"
+
+#: inc/elementor-widget.php:208
+msgid "Download Button"
+msgstr "Botón de descarga"
+
+#: inc/elementor-widget.php:210 inc/elementor-widget.php:221
+msgid "Show"
+msgstr "Mostrar"
+
+#: inc/elementor-widget.php:211 inc/elementor-widget.php:222
+msgid "Hide"
+msgstr "Ocultar"
+
+#: inc/elementor-widget.php:219
+msgid "Print Button"
+msgstr "Botón de imprimir"
+
+#: inc/elementor-widget.php:233
+msgid "Fullscreen Link"
+msgstr "Enlace de pantalla completa"
+
+#: inc/elementor-widget.php:241 inc/options-page.php:147
+msgid "Show Fullscreen Link"
+msgstr "Mostrar enlace de pantalla completa"
+
+#: inc/elementor-widget.php:243 inc/elementor-widget.php:267
+msgid "Yes"
+msgstr "Sí"
+
+#: inc/elementor-widget.php:244 inc/elementor-widget.php:268
+msgid "No"
+msgstr "No"
+
+#: inc/elementor-widget.php:252
+msgid "Link Text"
+msgstr "Texto del enlace"
+
+#: inc/elementor-widget.php:255
+msgid "View Fullscreen"
+msgstr "Ver en pantalla completa"
+
+#: inc/elementor-widget.php:265
+msgid "Open in New Tab"
+msgstr "Abrir en nueva pestaña"
+
+#: inc/elementor-widget.php:282
+msgid "Style"
+msgstr "Estilo"
+
+#: inc/elementor-widget.php:290
+msgid "Background Color"
+msgstr "Color de fondo"
+
+#: inc/elementor-widget.php:317
+msgid "Padding"
+msgstr "Relleno"
+
+#: inc/elementor-widget.php:329
+msgid "Margin"
+msgstr "Margen"
+
+#: inc/elementor-widget.php:363 inc/render-viewer.php:231
+msgid "PDF Viewer"
+msgstr "Visor de PDF"
+
+#: inc/elementor-widget.php:364
+msgid "Please select a PDF file from your media library to display the viewer."
+msgstr ""
+"Por favor, selecciona un archivo PDF de tu biblioteca de medios para mostrar "
+"el visor."
+
+#: inc/elementor-widget.php:427 inc/render-viewer.php:222
+msgid "PDF Document"
+msgstr "Documento PDF"
+
+#: inc/elementor-widget.php:445
+msgid "PDFjs Viewer — visible on the published page"
+msgstr "Visor PDFjs — visible en la página publicada"
 
 #: inc/media-button.php:17
 msgid "Add PDF to content"
 msgstr "Agregar PDF al contenido"
 
-#: inc/render-viewer.php:99
-msgid "Open PDF in fullscreen mode"
-msgstr "Abrir PDF en modo de pantalla completa"
+#: inc/media-button.php:17
+msgid "Add PDF"
+msgstr "Agregar PDF"
 
-#: inc/render-viewer.php:106
-msgid "PDF Viewer"
-msgstr "Visor de PDF"
-
-#. translators: %s: PDF file name
-#: inc/render-viewer.php:112
-msgid "PDF document: %s"
-msgstr "Documento PDF: %s"
-
-#: inc/options-page.php:55
+#: inc/options-page.php:107
 msgid "You do not have sufficient permissions to access this page."
 msgstr "No tienes permisos suficientes para acceder a esta página."
 
-#: inc/options-page.php:59
+#: inc/options-page.php:111
 msgid "PDFjs Viewer Options"
 msgstr "Opciones del visor PDFjs"
 
-#: inc/options-page.php:79
+#: inc/options-page.php:133
 msgid "Defaults"
 msgstr "Valores predeterminados"
 
-#: inc/options-page.php:81
-msgid "Most defaults only affect new posts and existing posts when you edit them. Not all options work with the shortcode."
-msgstr "La mayoría de los valores predeterminados solo afectan las publicaciones nuevas y existentes cuando las editas. No todas las opciones funcionan con el shortcode."
+#: inc/options-page.php:135
+msgid ""
+"These are the initial settings applied when a PDF is embedded. You can "
+"adjust them in the editor at any time. Updates to these default settings "
+"only apply to new PDF embeds, not existing ones."
+msgstr ""
+"Estas son la configuración inicial aplicada cuando se incrusta un PDF. Puede "
+"ajustarlas en el editor en cualquier momento. Las actualizaciones de esta "
+"configuración predeterminada solo se aplican a nuevas incrustaciones de PDF, "
+"no a las existentes."
 
-#: inc/options-page.php:85
+#: inc/options-page.php:139
 msgid "Show Save Button"
 msgstr "Mostrar botón de guardar"
 
-#: inc/options-page.php:89
+#: inc/options-page.php:143
 msgid "Show Print Button"
 msgstr "Mostrar botón de imprimir"
 
-#: inc/options-page.php:93
-msgid "Show Search Button"
-msgstr "Mostrar botón de búsqueda"
-
-#: inc/options-page.php:97
-msgid "Show Editing Buttons"
-msgstr "Mostrar botones de edición"
-
-#: inc/options-page.php:101
-msgid "Show Fullscreen Link"
-msgstr "Mostrar enlace de pantalla completa"
-
-#: inc/options-page.php:105
+#: inc/options-page.php:151
 msgid "Fullscreen Link Text"
 msgstr "Texto del enlace de pantalla completa"
 
-#: inc/options-page.php:109
+#: inc/options-page.php:155
 msgid "Fullscreen Links in New Tabs"
 msgstr "Enlaces de pantalla completa en nuevas pestañas"
 
-#: inc/options-page.php:120
+#: inc/options-page.php:159
+msgid "Embed Height"
+msgstr "Altura de incrustación"
+
+#: inc/options-page.php:163
+msgid "Embed Width"
+msgstr "Ancho de incrustación"
+
+#: inc/options-page.php:166
 msgid "Note: 0 = 100%"
 msgstr "Nota: 0 = 100%"
 
-#: inc/options-page.php:124
+#: inc/options-page.php:171
+msgid "Global Defaults"
+msgstr "Valores predeterminados globales"
+
+#: inc/options-page.php:173
+msgid ""
+"These settings control how all PDFs appear on your site. Any changes you "
+"make here will affect all PDFs that use PDF.js."
+msgstr ""
+"Esta configuración controla cómo aparecen todos los PDF en su sitio. "
+"Cualquier cambio que realice aquí afectará a todos los PDF que usan PDF.js."
+
+#: inc/options-page.php:179
+msgid "Show Search Button"
+msgstr "Mostrar botón de búsqueda"
+
+#: inc/options-page.php:183
+msgid "Show Editing Buttons"
+msgstr "Mostrar botones de edición"
+
+#: inc/options-page.php:188
 msgid "Viewer Scale"
 msgstr "Escala del visor"
 
-#: inc/options-page.php:142
+#: inc/options-page.php:192
+msgid "Actual Size"
+msgstr "Tamaño real"
+
+#: inc/options-page.php:193
+msgid "Page Fit"
+msgstr "Ajuste de página"
+
+#: inc/options-page.php:194
+msgid "Page Width"
+msgstr "Ancho de página"
+
+#: inc/options-page.php:195
+msgid "50%"
+msgstr "50%"
+
+#: inc/options-page.php:196
+msgid "75%"
+msgstr "75%"
+
+#: inc/options-page.php:197
+msgid "100%"
+msgstr "100%"
+
+#: inc/options-page.php:198
+msgid "125%"
+msgstr "125%"
+
+#: inc/options-page.php:199
+msgid "150%"
+msgstr "150%"
+
+#: inc/options-page.php:200
+msgid "200%"
+msgstr "200%"
+
+#: inc/options-page.php:206
 msgid "Page Mode (aka Sidebar)"
 msgstr "Modo de página (barra lateral)"
 
-#: inc/options-page.php:153
+#: inc/options-page.php:209
+msgid "None"
+msgstr "Ninguno"
+
+#: inc/options-page.php:210
+msgid "Thumbs"
+msgstr "Miniaturas"
+
+#: inc/options-page.php:211
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: inc/options-page.php:212
+msgid "Attachments"
+msgstr "Archivos adjuntos"
+
+#: inc/options-page.php:221
+msgid "Beta Features"
+msgstr "Funciones beta"
+
+#: inc/options-page.php:225
+msgid ""
+"These features are experimental and may not work on all sites. Test "
+"carefully before using on a production site, and"
+msgstr ""
+"Estas funciones son experimentales y es posible que no funcionen en todos "
+"los sitios. Pruébalas con cuidado antes de usarlas en un sitio en "
+"producción, y"
+
+#: inc/options-page.php:225
+msgid "leave feedback"
+msgstr "deja tus comentarios"
+
+#: inc/options-page.php:229
 msgid "Alternative PDF Loading"
 msgstr "Carga alternativa de PDF"
 
-#: inc/options-page.php:154
-msgid "leave feedback"
-msgstr "dejar comentarios"
+#: inc/options-page.php:231
+msgid ""
+"Use this if the fullscreen link shows a \"Security Check Failed\" error or a "
+"blank page. It loads the viewer through WordPress instead of directly, which "
+"works better on some hosting setups."
+msgstr ""
 
-#: inc/options-page.php:154
-msgid "on how it works."
-msgstr "sobre cómo funciona."
+#: inc/options-page.php:235
+msgid "Allow External Domain PDFs"
+msgstr "Permitir PDFs de dominios externos"
 
-#: inc/options-page.php:159
-msgid "When editing existing content, it may cause existing blocks to have \"unexpected or invalid content\" upon editing. Don't worry, just click the three little dots, choose \"Attempt Block Recovery\", and everything should be working again. This \"unexpected or invalid content\" will not affect live content, just content in the editor."
-msgstr "Al editar contenido existente, puede causar que los bloques existentes tengan \"contenido inesperado o no válido\" al editar. No te preocupes, solo haz clic en los tres puntos pequeños, elige \"Intentar recuperación de bloque\" y todo debería funcionar de nuevo. Este \"contenido inesperado o no válido\" no afectará el contenido publicado, solo el contenido en el editor."
+#: inc/options-page.php:237
+msgid ""
+"Allow PDFs hosted on other domains, such as a CDN. Only add domains you "
+"fully control or explicitly trust."
+msgstr ""
+"Permite PDFs alojados en otros dominios, como una CDN. Solo añade dominios "
+"que controles completamente o en los que confíes explícitamente."
 
-#: inc/options-page.php:162
-msgid "These options are not customizable per page/post at this time. Only globally."
-msgstr "Estas opciones no son personalizables por página/publicación en este momento. Solo globalmente."
+#: inc/options-page.php:241
+msgid "Allowed Domains"
+msgstr "Dominios permitidos"
 
-#: inc/options-page.php:183
+#: inc/options-page.php:244
+msgid ""
+"One hostname per line. Do not include https:// or paths. Example: "
+"cdn.example.com"
+msgstr ""
+"Un nombre de host por línea. No incluyas https:// ni rutas. Ejemplo: "
+"cdn.example.com"
+
+#: inc/options-page.php:246
+msgid ""
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this; standard web servers typically do not."
+msgstr ""
+"El servidor externo debe enviar cabeceras CORS (Access-Control-Allow-Origin) "
+"para que los PDFs se carguen. La mayoría de las CDN admiten esto; los "
+"servidores web estándar normalmente no lo hacen."
+
+#: inc/options-page.php:277
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: inc/options-page.php:278
+msgid "Support this plugin"
+msgstr "Apoya este plugin"
+
+#: inc/options-page.php:300
 msgid "Settings"
 msgstr "Configuración"
 
-#: pdfjs-media-button.js:14
-msgid "Insert a PDF"
-msgstr "Insertar un PDF"
-
-#: pdfjs-media-button.js:17
-msgid "Insert"
-msgstr "Insertar"
-
-#: templates/fullscreen.php:11
-msgid "PDF Viewer"
-msgstr "Visor de PDF"
-
-#: inc/render-viewer.php:96
+#: inc/render-viewer.php:148
 msgid "Security Error:"
 msgstr "Error de seguridad:"
 
-#: inc/render-viewer.php:97
+#: inc/render-viewer.php:149
 msgid "PDF files must be hosted on the same domain as this site."
-msgstr "Los archivos PDF deben estar alojados en el mismo dominio que este sitio."
+msgstr ""
+"Los archivos PDF deben estar alojados en el mismo dominio que este sitio."
 
 #. translators: 1: PDF URL host, 2: Current site host
-#: inc/render-viewer.php:101
+#: inc/render-viewer.php:153
+#, php-format
 msgid "PDF is hosted on: %1$s but this site is: %2$s"
 msgstr "El PDF está alojado en: %1$s pero este sitio es: %2$s"
+
+#: inc/render-viewer.php:202
+msgid "Open PDF in fullscreen mode"
+msgstr "Abrir PDF en modo de pantalla completa"
+
+#. translators: %s: PDF file name
+#: inc/render-viewer.php:226
+#, php-format
+msgid "PDF document: %s"
+msgstr "Documento PDF: %s"
+
+#: inc/render-viewer.php:231
+msgid "Skip to PDF content"
+msgstr "Ir al contenido del PDF"
+
+#~ msgid "Default Zoom Level"
+#~ msgstr "Nivel de zoom predeterminado"
+
+#~ msgid "Search Button"
+#~ msgstr "Botón de búsqueda"
+
+#~ msgid "Editing Buttons"
+#~ msgstr "Botones de edición"
+
+#~ msgid ""
+#~ "Loads the fullscreen viewer via a WordPress page handler instead of "
+#~ "directly through the viewer file. Try this if the fullscreen link shows a "
+#~ "security error."
+#~ msgstr ""
+#~ "Carga el visor de pantalla completa a través de un manejador de páginas "
+#~ "de WordPress en lugar de directamente a través del archivo del visor. "
+#~ "Prueba esto si el enlace de pantalla completa muestra un error de "
+#~ "seguridad."
+
+#~ msgid "Embed PDF.js Viewer"
+#~ msgstr "Incrustar visor PDF.js"
+
+#~ msgid "PDF Selector"
+#~ msgstr "Selector de PDF"
+
+#~ msgid "PDF.js Options"
+#~ msgstr "Opciones de PDF.js"
+
+#~ msgid "Show Save Option"
+#~ msgstr "Mostrar opción de guardar"
+
+#~ msgid "Show Print Option"
+#~ msgstr "Mostrar opción de imprimir"
+
+#~ msgid "Show Fullscreen Option"
+#~ msgstr "Mostrar opción de pantalla completa"
+
+#~ msgid "Open Fullscreen in new tab?"
+#~ msgstr "¿Abrir pantalla completa en nueva pestaña?"
+
+#~ msgid "Viewer Height (pixels)"
+#~ msgstr "Altura del visor (píxeles)"
+
+#~ msgid "Set the PDF viewer height in pixels. Minimum 0, maximum 5000 pixels."
+#~ msgstr ""
+#~ "Establece la altura del visor de PDF en píxeles. Mínimo 0, máximo 5000 "
+#~ "píxeles."
+
+#~ msgid "Viewer Width (pixels)"
+#~ msgstr "Ancho del visor (píxeles)"
+
+#~ msgid ""
+#~ "Set the PDF viewer width in pixels. Use 0 for 100% width. Minimum 0, "
+#~ "maximum 5000 pixels."
+#~ msgstr ""
+#~ "Establece el ancho del visor de PDF en píxeles. Usa 0 para ancho del "
+#~ "100%. Mínimo 0, máximo 5000 píxeles."
+
+#~ msgid "PDF.js Embed"
+#~ msgstr "Incrustación PDF.js"
+
+#~ msgid "Remove the current PDF file"
+#~ msgstr "Eliminar el archivo PDF actual"
+
+#~ msgid "Remove PDF"
+#~ msgstr "Eliminar PDF"
+
+#~ msgid "Open media library to choose a PDF file"
+#~ msgstr "Abrir la biblioteca de medios para elegir un archivo PDF"
+
+#~ msgid "Choose a PDF file"
+#~ msgstr "Elegir un archivo PDF"
+
+#~ msgid "PDF Preview"
+#~ msgstr "Vista previa del PDF"
+
+#~ msgid "PDF document preview"
+#~ msgstr "Vista previa del documento PDF"
+
+#~ msgid ""
+#~ "Most defaults only affect new posts and existing posts when you edit "
+#~ "them. Not all options work with the shortcode."
+#~ msgstr ""
+#~ "La mayoría de los valores predeterminados solo afectan las publicaciones "
+#~ "nuevas y existentes cuando las editas. No todas las opciones funcionan "
+#~ "con el shortcode."
+
+#~ msgid ""
+#~ "These options are not customizable per page/post at this time. Only "
+#~ "globally."
+#~ msgstr ""
+#~ "Estas opciones no son personalizables por página/publicación en este "
+#~ "momento. Solo globalmente."
+
+#~ msgid "Insert a PDF"
+#~ msgstr "Insertar un PDF"
+
+#~ msgid "Insert"
+#~ msgstr "Insertar"

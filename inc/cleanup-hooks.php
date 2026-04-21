@@ -27,9 +27,11 @@ function pdfjs_cleanup_on_deactivation() {
 	
 	// Delete all transients with pdfjs_button_ prefix.
 	$wpdb->query(
-		"DELETE FROM {$wpdb->options} 
-		WHERE option_name LIKE '_transient_pdfjs_button_%' 
-		OR option_name LIKE '_transient_timeout_pdfjs_button_%'"
+		$wpdb->prepare(
+			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
+			$wpdb->esc_like( '_transient_pdfjs_button_' ) . '%',
+			$wpdb->esc_like( '_transient_timeout_pdfjs_button_' ) . '%'
+		)
 	);
 }
 register_deactivation_hook( dirname( __DIR__ ) . '/pdfjs-viewer.php', 'pdfjs_cleanup_on_deactivation' );

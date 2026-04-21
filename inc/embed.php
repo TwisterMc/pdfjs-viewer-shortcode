@@ -63,6 +63,10 @@ function pdfjs_is_percent_or_pixel( $value ) {
 
 // check to ensure there are no quotes in the zoom setting so people can't sneak bad stuff in
 function pdfjs_validate_zoom( $zoom ) {
+	$zoom = (string) $zoom;
+	if ( '' === $zoom || '0' === $zoom ) {
+		return 'auto';
+	}
 	if (strpos($zoom, '"') !== FALSE || strpos($zoom, "'") !== FALSE) {
 		return 'auto';
 	}

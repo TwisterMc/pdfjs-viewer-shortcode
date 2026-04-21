@@ -10,6 +10,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "wp-scripts build blocks/src/index.js --output-path=blocks/build && npm run readme",
 		"start": "wp-scripts start blocks/src/index.js --output-path=blocks/build",
+		"update:pdfjs": "bash ./scripts/update-pdfjs.sh",
 		"lint:js": "wp-scripts lint-js blocks/src",
 		"lint:css": "wp-scripts lint-style blocks/src",
 		"format": "wp-scripts format",
@@ -27,15 +28,28 @@
 	},
 	"homepage": "https://github.com/TwisterMc/PDF.js-Viewer-Shortcode#readme",
 	"devDependencies": {
-		"@wordpress/eslint-plugin": "^5.1.0",
-		"@wordpress/i18n": "^6.8.0",
 		"@wordpress/prettier-config": "^0.2.0",
-		"@wordpress/scripts": "^31.0.0",
-		"sass": "^1.94.0",
-		"sass-loader": "^16.0.6"
+		"@wordpress/scripts": "^31.0.0"
 	},
 	"prettier": "@wordpress/prettier-config",
+	"overrides": {
+		"brace-expansion": "^1.1.13",
+		"flatted": "^3.4.2",
+		"js-yaml": "^4.1.0",
+		"markdownlint-cli": {
+			"minimatch": "^3.1.4"
+		},
+		"serialize-javascript": "^7.0.5",
+		"tmp": "^0.2.3",
+		"@typescript-eslint/typescript-estree": {
+			"minimatch": "^9.0.7"
+		},
+		"webpack-dev-server": "^5.2.1"
+	},
 	"resolutions": {
-		"form-data": ">=2.5.4"
+		"form-data": ">=2.5.4",
+		"js-yaml": ">=4.1.0",
+		"tmp": ">=0.2.3",
+		"webpack-dev-server": ">=5.2.1"
 	}
 }

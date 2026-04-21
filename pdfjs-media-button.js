@@ -28,7 +28,16 @@ jQuery( function( $ ) {
 				.get( 'selection' )
 				.first()
 				.toJSON().url;
-			selectionURL = selectionURL.replace( /(<([^>]+)>)/gi, '' );
+
+			// Sanitize URL: remove potential HTML/JavaScript while preserving valid URL structure
+			// WordPress media URLs use standard HTTP(S) and don't contain script tags or HTML
+			selectionURL = selectionURL.replace(
+				/<script[^>]*>.*?<\/script>/gi,
+				''
+			); // Remove script tags
+			selectionURL = selectionURL.replace( /on\w+\s*=/gi, '' ); // Remove event handlers
+			// Escape double quotes for use in HTML shortcode attribute (URL encoding safe)
+			selectionURL = selectionURL.replace( /"/g, '&quot;' );
 
 			let fullscreenLink = 'fullscreen=false';
 			if (
