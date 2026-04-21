@@ -7,7 +7,7 @@
 		"node": ">=18 <21"
 	},
 	"scripts": {
-		"test": "npm run test:php",
+		"test": "npm run test:php && npm run test:wp:integration",
 		"test:php": "bash ./scripts/test-php.sh",
 		"test:php:coverage": "composer test:coverage",
 		"test:wp:integration": "composer test:integration",
