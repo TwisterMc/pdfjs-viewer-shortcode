@@ -41,6 +41,11 @@ add_action( 'plugins_loaded', 'pdfjs_load_textdomain' );
 require 'inc/embed.php';
 
 /**
+ * Shared external domain allow-list helpers
+ */
+require 'inc/external-domains.php';
+
+/**
  * Shared PDF viewer rendering
  */
 require 'inc/render-viewer.php';

@@ -83,11 +83,8 @@ if ( ! empty( $parsed_pdf['host'] ) && $parsed_pdf['host'] !== $parsed_site['hos
 		exit;
 	}
 
-	// Check if domain is whitelisted
-	$allowed_domains = get_option( 'pdfjs_allowed_domains', '' );
-	$allowed_list    = array_filter( array_map( 'trim', explode( "\n", $allowed_domains ) ) );
-	
-	if ( ! in_array( strtolower( $parsed_pdf['host'] ), $allowed_list, true ) ) {
+	// Check if domain is whitelisted (exact host match; subdomains are not implied)
+	if ( ! pdfjs_is_domain_whitelisted( $parsed_pdf['host'] ) ) {
 		http_response_code( 403 );
 		header( 'Content-Type: text/plain; charset=utf-8' );
 		header( 'Cache-Control: no-cache, no-store, must-revalidate' );

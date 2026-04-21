@@ -7,7 +7,9 @@
 		"node": ">=18 <21"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "npm run test:php",
+		"test:php": "composer test",
+		"test:php:coverage": "composer test:coverage",
 		"build": "wp-scripts build blocks/src/index.js --output-path=blocks/build && npm run readme",
 		"start": "wp-scripts start blocks/src/index.js --output-path=blocks/build",
 		"update:pdfjs": "bash ./scripts/update-pdfjs.sh",
