@@ -69,11 +69,28 @@ if ( ! filter_var( $pdf_url, FILTER_VALIDATE_URL ) ) {
 }
 
 // Parse the URL to validate it
-$parsed_pdf = parse_url( $pdf_url );
-$parsed_site = parse_url( get_site_url() );
+$parsed_pdf  = wp_parse_url( $pdf_url );
+$parsed_site = wp_parse_url( get_site_url() );
+
+$pdf_scheme = isset( $parsed_pdf['scheme'] ) ? strtolower( $parsed_pdf['scheme'] ) : '';
+$pdf_host   = isset( $parsed_pdf['host'] ) ? strtolower( $parsed_pdf['host'] ) : '';
+
+// Fail closed: only http(s) with a non-empty host (note "0" is a valid, dangerous host)
+if ( ! in_array( $pdf_scheme, array( 'http', 'https' ), true ) || '' === $pdf_host ) {
+	http_response_code( 400 );
+	header( 'Content-Type: text/plain; charset=utf-8' );
+	header( 'Cache-Control: no-cache, no-store, must-revalidate' );
+	echo 'Invalid URL format.';
+	exit;
+}
+
+$site_host = isset( $parsed_site['host'] ) ? strtolower( $parsed_site['host'] ) : '';
+$site_port = isset( $parsed_site['port'] ) ? (int) $parsed_site['port'] : ( 'https' === ( $parsed_site['scheme'] ?? '' ) ? 443 : 80 );
+$pdf_port  = isset( $parsed_pdf['port'] ) ? (int) $parsed_pdf['port'] : ( 'https' === $pdf_scheme ? 443 : 80 );
+$same_origin = ( $pdf_host === $site_host && $pdf_port === $site_port );
 
 // Verify external domain is whitelisted
-if ( ! empty( $parsed_pdf['host'] ) && $parsed_pdf['host'] !== $parsed_site['host'] ) {
+if ( ! $same_origin ) {
 	// Check if the external domains feature is enabled
 	if ( 'on' !== get_option( 'pdfjs_allow_external_domains', '' ) ) {
 		http_response_code( 403 );
@@ -87,7 +104,7 @@ if ( ! empty( $parsed_pdf['host'] ) && $parsed_pdf['host'] !== $parsed_site['hos
 	$allowed_domains = get_option( 'pdfjs_allowed_domains', '' );
 	$allowed_list    = array_filter( array_map( 'trim', explode( "\n", $allowed_domains ) ) );
 	
-	if ( ! in_array( strtolower( $parsed_pdf['host'] ), $allowed_list, true ) ) {
+	if ( ! in_array( $pdf_host, array_map( 'strtolower', $allowed_list ), true ) ) {
 		http_response_code( 403 );
 		header( 'Content-Type: text/plain; charset=utf-8' );
 		header( 'Cache-Control: no-cache, no-store, must-revalidate' );
@@ -97,9 +114,11 @@ if ( ! empty( $parsed_pdf['host'] ) && $parsed_pdf['host'] !== $parsed_site['hos
 }
 
 // Fetch the PDF using WordPress HTTP API with timeout
-$response = wp_remote_get(
+// wp_safe_remote_get rejects loopback/private/internal addresses; redirects are disabled
+$response = wp_safe_remote_get(
 	$pdf_url,
 	array(
+		'redirection' => 0,
 		'timeout'   => 30,
 		'sslverify' => true,
 		'user-agent' => 'PDFjs-Viewer-Shortcode/' . $plugin_version,
