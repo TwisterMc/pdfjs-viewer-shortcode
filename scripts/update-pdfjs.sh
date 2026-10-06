@@ -32,10 +32,24 @@ fi
 
 TARGET_BUILD_DIR="${ROOT_DIR}/pdfjs/build"
 TARGET_WEB_DIR="${ROOT_DIR}/pdfjs/web"
+VIEWER_CSP_META="<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self'; img-src 'self' blob: data:; media-src blob:; font-src 'self' data:; connect-src * blob: data:; base-uri 'none'; form-action 'none';\" />"
 
 echo "Syncing PDF.js files from: ${SOURCE_DIR}"
 rsync -a "${SOURCE_DIR}/build/" "${TARGET_BUILD_DIR}/"
 rsync -a "${SOURCE_DIR}/web/" "${TARGET_WEB_DIR}/"
+
+apply_viewer_csp() {
+	local viewer_html="$1"
+
+	VIEWER_CSP_META="${VIEWER_CSP_META}" perl -0pi -e '
+		die "Missing </head> in viewer.html\n" unless /<\/head>/i;
+		s{<meta\b(?=[^>]*\bhttp-equiv\s*=\s*["\x27]?Content-Security-Policy\b)[^>]*>\s*}{}ig;
+		s{</head>}{$ENV{VIEWER_CSP_META}\n</head>}i;
+	' "${viewer_html}"
+	echo "Restored project CSP meta tag in $(basename "${viewer_html}")"
+}
+
+apply_viewer_csp "${TARGET_WEB_DIR}/viewer.html"
 
 mirror_mjs_to_js() {
 	local mjs_file="$1"

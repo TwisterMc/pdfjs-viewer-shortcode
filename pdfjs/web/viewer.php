@@ -42,69 +42,7 @@ $replacements = array(
 	'../build/pdf.sandbox.js'  => '../build/pdf.sandbox.js?v=' . $version,
 );
 
-$customization_script = <<<HTML
-<script>
-// Override Worker constructor to add version query parameter
-const OriginalWorker = window.Worker;
-window.Worker = class extends OriginalWorker {
-	constructor(scriptURL, options) {
-		// Add version to pdf.worker.js requests
-		let modifiedURL = scriptURL;
-		if (typeof scriptURL === 'string' && scriptURL.includes('pdf.worker.js') && !scriptURL.includes('?')) {
-			modifiedURL = scriptURL + '?v=$version';
-		}
-		super(modifiedURL, options);
-	}
-};
-// Preserve static properties
-Object.keys(OriginalWorker).forEach(key => {
-	window.Worker[key] = OriginalWorker[key];
-});
-</script>
-<script>
-(function () {
-	const params = new URLSearchParams(window.location.search);
-	const enabled = key => (params.get(key) || 'true') === 'true';
-	const hide = id => {
-		const element = document.getElementById(id);
-		if (element) {
-			element.style.display = 'none';
-		}
-	};
-	const hideMany = ids => ids.forEach(hide);
-
-	const applyToggles = () => {
-		if (!enabled('sButton')) {
-			hide('viewFindButton');
-			hide('findbar');
-		}
-
-		if (!enabled('oButton')) {
-			hide('secondaryOpenFile');
-		}
-
-		if (!enabled('pButton')) {
-			hideMany(['printButton', 'secondaryPrint']);
-		}
-
-		if (!enabled('dButton')) {
-			hideMany(['downloadButton', 'secondaryDownload']);
-		}
-
-		if (!enabled('editButtons')) {
-			hide('editorModeButtons');
-			hide('editorModeSeparator');
-		}
-	};
-
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', applyToggles, { once: true });
-	} else {
-		applyToggles();
-	}
-})();
-</script>
-HTML;
+$customization_script = '<script src="viewer-customizations.js?v=' . $version . '" data-asset-version="' . $version . '"></script>';
 
 header( 'Content-Type: text/html; charset=utf-8' );
 echo str_replace( '</head>', $customization_script . '</head>', strtr( $html, $replacements ) );

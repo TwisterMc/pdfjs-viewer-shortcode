@@ -96,11 +96,15 @@ This command will:
 - Mirror key `.mjs` files to `.js` equivalents (`pdf`, `pdf.worker`, `pdf.sandbox`, `viewer`, `debugger`) so classic browser loading paths continue to work.
 - Keep the `.mjs` files alongside the `.js` files.
 
-After running, compare viewer templates before release:
+The sync does not delete files that are not present in the source package, so the custom `web/viewer.php` and `web/viewer-customizations.js` should remain. The upstream `web/viewer.html` is replaced, then the update script automatically reapplies the repository's Content Security Policy meta tag. Keep `viewer.php` loading the customization script externally; do not move its code back inline, because the viewer's CSP blocks inline scripts.
+
+After running, review the upstream viewer template changes and verify the customized viewer before release:
 
 ```bash
-diff -u pdfjs/web/viewer.html pdfjs/web/viewer.php
+git diff -- pdfjs/web/viewer.html pdfjs/web/viewer.php pdfjs/web/viewer-customizations.js
 ```
+
+Confirm the single CSP meta tag is present, `viewer.php` injects `viewer-customizations.js`, and the customization script's toolbar element IDs still exist in `viewer.html`. Then open a PDF in the viewer and check that loading, worker startup, and the configured toolbar-button toggles still work without CSP errors in the browser console.
 
 ### Cache Busting Strategy
 
@@ -128,7 +132,7 @@ Cache busting is implemented at multiple levels to ensure PDF.js updates are ref
 3. **Runtime replacements** – `viewer.php` handles all cache-busting dynamically:
     - Reads the version from the `?v=` query parameter passed in the iframe URL
     - Intercepts all asset references when loading `viewer.html`
-    - No patching needed during `npm run update:pdfjs` — works with unmodified Mozilla files
+    - Adds the external `viewer-customizations.js` script with the same version parameter
 
 ### How It Works
 
