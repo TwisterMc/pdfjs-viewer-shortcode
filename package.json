@@ -4,7 +4,7 @@
 	"description": "* Contributors: FalconerWeb, twistermc * Tags: pdf, pdf.js, viewer, reader, embed, mozilla, shortcode * Requires at least: 4.0 * Tested up to: 5.4 * Stable tag: 1.4.4 * License: GPLv2 or later * License URI: http://www.gnu.org/licenses/gpl-2.0.html * Requires PHP: 7.2",
 	"main": "blocks/src/index.js",
 	"engines": {
-		"node": ">=18 <21"
+		"node": "^22.22.2 || ^24.15.0 || >=26.0.0"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -28,23 +28,27 @@
 	},
 	"homepage": "https://github.com/TwisterMc/PDF.js-Viewer-Shortcode#readme",
 	"devDependencies": {
-		"@wordpress/prettier-config": "^0.2.0",
-		"@wordpress/scripts": "^31.0.0"
+		"@types/node": "^24.0.0",
+		"@wordpress/prettier-config": "^4.56.0",
+		"@wordpress/scripts": "^36.0.0"
 	},
 	"prettier": "@wordpress/prettier-config",
 	"overrides": {
-		"brace-expansion": "^1.1.13",
 		"flatted": "^3.4.2",
+		"katex": "^0.19.0",
 		"js-yaml": "^4.1.0",
 		"markdownlint-cli": {
 			"minimatch": "^3.1.4"
 		},
 		"serialize-javascript": "^7.0.5",
+		"postcss-selector-parser": "^7.1.6",
+		"smol-toml": "^1.9.0",
 		"tmp": "^0.2.3",
 		"@typescript-eslint/typescript-estree": {
 			"minimatch": "^9.0.7"
 		},
-		"webpack-dev-server": "^5.2.1"
+		"webpack-dev-server": "^5.2.1",
+		"uuid": "^11.1.1"
 	},
 	"resolutions": {
 		"form-data": ">=2.5.4",

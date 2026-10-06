@@ -4,8 +4,8 @@ This guide contains developer-focused setup, commands, and structure details. En
 
 ## Requirements
 
--   Node.js 18+ (use [nvm](https://github.com/nvm-sh/nvm) to manage versions)
--   npm 10+
+- Node.js `^22.22.2`, `^24.15.0`, or `>=26.0.0` (use [nvm](https://github.com/nvm-sh/nvm) to manage versions)
+- npm 10+
 
 ## Quick Start
 
@@ -51,24 +51,24 @@ readme.md   # User-focused documentation
 
 ## Key PHP Components
 
--   `inc/render-viewer.php` – Shared rendering logic for block & shortcode.
--   `inc/shortcode.php` – Shortcode handler using shared renderer.
--   `inc/embed.php` – Legacy wrapper (kept for backward compatibility).
--   `inc/gutenberg-block.php` – Block registration & script localization.
--   `inc/options-page.php` – Admin settings page.
+- `inc/render-viewer.php` – Shared rendering logic for block & shortcode.
+- `inc/shortcode.php` – Shortcode handler using shared renderer.
+- `inc/embed.php` – Legacy wrapper (kept for backward compatibility).
+- `inc/gutenberg-block.php` – Block registration & script localization.
+- `inc/options-page.php` – Admin settings page.
 
 ## Shared Helpers
 
--   `pdfjs_get_options()` – Consistent retrieval of plugin options.
--   `pdfjs_render_viewer()` – Builds iframe + fullscreen link.
--   `pdfjs_sanitize_option()` – Sanitizes stored options.
+- `pdfjs_get_options()` – Consistent retrieval of plugin options.
+- `pdfjs_render_viewer()` – Builds iframe + fullscreen link.
+- `pdfjs_sanitize_option()` – Sanitizes stored options.
 
 ## Development Tips
 
--   Avoid editing anything inside `blocks/build/`; it is generated.
--   Use `attachment_id` when possible instead of raw `url` for security.
--   Keep changes atomic; avoid patching built bundles manually.
--   Run `npm run build` before committing to ensure assets are current.
+- Avoid editing anything inside `blocks/build/`; it is generated.
+- Use `attachment_id` when possible instead of raw `url` for security.
+- Keep changes atomic; avoid patching built bundles manually.
+- Run `npm run build` before committing to ensure assets are current.
 
 ## Updating Dependencies
 
@@ -92,9 +92,9 @@ npm run update:pdfjs -- update/pdfjs-5.5.207-legacy-dist
 
 This command will:
 
--   Sync `build/` and `web/` into this repo's `pdfjs/` folder.
--   Mirror key `.mjs` files to `.js` equivalents (`pdf`, `pdf.worker`, `pdf.sandbox`, `viewer`, `debugger`) so classic browser loading paths continue to work.
--   Keep the `.mjs` files alongside the `.js` files.
+- Sync `build/` and `web/` into this repo's `pdfjs/` folder.
+- Mirror key `.mjs` files to `.js` equivalents (`pdf`, `pdf.worker`, `pdf.sandbox`, `viewer`, `debugger`) so classic browser loading paths continue to work.
+- Keep the `.mjs` files alongside the `.js` files.
 
 After running, compare viewer templates before release:
 
@@ -187,9 +187,9 @@ Version parameters should increment with each plugin release, ensuring browsers 
 
 ## Contributing
 
--   Fork, branch, and submit PRs with clear descriptions.
--   Follow WordPress coding standards (PHP & JS).
--   Keep PRs focused—prefer multiple small PRs to one large one.
+- Fork, branch, and submit PRs with clear descriptions.
+- Follow WordPress coding standards (PHP & JS).
+- Keep PRs focused—prefer multiple small PRs to one large one.
 
 ## License
 
