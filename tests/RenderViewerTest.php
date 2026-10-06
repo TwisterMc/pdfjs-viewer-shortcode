@@ -116,7 +116,7 @@ final class RenderViewerTest extends TestCase {
         );
 
         $this->assertStringContainsString( 'pdfjs/web/pdf-proxy.php', $html );
-        $this->assertStringContainsString( 'url=https%253A%252F%252Fcdn.allowed.com%252Fdocs%252Ffile.pdf', $html );
+        $this->assertStringContainsString( 'url=https%3A%2F%2Fcdn.allowed.com%2Fdocs%2Ffile.pdf', $html );
         $this->assertStringContainsString( '<iframe', $html );
     }
 }

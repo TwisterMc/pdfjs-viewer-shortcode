@@ -170,9 +170,7 @@ function pdfjs_render_viewer( $args ) {
 	$fullscreen_target_attr = ( 'true' === $fullscreen_target ) ? 'target="_blank"' : '';
 
 	// Build viewer URL with all parameters.
-	// Note: add_query_arg() will handle proper URL encoding of all parameters,
-	// so we pass the file URL as-is. It's already been escaped via esc_url() above.
-	// Using rawurlencode() here causes double-encoding which can break some PDF URLs.
+	// Note: add_query_arg() does not URL-encode values, so the file URL is passed as-is.
 
 	// Build base query args in a structured way for consistency and performance
 	$query_args = array(

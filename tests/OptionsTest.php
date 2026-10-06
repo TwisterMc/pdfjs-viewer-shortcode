@@ -64,6 +64,6 @@ final class OptionsTest extends TestCase {
         $this->assertEquals( 'on', pdfjs_sanitize_option( 'on' ) );
         $this->assertEquals( 1200, pdfjs_sanitize_option( 1200 ) );
         $this->assertEquals( 'https://example.com/file.pdf', pdfjs_sanitize_option( 'https://example.com/file.pdf' ) );
-        $this->assertEquals( 'unsafe script', pdfjs_sanitize_option( '<script>unsafe</script> script' ) );
+        $this->assertEquals( 'script', pdfjs_sanitize_option( '<script>unsafe</script> script' ) );
     }
 }
