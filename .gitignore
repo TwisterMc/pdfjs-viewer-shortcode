@@ -17,3 +17,4 @@ yarn-error.log*
 .tmp/*
 update/*
 /vendor/
+/.phpunit.result.cache
