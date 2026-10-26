@@ -12,6 +12,7 @@
 		"test:php:coverage": "composer test:coverage",
 		"test:wp:integration": "composer test:integration",
 		"build": "wp-scripts build blocks/src/index.js --output-path=blocks/build && npm run readme",
+		"build:svn": "bash ./scripts/build-svn.sh",
 		"start": "wp-scripts start blocks/src/index.js --output-path=blocks/build",
 		"update:pdfjs": "bash ./scripts/update-pdfjs.sh",
 		"lint:js": "wp-scripts lint-js blocks/src",

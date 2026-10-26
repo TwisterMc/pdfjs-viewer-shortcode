@@ -175,9 +175,9 @@ Version parameters should increment with each plugin release, ensuring browsers 
 
 1. Update version in plugin header & stable tag in `readme.md`.
 2. Add changelog entry.
-3. Run `npm run build` and verify no raw imports or errors.
+3. Run `npm run build:svn` — rebuilds assets and creates a clean, production-only copy of the plugin in `SVN/` (git-ignored; no dev, test, or CI files).
 4. Commit & tag: `git tag vX.Y.Z && git push --tags`.
-5. Submit to WordPress.org.
+5. Submit the contents of `SVN/` to the WordPress.org SVN repository.
 
 ## Troubleshooting
 

@@ -8,6 +8,7 @@
 # Build outputs
 /blocks/build/
 /blocks/dist/
+/SVN/
 
 # Logs
 *.log
